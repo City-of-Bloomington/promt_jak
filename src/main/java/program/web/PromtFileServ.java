@@ -90,12 +90,7 @@ public class PromtFileServ extends TopServlet{
 	// we have to make sure that this directory exits
 	// if not we create it
 	//
-	/** old stuff
-	File myDir = new File(server_path);
-	if(!myDir.isDirectory()){
-	    myDir.mkdirs();
-	}
-	*/
+	
 	PromtFile promtFile = new PromtFile(debug);
 	String new_path = promtFile.getPath(server_path);
 	Path path = Paths.get(new_path);
@@ -116,7 +111,6 @@ public class PromtFileServ extends TopServlet{
 	    //.setSizeThreshold(maxDocSize)
 	    .setBufferSizeMax(maxMemorySize)
 	    .get();
-
 	
 	//
 	// Set factory constraints
@@ -140,7 +134,6 @@ public class PromtFileServ extends TopServlet{
 	String content_type = req.getContentType();
 	try{
 	    if(JakartaServletDiskFileUpload.isMultipartContent(req)){	    
-		//if(content_type != null && content_type.startsWith("multipart")){
 		items = upload.parseRequest(req);
 		Iterator<DiskFileItem> iter = items.iterator();
 		while (iter.hasNext()) {
@@ -179,9 +172,6 @@ public class PromtFileServ extends TopServlet{
 			// System.err.println(" type "+mimType);
 			//
 			// process uploaded item/items
-			//
-			// String fieldName = item.getFieldName();
-												
 			String contentType = item.getContentType();
 			if(Helper.mimeTypes.containsKey(contentType)){
 			    ext = Helper.mimeTypes.get(contentType);
@@ -215,14 +205,9 @@ public class PromtFileServ extends TopServlet{
 				promtFile.composeName(ext);
 				newFile = promtFile.getName();
 				if(!newFile.equals("")){
-				    new_path = promtFile.getFullPath(server_path, ext);				    
+				    new_path = promtFile.getFullPath(server_path, ext);
 				    Path uploadedFile = Paths.get(new_path+newFile);
 				    item.write(uploadedFile);
-				    /**
-
-				    File file = new File(saveDirectory, newFile);
-				    item.write(file);
-				    */
 				}
 				else{
 				    message = "Error: no file name assigned ";
