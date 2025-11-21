@@ -136,9 +136,9 @@ public class PlanSearch extends TopServlet{
 	out.println("</select></td></tr>");
 	//
 	out.println("<tr><td align=\"right\">");
-
-	out.println("<input type=\"text\" name=\"maxRecords\" value=\"100\" "+
-		    "size=\"6\" id=\"maxr\"/> <label for=\"maxr\">Show records/page </label></td></tr>");
+	out.println("<label for=\"maxr\">Show records per page </label></td>");
+	out.println("<td><input type=\"text\" name=\"maxRecords\" value=\"100\" "+
+		    "size=\"6\" id=\"maxr\"/></td></tr>"); 
 	out.println("<tr><td align=\"right\">");	
 	out.println("<label for=\"id\">Plan/Pre Plan ID: </label>"+
 		    "</td><td>");

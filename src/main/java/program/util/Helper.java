@@ -147,7 +147,8 @@ public class Helper{
 	"Age"
     };
     //
-    public final static String allSeasons = 
+    public final static String allSeasons =
+	"<option value=\"\">Pick Season</option>"+	
 	"<option value=\"Ongoing\">Ongoing</option>"+
 	"<option value=\"Fall/Winter\">Fall/Winter</option>"+
 	"<option value=\"Winter/Spring\">Winter/Spring</option>"+
@@ -315,12 +316,15 @@ public class Helper{
 				 List<PromtFile> files){
 	if(files == null || files.size() == 0) return;
 	out.println("<table border=\"1\" width=\"80%\"><caption> Related Files</caption>");
-	out.println("<tr><th>Date</th><th>Added by</th><th>File Name</th><th>Notes<th></tr>");
+	out.println("<tr><th>Date</th><th>Added by</th><th>File Name</th><th>Notes</th></tr>");
 	for(PromtFile one:files){
+	    String notes = one.getNotes();
+	    if(notes.isEmpty())
+		notes = "No data";
 	    out.println("<tr><td>"+one.getDate()+"</td>"+
 			"<td>"+one.getAddedBy()+"</td>"+
 			"<td><a href=\""+url+"PromtFile.do?action=download&id="+one.getId()+"\">"+one.getOldName()+"</a></td>"+
-			"<td>"+one.getNotes()+"</td></tr>");
+			"<td>"+notes+"</td></tr>");
 	}
 	out.println("</table>");
     }
@@ -654,7 +658,7 @@ public class Helper{
 				   List<History> history){
 	out.println("<table width=\"50%\" border=\"1\">");
 	out.println("<caption>"+title+"</caption>");
-	out.println("<th>Action</th><th>Action By</th><th>Date & Time</th></tr>");
+	out.println("<tr><th>Action</th><th>Action By</th><th>Date & Time</th></tr>");
 	for(History one:history){
 	    out.println("<tr><td>"+one.getAction()+"</td>");
 	    out.println("<td>"+one.getUser()+"</td>");

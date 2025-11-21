@@ -1143,19 +1143,19 @@ public class ProgramServ extends TopServlet{
 	out.println("<caption>Completed Tasks </caption> ");
 	out.println("<tr><td>");						
 	out.println("<input type=\"checkbox\" name=\"marketTask\" value=\"y\" "+
-		    marketTask+ " /><b>Marketing </b>");
+		    marketTask+ " id=\"marketTask\" /><label for=\"marketTask\">Marketing </label>");
 	out.println("</td><td>");
 	out.println("<input type=\"checkbox\" name=\"volTask\" value=\"y\" "+
-		    volTask+ " /><b>Volunteer </b>");
+		    volTask+ " id=\"volTask\" /><label for=\"volTask\">Volunteer </label>");
 	out.println("</td><td>");
 	out.println("<input type=\"checkbox\" name=\"sponTask\" value=\"y\" "+
-		    sponTask+ " /><b>Sponsorship </b>");
+		    sponTask+ " id=\"sponTask\"/><label for=\"sponTask\">Sponsorship </label>");
 	out.println("</td><td>");
 	out.println("<input type=\"checkbox\" name=\"evalTask\" value=\"y\" "+
-		    evalTask+ " /><b>Evaluation </b>");
+		    evalTask+ " id=\"evalTask\"/><label for=\"evalTask\">Evaluation </label>");
 	out.println("</td><td>");
 	out.println("<input type=\"checkbox\" name=\"noPublish\" value=\"y\" "+
-		    noPublish+ " /> *** <b>Does Not Go in Guide </b>");
+		    noPublish+ " id=\"noPub\"/> *** <label for=\"noPub\">Does Not Go in Guide </label>");
 	out.println("</td>");						
 	out.println("</tr></table></td></tr>");
 	out.println("<tr bgcolor=\"#CDC9A3\"><td>");
@@ -1227,13 +1227,15 @@ public class ProgramServ extends TopServlet{
 	out.println("<tr><td align=\"right\"><label for=\"area_id\">Area/Division:</label>");
 	out.println("</td><td align=\"left\">");
 	out.println("<select name=\"area_id\" id=\"area_id\">");
-	out.println("<option value=\"\"></option>");
+	out.println("<option value=\"\">Pick Area</option>");
 	if(areas != null){
 	    for(Type one:areas){
 		String selected = "";
-		if(one.getId().equals(pr.getArea_id()))
-		    selected = "selected=\"selected\"";
-		out.println("<option "+selected+" value=\""+one.getId()+"\">"+one+"</option>");
+		if(!one.getName().isEmpty()){
+		    if(one.getId().equals(pr.getArea_id()))
+			selected = "selected=\"selected\"";
+		    out.println("<option "+selected+" value=\""+one.getId()+"\">"+one+"</option>");
+		}
 	    }
 	}		
 	out.println("</select>");
@@ -1247,15 +1249,17 @@ public class ProgramServ extends TopServlet{
 	out.println("<tr><td align=\"right\"><label for=\"cat_id\">Guide Heading:</label>");
 	out.println("</td><td>");
 	out.println("<select name=\"category_id\" id=\"cat_id\">");
-	out.println("<option value=\"\"></option>");
+	out.println("<option value=\"\">Pick Guide Heading</option>");
 	if(categories != null){
 	    for(Type one:categories){
 		String selected = "";
-		if(one.getId().equals(pr.getCategory_id())){
-		    selected = "selected=\"selected\"";
+		if(!one.isActive()) continue;
+		if(!one.getName().isEmpty()){
+		    if(one.getId().equals(pr.getCategory_id())){
+			selected = "selected=\"selected\"";
+		    }
+		    out.println("<option "+selected+" value=\""+one.getId()+"\">"+one+"</option>");
 		}
-		else if(!one.isActive()) continue;					
-		out.println("<option "+selected+" value=\""+one.getId()+"\">"+one+"</option>");
 	    }
 	}
 	out.println("</select>"+star+" ");
@@ -1275,16 +1279,18 @@ public class ProgramServ extends TopServlet{
 	out.println("<tr><td align=\"right\"><label for=\"tax_id\">Category: **</label>");
 	out.println("</td><td>");
 	out.println("<select name=\"tax_id\" id=\"tax_id\" onchange=\"createSubList(this,'sub_tax_id');\">");
-	out.println("<option value=\"\"></option>");
+	out.println("<option value=\"\">Pick category</option>");
 	if(taxonomies != null){
 	    for(Type one:taxonomies){
-		out.println("<option value=\""+one.getId()+"\">"+one+"</option>");
+		if(!one.getName().isEmpty()){
+		    out.println("<option value=\""+one.getId()+"\">"+one+"</option>");
+		}
 	    }
 	}
 	out.println("</select>");
 	out.println("<label for=\"sub_tax_id\">Sub Categories:</label>");
 	out.println("<select name=\"sub_tax_id\" id=\"sub_tax_id\" onchange=\"addToTaxo(this);\" >");
-	out.println("<option value=\"\"></option>");
+	out.println("<option value=\"\">Pick Sub Category</option>");
 	out.println("</select>");						
 	out.println("</td></tr>");						
 	//
@@ -1299,9 +1305,13 @@ public class ProgramServ extends TopServlet{
 	    out.println("<tr><td align=\"right\"><label for=\"subcat\">Guide Sub Heading:</label>");
 	    out.println("</td><td>");
 	    out.println("<select name=\"subcat\" id=\"subcat\">");
-	    out.println("<option selected>"+pr.getSubcat()+"\n"); 
+	    if(!pr.getSubcat().isEmpty()){
+		out.println("<option selected=\"selected\">"+pr.getSubcat()+"</option>\n");
+	    }
 	    for(int i=0;i<Helper.peopleUnivSub.length; i++){
-		out.println("<option>"+Helper.peopleUnivSub[i]+"\n");
+		if(!Helper.peopleUnivSub[i].isEmpty()){
+		    out.println("<option>"+Helper.peopleUnivSub[i]+"</option>\n");
+		}
 	    }
 	    out.println("</select></td></tr>");
 	}
@@ -1317,10 +1327,15 @@ public class ProgramServ extends TopServlet{
 	    // Guide Sub Heading
 	    out.println("<tr><td align=\"right\"><label for=\"subcat\">Guide Sub Heading:</label>");
 	    out.println("</td><td>");
+	    
 	    out.println("<select name=\"subcat\" id=\"subcat\">");
-	    out.println("<option selected>"+subcat+"\n"); 
+	    if(!subcat.isEmpty()){
+		out.println("<option selected=\"selected\">"+subcat+"</option>\n");
+	    }
 	    for(int i=0;i<Helper.preschoolSub.length; i++){
-		out.println("<option>"+Helper.preschoolSub[i]+"\n");
+		if(!Helper.preschoolSub[i].isEmpty()){
+		    out.println("<option>"+Helper.preschoolSub[i]+"</option>\n");
+		}
 	    }
 	    out.println("</select></td></tr>");
 	}
@@ -1342,14 +1357,10 @@ public class ProgramServ extends TopServlet{
 	}
 	out.println("</select>"+star);
 	out.println("</td></tr>");
-	out.println("<tr><td>&nbsp;</td></tr>"); // separator
-	//
-	out.println("<tr><td colspan=\"2\" align=\"center\" bgcolor=\"navy\" "+
-		    "><label for\"summary\"><font color=\"white\">Program Summary</font></label></h3>");
-	out.println("</td></tr>");
-	out.println("<tr><td "+tdWidth+"></td><td align=\"left\">");
-	out.println("Up to 160 characters (3 lines max)</td></tr>");
-	out.println("<tr><td><td align=\"left\">");
+	out.println("<tr><td>");
+	out.println("<label for=\"summary\">Program Summary</label>");
+	out.println("(Up to 160 characters or 3 lines max)</td>");
+	out.println("<td align=\"left\">");
 	out.println("<textarea rows=\"3\" cols=\"70\" wrap=\"soft\" name=\"summary\" "+
 		    "id=\"summary\" onkeyup=\"validateTextarea(this,160)\">"); 
 	out.println(pr.getSummary());
@@ -1526,10 +1537,10 @@ public class ProgramServ extends TopServlet{
 	out.println("</td></tr></table></td></tr>");
 	//
 	out.println("<tr><td align=\"right\">");
-	out.println("<b>Start Time:</b>");
+	out.println("<label for=\"startTime\">Start Time:</label>");
 	out.println("</td><td>");
 	out.println("<input type=\"text\" name=\"startTime\" maxlength=\"10\" "+
-		    "value=\""+ pr.getStartTime() + "\" size=\"10\" readonly=\"readonly\" /> ");
+		    "value=\""+ pr.getStartTime() + "\" size=\"10\" readonly=\"readonly\" id=\"startTime\" /> ");
 	out.println("<input type=\"button\" onclick='"+
 		    "window.open(\""+url+"PickTime?id="+id+"&wtime=startTime&time="+java.net.URLEncoder.encode(pr.getStartTime())+"\",\"Time\","+
 		    "\"toolbar=0,location=0,"+
@@ -1538,7 +1549,7 @@ public class ProgramServ extends TopServlet{
 		    "resizable=1,width=400,height=250\");'"+
 		    " value=\"Pick Time\" />");		
 						
-	out.println("<b>End Time: </b><input type=\"text\" name=\"endTime\" maxlength=\"10\" "+
+	out.println("<label for=\"endTime\">End Time: </label><input type=\"text\" name=\"endTime\" maxlength=\"10\" id=\"endTime\" "+
 		    "value=\""+ pr.getEndTime() + "\" size=\"10\" readonly=\"readonly\" />");
 	out.println("<input type=\"button\" onclick='"+
 		    "window.open(\""+url+"PickTime?id="+id+"&wtime=endTime&time="+java.net.URLEncoder.encode(pr.getEndTime())+"\",\"Time\","+
@@ -1582,15 +1593,17 @@ public class ProgramServ extends TopServlet{
 	out.println("<tr><td align=\"right\" "+tdWidth+"><label for=\"location_id\">Location:");
 	out.println("</label></td><td align=\"left\">");
 	out.println("<select name=\"location_id\" id=\"location_id\">");
-	out.println("<option value=\"\"></option>");
+	out.println("<option value=\"\">Pick Location</option>");
 	String loc_id = pr.getLocation_id();
 	if(locations != null){
 	    for(Type one:locations){
-		if(one.getId().equals(loc_id)){
-		    out.println("<option selected=\"selected\" value=\""+loc_id+"\">"+one.getName()+"</option>");
-		}
-		else{
-		    out.println("<option value=\""+one.getId()+"\">"+one.getName()+"</option>");
+		if(!one.getName().isEmpty()){
+		    if(one.getId().equals(loc_id)){
+			out.println("<option selected=\"selected\" value=\""+loc_id+"\">"+one.getName()+"</option>");
+		    }
+		    else{
+			out.println("<option value=\""+one.getId()+"\">"+one.getName()+"</option>");
+		    }
 		}
 	    }
 	}
@@ -1645,14 +1658,14 @@ public class ProgramServ extends TopServlet{
 		    " id=\"days_c\" /><label for=\"days_c\">Day(s)</label>");
 	out.println("</td><td>");
 	out.println("<input type=\"checkbox\" name=\"startTime_c\" value=\"y\" "+
-		    startTime_c+" id=\"starttime_c\"/><label for=\"start_c\">Start, End Time</label>");
+		    startTime_c+" id=\"start_c\"/><label for=\"start_c\">Start, End Time</label>");
 	out.println("</td><td>");
 	out.println("<input type=\"checkbox\" name=\"startDate_c\" value=\"y\" "+
 		    startDate_c+" id=\"startDate_c\"/><label for=\"startDate_c\">Start, End Date</label>");
 	out.println("</td></tr>");
 	out.println("<tr><td>");
 	out.println("<input type=\"checkbox\" name=\"inCityFee_c\" value=\"y\" "+
-		    inCityFee_c + " id=\"incity_c\"/><label for=\"Incity_c\">In-City Fee</label>");
+		    inCityFee_c + " id=\"incity_c\"/><label for=\"incity_c\">In-City Fee</label>");
 	out.println("</td><td>");
 	out.println("<input type=\"checkbox\" name=\"nonCityFee_c\" value=\"y\" "+
 		    nonCityFee_c + " id=\"noncity_c\"/><label for=\"noncity_c\">Non-City Fee</label>");

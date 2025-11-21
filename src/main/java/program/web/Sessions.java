@@ -447,17 +447,17 @@ public class Sessions extends TopServlet{
 	   action.equals("Delete")){
 	    sid = se.getNextId();
 	}
-	if(!se.getAllAge().equals("")) allAge = "checked";
-	if(!se.getWParent().equals("")) wParent = "checked";
-	if(!d_all.equals("")) d_all = "checked";
-	if(!d_mon_fri.equals("")) d_mon_fri = "checked";
-	if(!d_sun.equals("")) d_sun = "checked";
-	if(!d_mon.equals("")) d_mon = "checked";
-	if(!d_tue.equals("")) d_tue = "checked";
-	if(!d_wed.equals("")) d_wed = "checked";
-	if(!d_thu.equals("")) d_thu = "checked";
-	if(!d_fri.equals("")) d_fri = "checked";
-	if(!d_sat.equals("")) d_sat = "checked";
+	if(!se.getAllAge().equals("")) allAge = "checked=\"checked\"";
+	if(!se.getWParent().equals("")) wParent = "checked=\"checked\"";
+	if(!d_all.equals("")) d_all = "checked=\"checked\"";
+	if(!d_mon_fri.equals("")) d_mon_fri = "checked=\"checked\"";
+	if(!d_sun.equals("")) d_sun = "checked=\"checked\"";
+	if(!d_mon.equals("")) d_mon = "checked=\"checked\"";
+	if(!d_tue.equals("")) d_tue = "checked=\"checked\"";
+	if(!d_wed.equals("")) d_wed = "checked=\"checked\"";
+	if(!d_thu.equals("")) d_thu = "checked=\"checked\"";
+	if(!d_fri.equals("")) d_fri = "checked=\"checked\"";
+	if(!d_sat.equals("")) d_sat = "checked=\"checked\"";
 	//        
 	out.println("<html><head><title>Sessions</title>");
 	Helper.writeWebCss(out, url);
@@ -554,58 +554,56 @@ public class Sessions extends TopServlet{
 	out.println("<input type=\"hidden\" name=\"action2\" value=\"\" />");
 	out.println("<center><table border=\"1\">");
 	out.println("<caption>Session Info</caption>");
-	out.println("<tr><td align=right><strong>Program Title");
-	out.println("</td></strong><td><left>");
-	out.println(ptitle);
-	out.println("&nbsp;&nbsp;<b>Season:</b>"+season+
+	out.println("<tr><td align=\"right\"><b>Program:</b>");
+	out.println("</td><td>");
+	    out.println("<a href=\""+url+"Program.do?id="+se.getId()+"\">");
+	out.println(ptitle+"</a>, ");
+	out.println("<b>Season:</b>"+season+
 		    "&nbsp;&nbsp;<b>Year:</b>"+pyear);
-	out.println("</left></td></tr>");
+	out.println("</td></tr>");
 
 	// sid, code
-	out.println("<tr><td align=\"right\"><b>Session ID");
+	out.println("<tr><td align=\"right\"><label for=\"sid\">Session ID</label>");
 	out.println("</b></td><td align=\"left\">");
 	out.println("<input type=\"text\" name=\"sid\" maxlength=\"3\" size=\"3\" "+
-		    "value=\""+se.getSid()+"\" />");
-	out.println("<strong>Code</strong>");
+		    "value=\""+se.getSid()+"\" id=\"sid\" />");
+	out.println("<label for=\"code_id\">Code</label>");
 	out.println("<input type=\"text\" name=\"code\" maxlength=\"10\" size=\"10\" "+
-		    "value=\""+se.getCode()+"\" />");
+		    "value=\""+se.getCode()+"\" id=\"code_id\" />");
 	out.println("</td></tr>");
 	//
 	// days
 	if(sopt.showDays()){
-	    out.println("<tr><td align=\"right\" valign=\"top\"><b>&nbsp;");
-	    out.println("</td>");
-	    out.println("<td><table width=\"100%\">");
+	    out.println("<tr><td colspan=\"2\"><table width=\"100%\">");
 	    out.println("<caption>Days</caption>");
 	    out.println("<tr><td align=\"left\">");
 	    out.println("<input type=\"checkbox\" name=\"d_sun\" value=\"y\" "+
-			d_sun+" />Su");
+			d_sun+" id=\"d_sum\"/><label for=\"d_sum\">Su</label>");
 	    out.println("</td><td align=left>");
 	    out.println("<input type=\"checkbox\" name=\"d_mon\" value=\"y\" "+
-			d_mon+" />M");
+			d_mon+" id=\"d_mon\"/><label for=\"d_mon\">M</label>");
 	    out.println("</td><td align=left>");
 	    out.println("<input type=\"checkbox\" name=\"d_tue\" value=\"y\" "+
-			d_tue+" />Tu");
+			d_tue+" id=\"d_tue\"/><label for=\"d_tue\">Tu</label>");
 	    out.println("</td><td align=left>");
 	    out.println("<input type=\"checkbox\" name=\"d_wed\" value=\"y\" "+
-			d_wed+"/>W");
+			d_wed+" id=\"d_wed\"/><label for=\"d_wed\">W</label>");
 	    out.println("</td><td align=left>");
 	    out.println("<input type=\"checkbox\" name=\"d_thu\" value=\"y\" "+
-			d_thu+">Th");
+			d_thu+" id=\"d_thu\"/><label for=\"d_thu\">Th</label>");
 	    out.println("</td><td align=left>");
 	    out.println("<input type=\"checkbox\" name=\"d_fri\" value=\"y\" "+
-			d_fri+">F");
+			d_fri+" id=\"d_fri\"/><label for=\"d_fri\">F</label>");
 	    out.println("</td></tr><tr><td align=left>");
 	    out.println("<input type=\"checkbox\" name=\"d_sat\" value=\"y\" "+
-			d_sat+">Sa");
+			d_sat+" id=\"d_sat\" /><label for=\"d_sat\">Sa</label>");
 	    out.println("</td><td> </td><td colspan=2 align=left>");
 	    out.println("<input type=\"checkbox\" name=\"d_mon_fri\" value=\"y\" "+
-			d_mon_fri+">M-F");
+			d_mon_fri+" id=\"d_mon_fri\" /><label for=\"d_mon_fri\">M-F</label>");
 	    out.println("</td><td colspan=2 align=left>");
 	    out.println("<input type=\"checkbox\" name=\"d_all\" value=\"y\" "+
-			d_all+">M-Su");
+			d_all+" id=\"d_all\" /><label for=\"d_all\">M-Su</label>");
 	    out.println("</td></tr></table></td></tr>");
-	    out.println("</td></tr>");
 	}
 	//
 	// dates
@@ -622,7 +620,7 @@ public class Sessions extends TopServlet{
 	    out.println("<input type=\"text\" name=\"endDate\" value=\""+
 			se.getEndDate() + "\" maxlength=\"10\" size=\"10\" "+
 			" id=\"endDate\" />(mm/dd/yyyy)");
-	    out.println("</td></left></tr>");
+	    out.println("</td></tr>");
 	}
 	// Time 
 	if(sopt.showStartTime()){
@@ -693,10 +691,10 @@ public class Sessions extends TopServlet{
 	// in fee
 	if(sopt.showInCityFee()){
 	    out.println("<tr><td align=\"right\"><label for=\"inCityFee\">In City Fee $</label>");
-	    out.println("</td><td><left>");
+	    out.println("</td><td>");
 	    out.println("<input type=\"text\" name=\"inCityFee\" maxlength=\"20\" size=\"20\" "+
 			" id=\"inCityFee\" value=\""+se.getInCityFee()+"\">");
-	    out.println("</td></left></tr>");
+	    out.println("</td></tr>");
 	}	    
 	//
 	// non fee
@@ -722,34 +720,35 @@ public class Sessions extends TopServlet{
 	    out.println("<tr><td align=\"right\">");
 	    out.println("<label for=\"memberFee\">Member Fee $</label>");
 	    out.println("</td><td>");
-	    out.println("<input type=\"text\" name=\"memberFee\" maxlength=\"20\" size=\"20\" id=\"memeberFee\" "+
+	    out.println("<input type=\"text\" name=\"memberFee\" maxlength=\"20\" size=\"20\" id=\"memberFee\" "+
 			" value=\""+se.getMemberFee()+"\">");
 	    out.println("</td></tr>");
 	}
 	if(sopt.showNonMemberFee()){
 	    out.println("<tr><td align=\"right\">");
 	    out.println("<label for=\"nonMemberFee\">Non Member Fee $</label>");
-	    out.println("</td><td><left>");
+	    out.println("</td><td>");
 	    out.println("<input type=\"text\" name=\"nonMemberFee\" maxlength=\"20\" size=\"20\" id=\"nonMemberFee\" "+
 			" value=\""+se.getNonMemberFee()+"\">");
-	    out.println("</left></td></tr>");
+	    out.println("</td></tr>");
 	}		
 	//
 	// location
 	if(sopt.showLocation()){
-	    out.println("<tr><td align=\"right\">&nbsp;</td><td>");
 	    out.println("<tr><td align=\"right\"><label for=\"location_id\">Location</label>");
 	    out.println("</td><td align=\"left\">");
 	    out.println("<select name=\"location_id\" id=\"location_id\">");
-	    out.println("<option value=\"\"></option>");
+	    out.println("<option value=\"\">Pick Location</option>");
 	    String loc_id = se.getLocation_id();
 	    if(locations != null){
 		for(Type one:locations){
-		    if(one.getId().equals(loc_id)){
-			out.println("<option selected=\"selected\" value=\""+loc_id+"\">"+one.getName()+"</option>");
-		    }
-		    else{
-			out.println("<option value=\""+one.getId()+"\">"+one.getName()+"</option>");
+		    if(!one.getName().isEmpty()){
+			if(one.getId().equals(loc_id)){
+			    out.println("<option selected=\"selected\" value=\""+loc_id+"\">"+one.getName()+"</option>");
+			}
+			else{
+			    out.println("<option value=\""+one.getId()+"\">"+one.getName()+"</option>");
+			}
 		    }
 		}
 		out.println("</select></td></tr>");
@@ -854,7 +853,6 @@ public class Sessions extends TopServlet{
 	    }
 	    out.println("</td></tr>");
 	}
-	out.println("<tr><td colspan=\"2\">&nbsp;</td></tr>");
 	out.println("<tr><td align=\"right\"><label for=\"sortBy\">Sort Sessions by:</label></td><td colspan=\"2\">");
 	out.println("<select name=\"sessionSort\" id=\"sortBy\">");
 	for(int i=0;i<Helper.sessionSortOpt.length;i++){

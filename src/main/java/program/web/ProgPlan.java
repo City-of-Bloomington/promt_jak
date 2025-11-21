@@ -374,32 +374,34 @@ public class ProgPlan extends TopServlet{
 	out.println("* indicates a required field.<br />");	
 	out.println("<table width=\"90%\" border=\"1\">");
 	out.println("<caption>Plan Info</caption>");
-	out.println("<tr><td "+tdWidth+" align=\"right\"><label for=\"ptitile\">*Program Title: </label></td><td>");
+	out.println("<tr><td "+tdWidth+" align=\"right\"><label for=\"ptitle\">*Program Title: </label></td><td>");
 	out.println("<input type=\"text\" name=\"program_title\" id=\"ptitle\" "+
 		    "value=\""+pp.getProgram_title()+"\" maxlength=\"128\" size=\"70\" required=\"required\" /></td></tr>");
 	
 	out.println("<tr><td align=\"right\"><label for=\"season\">Program Season:</label> </td><td>");
 	out.println("<select name=\"season\" id=\"season\">");
-	out.println("<option value=\""+pp.getSeason()+"\" selected>"+
-		    pp.getSeason()+"\n");
+	if(!pp.getSeason().isEmpty()){
+	    out.println("<option value=\""+pp.getSeason()+"\" selected>"+
+			pp.getSeason()+"</option>\n");
+	}
 	out.println(Helper.allSeasons);
 	out.println("</select> ");	
 	out.println(" <label for=\"year\">Year:</label>");
 	out.println("<select name=\"program_year\" id=\"year\">");
-	out.println("<option value=\"\">\n");
+	out.println("<option value=\"\">Pick Year</option>\n");
 	int[] years = Helper.getFutureYears();
 	for(int yy:years){
 	    String selected="";
 	    if(pp.getProgram_year().equals(""+yy))
 		selected="selected=\"selected\"";
-	    out.println("<option "+selected+">"+yy+"</option>");
+	    out.println("<option value=\""+yy+"\" "+selected+">"+yy+"</option>");
 	}
 	out.println("</select>&nbsp;&nbsp;");
 	//
 	// lead
 	out.println("<tr><td align=\"right\"><label for=\"lead\">Program Lead: </label></td><td>");
 	out.println("<select name=\"lead_id\" id=\"lead\">");
-	out.println("<option value=\"\"></option>");
+	out.println("<option value=\"\">Pick Lead</option>");
 	if(leads != null){
 	    for(Lead one:leads){
 		String selected = "";
@@ -417,10 +419,10 @@ public class ProgPlan extends TopServlet{
 	    List<Contact> ones = pp.getInstructors();
 	    if(ones != null && ones.size() > 0){
 		out.println("<tr><td colspan=\"2\"><table border=\"1\" width=\"100%\"><caption>Current Instructor(s)</caption>");
-		out.println("<tr><th>&nbsp;</th><th>Name</th><th>Phones</th><th>Email</th><th>Address</th><th>&nbsp;</th></tr>");
+		out.println("<tr><th>Check to Delete</th><th>Name</th><th>Phones</th><th>Email</th><th>Address</th><th>&nbsp;</th></tr>");
 		int jj=1;
 		for(Contact one:ones){
-		    out.println("<tr><td><input type=\"checkbox\" name=\"del_cont\" value=\""+one.getId()+"\" />"+(jj++)+"</td>");
+		    out.println("<tr><td><input type=\"checkbox\" name=\"del_cont\" value=\""+one.getId()+"\" id=\"c"+one.getId()+"\" /><label for=\"c"+one.getId()+"\">"+(jj++)+"</label></td>");
 		    out.println("<td>"+one.getName()+"</td>");
 		    out.println("<td>"+one.getPhones()+"</td>");
 		    out.println("<td>"+one.getEmail()+"</td>");
@@ -463,7 +465,7 @@ public class ProgPlan extends TopServlet{
 	out.println("<tr><td valign=\"top\" align=\"right\"><label for=\"goals\">*Program Goals: </label></td><td>");
 	out.println("goal is defined as one that is specific, measurable, achievable, results-focused, and time-bound 'S.M.A.R.T.");
 	out.println("<textarea name=\"goals\" cols=\"50\" rows=\"4\" "+
-		    " onChange=\"checkTextLen(this,1000)\" wrap=\"soft\" required=\"required\" id=\"goals\">");
+		    " onchange=\"checkTextLen(this,1000)\" wrap=\"soft\" required=\"required\" id=\"goals\">");
 	out.println(pp.getGoals());
 	out.println("</textarea></td></tr>");
 	out.println("<tr><td valign=\"top\" colspan=\"2\" align=\"center\"><b>*Program Objectives </b></td></tr>");
@@ -471,19 +473,16 @@ public class ProgPlan extends TopServlet{
 	int jj=1;
 	if(objectives != null && objectives.size() > 0){
 	    for(Objective one:objectives){
-		out.println("<tr><td align=\"right\">"+(jj++)+" - <input type=\"checkbox\" name=\"del_obj\" value=\""+one.getId()+"\" id=\"obj"+one.getId()+"\"/></td><td align=\"left\"><label for=\"obj"+one.getId()+"\">"+one+"</label></td></tr>");
+		out.println("<tr><td align=\"right\">"+(jj++)+" - <input type=\"checkbox\" name=\"del_obj\" value=\""+one.getId()+"\" id=\"ob"+one.getId()+"\"/></td><td align=\"left\"><label for=\"ob"+one.getId()+"\">"+one+"</label></td></tr>");
 	    }
-	    // out.println("</table>");
 	}
-	out.println("<tr><td valign=\"top\" align=\"right\"><b>New Objectives:</b></td><td>");
-	out.println("<table>");
 	for(int i=0;i<3;i++){
-	    out.println("<tr><td valign=top>"+(jj++)+" - </td><td>");
+	    jj=i+1;
+	    out.println("<tr><td valign=\"top\" align=\"right\"><label for=\"obj"+jj+"\">New Objective "+jj+"</label></td><td>");
 	    out.print("<textarea name=\"objective\" cols=\"50\" rows=\"4\" "+
-		      " onchange=\"checkTextLen(this,1000)\" wrap=\"soft\">");
+		      " id=\"obj"+jj+"\" onchange=\"checkTextLen(this,1000)\" wrap=\"soft\">");
 	    out.println("</textarea></td></tr>");
 	}
-	out.println("</table></td></tr>");
 	//
 	out.println("<tr><td valign=\"top\" align=\"right\"><label for=\"prof\">Profit Objective: </label></td><td>");
 	out.println("<textarea name=\"profit_obj\" cols=\"50\" rows=\"4\" "+
@@ -499,7 +498,7 @@ public class ProgPlan extends TopServlet{
 	//
 	// sponsor
 	out.println("<tr><td align=\"right\"><label for=\"spon\">Potential Sponsorship:</label></td><td>");
-	out.println("<input type=\"text\" name=\"sponsor\" id=\"spn\" "+
+	out.println("<input type=\"text\" name=\"sponsor\" id=\"spon\" "+
 		    "value=\""+pp.getSponsor()+"\" maxlength=\"70\" size=\"50\" /></td></tr>");
 	//
 	// market
@@ -510,6 +509,9 @@ public class ProgPlan extends TopServlet{
 	// frequency
 	out.println("<tr><td align=\"right\"><label for=\"freq\">Intended Frequency:</label></td><td>");
 	out.println("<select name=\"frequency\" id=\"freq\">");
+	if(pp.getFrequency().isEmpty()){
+	    out.println("<option value=\"\">Pick Frequency</option>");
+	}
 	out.println("<option selected value=\""+pp.getFrequency()+"\">"+pp.getFrequency()+"</option>\n");
 	for(int i=0;i<allFreqArr.length;i++){
 	    out.println("<option value=\""+allFreqArr[i]+"\">"+allFreqArr[i]+"</option>\n");
@@ -557,7 +559,7 @@ public class ProgPlan extends TopServlet{
 	if(staffs != null && staffs.size() > 0){
 	    for(Staff one:staffs){
 		staffHash.add(one.getStaff_type());
-		out.println("<tr><td align=\"left\">"+(jj++)+" - <input type=\"checkbox\" name=\"delStaff\" value=\""+one.getId()+"\" />"+one.getStaff_type()+"</td><td align=\"left\">"+one.getQuantity()+"</td></tr>");
+		out.println("<tr><td align=\"left\"><label for=\"s"+one.getId()+"\">"+(jj++)+" - check to delete</label><input type=\"checkbox\" name=\"delStaff\" value=\""+one.getId()+"\" id=\"s"+one.getId()+"\" />"+one.getStaff_type()+"</td><td align=\"left\">"+one.getQuantity()+"</td></tr>");
 	    }
 	}
 	TypeList staffTypes = new TypeList(debug, "staff_types");

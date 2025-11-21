@@ -406,6 +406,26 @@ public class Search extends TopServlet{
 	out.println("<caption>Search Options</caption>");
 	//
 	// sortby
+	out.println("<tr>");
+	out.println("<td align=\"right\"><label for=\"prog_id\">ID: "+
+		    "</label></td><td align=\"left\">");
+	out.println("<input type=\"text\" name=\"id\" value=\""+id+"\" size=\"6\" id=\"prog_id\"/> ");
+	out.println("<label for=\"season\">Season: </label>");
+	out.println("<select name=\"season\" id=\"season\"> ");
+	out.println("<option value=\"\">All</option>");
+	if(!season.equals(""))
+	    out.println("<option value=\""+season+"\" selected=\"selected\">"+season+"</option>\n");
+	out.println(Helper.allSeasons);
+	out.println("</select>");
+	out.println("<label for=\"year\">Year: </label>");
+	out.println("<select name=\"year\" id=\"year\"> ");
+	int years[] = Helper.getPrevYears();
+	out.println("<option value=\"\">All\n");		
+	for(int yy:years){
+	    out.println("<option>"+yy+"</option>");
+	}
+	out.println("</select>");
+	out.println("</td></tr>");
         out.println("<tr><td align=\"right\">");
 	out.println("<label for=\"sort_by\">Sort by: </label></td><td align=\"left\">");
 	out.println("<select name=\"sortby\" id=\"sort_by\">");
@@ -423,26 +443,6 @@ public class Search extends TopServlet{
 
 	out.println("<input type=\"text\" name=\"maxRecords\" value=\"100\" "+
 		    "size=\"6\" id=\"max_rec\"/>records/page </td></tr>");
-	out.println("<tr>");
-	out.println("<td align=\"right\"><label for=\"prog_id\">ID: "+
-		    "<label></td><td align=\"left\">");
-	out.println("<input type=\"text\" name=\"id\" value=\""+id+"\" size=\"6\" id=\"prog_id\"/> ");
-	out.println("<label for=\"season\">Season: </label>");
-	out.println("<select name=\"season\" id=\"season\"> ");
-	out.println("<option value=\"\">All</otion>");
-	if(!season.equals(""))
-	    out.println("<option value=\""+season+"\" selected=\"selected\">"+season+"</option>\n");
-	out.println(Helper.allSeasons);
-	out.println("</select>");
-	out.println("<label for=\"year\">Year: </label>");
-	out.println("<select name=\"year\" id=\"year\"> ");
-	int years[] = Helper.getPrevYears();
-	out.println("<option value=\"\">All\n");		
-	for(int yy:years){
-	    out.println("<option>"+yy+"</option>");
-	}
-	out.println("</select>");
-	out.println("</td></tr>");
 	//
 	// lead
 	out.println("<tr><td align=\"right\">"+
@@ -463,7 +463,7 @@ public class Search extends TopServlet{
 	out.println("<tr><td align=\"right\">"+
 		    "<label for=\"cat_id\">Category: </label>");
 	out.println("</td><td align=\"left\">");
-	out.println("<select name=\"taxonomy_id\" onchange=\"createSubList(this,'sub_tax_id');\" id=\"cat_id\"\">");
+	out.println("<select name=\"taxonomy_id\" onchange=\"createSubList(this,'sub_tax_id');\" id=\"cat_id\">");
 	out.println("<option value=\"\">All</option>");
 	if(taxonomies != null){
 	    for(Type one:taxonomies){
@@ -502,7 +502,7 @@ public class Search extends TopServlet{
 	// area, category
 	if(needDuplication.equals("") && !advanceSearch.equals("")){
 	    out.println("<tr><td align=\"right\"><label for=\"g_id\">Guide Heading: </label>");
-	    out.println("</td><td><left>");
+	    out.println("</td><td>");
 	    out.println("<select name=\"category_id\" id=\"g_id\">");
 	    out.println("<option value=\"\">All</option>");
 	    if(categories != null){
@@ -523,9 +523,11 @@ public class Search extends TopServlet{
 	    if(areas != null){
 		for(Type one:areas){
 		    String selected = "";
-		    if(one.getId().equals(area_id))
-			selected = "selected=\"selected\"";
-		    out.println("<option "+selected+" value=\""+one.getId()+"\">"+one+"</option>");
+		    if(!one.getName().isEmpty()){
+			if(one.getId().equals(area_id))
+			    selected = "selected=\"selected\"";
+			out.println("<option "+selected+" value=\""+one.getId()+"\">"+one+"</option>");
+		    }
 		}
 	    }		
 	    out.println("</select>");
@@ -533,8 +535,8 @@ public class Search extends TopServlet{
 	    //
 	    // statement
 	    out.println("<tr><td align=\"right\" valign=\"bottom\"><label for=\"broch_id\">Brochure Statement: ");
-	    out.println("</td></label><td align=\"left\"><font color=\"green\" size=\"-1\">"+
-			"Key word or a phrase<br /></font>");
+	    out.println("</label></td><td align=\"left\">"+
+			"Key word or a phrase<br />");
 	    out.println("<input type=\"text\" name=\"statement\" "+
 			"size=\"50\" value=\""+statement+"\" id=\"broch_id\"/>");
 	    out.println("</td></tr>");
@@ -545,15 +547,15 @@ public class Search extends TopServlet{
 	    out.println("</label></td><td align=\"left\">");
 	    out.println("<input type=\"text\" name=\"nraccount\" maxlength=\"25\" value=\""+
 			nraccount + "\" size=\"25\" id=\"nr_id\"/>");
-	    out.println("<label>Transaction Fee ($): </label>");
+	    out.println("<label for=\"tran_id\">Transaction Fee ($): </label>");
 	    out.println("<input type=\"text\" name=\"fee\" maxlength=\"5\" value=\""+
-			fee + "\" size=\"5\" />");
+			fee + "\" size=\"5\" id=\"tran_id\" />");
 	    out.println("</td></tr>");
 	    //
 	    // other info
-	    out.println("<tr><td align=\"right\" valign=\"bottom\"><label for=\"other_id\">Other Guide Info: ");
-	    out.println("</td></label><td align=\"left\"><font color=\"green\" size=\"-1\">"+
-			"Key word or a phrase<br /></font>");
+	    out.println("<tr><td align=\"right\" valign=\"bottom\"><label for=\"other_id\">Other Guide Info:</label> ");
+	    out.println("</td><td align=\"left\">"+
+			"<label for=\"other_id\">Key word or a phrase</label><br />");
 	    out.println("<input type=\"text\" name=\"oginfo\" "+
 			"size=\"50\" value=\""+oginfo+"\" id=\"other_id\"/>");
 	    out.println("</td></tr>");
@@ -561,10 +563,10 @@ public class Search extends TopServlet{
 	    out.println("<tr><td align=\"right\"><label for=\"code\">Code: ");
 	    out.println("</label></td><td align=\"left\">");
 	    out.println("<input type=\"text\" name=\"code\" "+
-			"size=\"10\"  />&nbsp;&nbsp;");
+			"size=\"10\"  id=\"code\" />&nbsp;&nbsp;");
 	    out.println(" <input type=\"checkbox\" name=\"codeNeed\" "+
-			"value=\"y\" "+codeNeed+" id=\"code\"/>");
-	    out.println("<label>Code Needed</label></td></tr>");
+			"value=\"y\" "+codeNeed+" id=\"codeNeed\"/>");
+	    out.println("<label for=\"codeNeed\">Code Needed</label></td></tr>");
 	    //
 	    // common fields with session
 	    //
@@ -602,59 +604,45 @@ public class Search extends TopServlet{
 	    out.println("</td></tr>");
 	    //
 	    // completed tasks
-	    out.println("<tr><td align=\"right\" valign=\"top\"><label for=\"comp_tasks\">Completed Tasks: ");
-	    out.println("</label></td><td align=\"left\"><table><tr><td>");
+	    out.println("<tr><td align=\"right\" valign=\"top\"><b>Completed Tasks:</b></td> ");
+	    out.println("<td align=\"left\">");
 	    out.println("<input type=\"checkbox\" name=\"codeTask\" id=\"code_task\" value=\"y\" />");
-	    out.println("<label for=\"code_task\">Code, </label>");
-	    out.println("</td><td>");
+	    out.println("<label for=\"code_task\">Code </label>,");
+	    
 	    out.println("<input type=\"checkbox\" name=\"marketTask\" value=\"y\" id=\"market_task\"/>");
-	    out.println("<label for=\"market_task\">Marketing, </label>");
-	    out.println("</td><td>");
-	    out.println("<input type=\"checkbox\" name=\"volTask\" value=\"y\" id=\"vod_task\"/>");
-	    out.println("<label for=\"vol_task\">Volunteer, </label>");
-	    out.println("</td></tr><tr><td>");
+	    out.println("<label for=\"market_task\">Marketing </label>,");
+	    
+	    out.println("<input type=\"checkbox\" name=\"volTask\" value=\"y\" id=\"vol_task\"/>");
+	    out.println("<label for=\"vol_task\">Volunteer </label>,");
+	    
 	    out.println("<input type=\"checkbox\" name=\"sponTask\" value=\"y\"  id=\"spon_task\"/>");
 	    out.println("<label for=\"spon_task\">Sponsorship </label>");
-	    out.println("</td><td>");
-	    out.println("<input type=\"checkbox\" name=\"budgetTask\" value=\"y\" id=\"budget_task\"/>");
-	    out.println("<label for=\"budget_task\'>Budget Estimater </label>");
-	    out.println("</td><td>");
-	    out.println("<input type=\"checkbox\" name=\"evalTask\" value=\"y\"  id=\"eval_task\"/>");
-	    out.println("<label for=\"eval_task\">Evaluation </label>");
-	    out.println("</td></tr></table>");
 	    out.println("</td></tr>");
 	    //
-	    out.println("<tr><td align=\"right\" valign=\"top\"><b>Uncompleted Tasks:");
-	    out.println("</b></td><td align=\"left\"><table><tr><td>");
+	    out.println("<tr><td align=\"right\" valign=\"top\"><b>Uncompleted Tasks:</b></td>");
+	    out.println("<td align=\"left\">");
 	    out.println("<input type=\"checkbox\" name=\"unCode\" value=\"y\" id=\"uncode\" />");
-	    out.println("<label for=\"unclode\">Code, </label>");
-	    out.println("</td><td>");
+	    out.println("<label for=\"uncode\">Code </label>,");
 	    out.println("<input type=\"checkbox\" name=\"unMarket\" value=\"y\"  id=\"unmarket\" />");
-	    out.println("<label for=\"unmarket\">Marketing, </label>");
-	    out.println("</td><td>");
-	    out.println("<input type=\"checkbox\" name=\"unVol\" value=\"y\" id=\"unvol\"/>");
-	    out.println("<label id=\"unvol\">Volunteer, </label>");
-	    out.println("</td></tr><tr><td>");
+	    out.println("<label for=\"unmarket\">Marketing </label>,");
+
 	    out.println("<input type=\"checkbox\" name=\"unSpon\" value=\"y\" id=\"unspon\"/>");
-	    out.println("<label for=\"unspon\">Sponsorship </label>");
-	    out.println("</td><td>");
+	    out.println("<label for=\"unspon\">Sponsorship </label>,");
 	    out.println("<input type=\"checkbox\" name=\"unBudget\" value=\"y\"  id=\"unbudget\"/>");
-	    out.println("<label for=\"unbudget\">Budget Estimater </label>");
-	    out.println("</td><td>");
+	    out.println("<label for=\"unbudget\">Budget Estimater </label>,");
 	    out.println("<input type=\"checkbox\" name=\"unEval\" value=\"y\" id=\"uneval\"/>");
 	    out.println("<label for=\"uneval\">Evaluation </label>");
 	    out.println("</td></tr>");
-	    out.println("</table></td></tr>");
 	    //
 	    // Dates
 	    // 
-	    out.println("<tr><td align=\"right\"><label for=\"whichDate\">Select Date: </label></td><td align=\"left\">");
-	    out.println("<input type=\"radio\" name=\"whichDate\" checked value=\"startDate\" />"+
-			"Start Date ");
-	    out.println("<input type=\"radio\" name=\"whichDate\" value=\"endDate\" />"+
-			"End Date ");
-	    out.println("<input type=\"radio\" name=\"whichDate\" value=\"regDeadLine\" />"+
-			"Reg. Dead Line</td></tr> ");
+	    out.println("<tr><td align=\"right\">Select Date Type: </td><td align=\"left\">");
+	    out.println("<input type=\"radio\" name=\"whichDate\" checked value=\"startDate\" id=\"startDate\" /><label for=\"startDate\">"+
+			"Start Date</label> ");
+	    out.println("<input type=\"radio\" name=\"whichDate\" value=\"endDate\" id=\"endDate\" />"+
+			"<label for=\"endDate\">End Date</label> ");
+	    out.println("<input type=\"radio\" name=\"whichDate\" value=\"regDeadLine\" id=\"regDead\" />"+
+			"<label for=\"regDead\">Reg. Dead Line</label></td></tr> ");
 						
 	    out.println("<tr><td align=\"right\"><b>Date Range: </b>");
 	    out.println("</td><td align=\"left\"><label for=\"dateAt\">At: </label>");
@@ -666,13 +654,11 @@ public class Search extends TopServlet{
 	    out.println("<label for=\"date_to\">To: </label> ");
 	    out.println("<input type=\"text\" name=\"dateTo\" maxlength=\"10\" "+
 			"value=\""+dateTo + "\" size=\"10\" class=\"date\" id=\"date_to\"/>");
-	    out.println("<font color=\"green\" size=\"-1\">(mm/dd/yyyy)</font>");
+	    out.println("(mm/dd/yyyy)");
 	    out.println("</td></tr>");
 	}
-	out.println("</table></td></tr>");
 	//
-	out.println("<tr bgcolor=\"#CDC9A3\">");						
-	out.println("<td align=\"right\">");
+	out.println("<tr><td align=\"center\" colspan=\"2\">");
 	out.println("<input type=\"submit\" value=\"Search\" "+
 		    "></td></tr>");
 	out.println("</table>");
