@@ -214,12 +214,15 @@ public class EvaluationServ extends TopServlet{
 	out.println("   } // end with	               ");		
 	out.println("  return true;                     ");
 	out.println("  }	                        ");
-	out.println("  function validateDeleteForm(){   ");            
-	out.println("  var x = false;                   ");
-	out.println("   x = window.confirm(\"Are you sure you want to delete\"); ");
+	out.println("  function validateDelete(){    ");            
+	out.println("  var x = false ;                   ");
+	out.println("  x = window.confirm(\"Are you Sure you want to delete "+
+		    "this program and all other related records\");");
+	out.println("  if(x){                           ");
+	out.println("  document.forms[0].action2.value=\"Delete\"; ");
+	out.println("  document.forms[0].submit();      ");
 	out.println("   return x;                       ");
-	out.println(" }	                                ");
-		
+	out.println(" }}	                                ");		
 	out.println(" function validateTextarea(ss, len){   ");
         out.println("    if (ss.value.length > len ){  "); 
 	out.println("       alert(\"Text Area should not be more than"+
@@ -240,7 +243,7 @@ public class EvaluationServ extends TopServlet{
 	}
 	if(prog != null){
 	    out.println("<h2>Program: "+prog.getTitle()+"</h2>");
-	    out.println("<br>");
+	    out.println("<br />");
 	}
 	if(!message.equals("")){
 	    out.println(message+"<br />");
@@ -253,22 +256,19 @@ public class EvaluationServ extends TopServlet{
 	out.println("* indicates a required field.");	
 	out.println("<table width=\"90%\" border=\"1\" >");
 	out.println("<caption>Program Evaluation</caption>");
-	
-	out.println("<tr bgcolor=\"#CDC9A3\"><td align=\"center\">");
-	out.println("<table>");
 	//
 	// program, year, season
 	if(prog != null){ 
 	    out.println("<tr><td align=\"right\"><b>Program</b></td>");
-	    out.println("</b></td><td align=\"left\">");
+	    out.println("<td align=\"left\">");
 	    out.println(prog.getTitle()+",&nbsp;");
 	    out.println(" (");
 	    out.println(prog.getSeasons());
 	    out.println(" /"+prog.getYear()+")");
 	    out.println("</td></tr>");
 	}
-	out.println("<tr><td align=\"right\"><b>Program ID:"); //same as program
-	out.println("</b></td><td><a href=\""+url+"Program.do?id="+id+"&action=zoom\">"+id+"</a></td></tr>");
+	out.println("<tr><td align=\"right\"><b>Program ID:</b>"); //same as program
+	out.println("</td><td><a href=\""+url+"Program.do?id="+id+"&action=zoom\">"+id+"</a></td></tr>");
 	out.println("<tr><td colspan=\"2\" align=\"center\" bgcolor=\"navy\" "+
 		    "><h3><font color=\"white\">"+
 		    "Program Objectives </font></h3></td></tr>");
@@ -283,11 +283,12 @@ public class EvaluationServ extends TopServlet{
 	    if(outcomes != null && outcomes.size() > 0){
 		for(Outcome one:outcomes){
 		    objSet.add(one.getObjective().getObjective());
-		    out.println("<tr><td align=\"right\" valign=\"top\">"+jj+" - "+one.getObjective().getObjective()+"</td><td>");
-		    out.print("<textarea name=\"update-outcome_"+one.getId()+"\" rows=\"5\" cols=\"50\" "+ 
+		    out.println("<tr><td align=\"right\" valign=\"top\"><label for=\"out"+jj+"\">"+jj+" - "+one.getObjective().getObjective()+"</label></td><td>1000 characters max<br />");
+		    out.print("<textarea name=\"update-outcome_"+one.getId()+"\" rows=\"5\" cols=\"50\" id=\"out"+jj+"\" "+ 
 			      "wrap onchange=\"validateTextarea(this,1000);\">");
 		    out.print(one.getOutcome());
-		    out.println("</textarea></td></tr>");
+		    out.println("</textarea>");
+		    out.println("</td></tr>");
 		    jj++;
 		}
 	    }
@@ -295,8 +296,8 @@ public class EvaluationServ extends TopServlet{
 	    if(objectives != null && objectives.size() > 0){
 		for(Objective obj:objectives){
 		    if(!objSet.contains(obj.getObjective())){ 
-			out.println("<tr><td align=\"right\" valign=\"top\">"+jj+" - "+obj.getObjective()+"</td><td>");
-			out.println("<textarea name=\"outcome_"+obj.getId()+"\" rows=\"5\" cols=\"50\" "+ 
+			out.println("<tr><td align=\"right\" valign=\"top\"><label for=\"obj"+jj+"\">"+jj+" - "+obj.getObjective()+"</label></td><td>1000 characters max");
+			out.println("<textarea name=\"outcome_"+obj.getId()+"\" rows=\"5\" cols=\"50\" id=\"obj"+jj+"\" "+ 
 				    "wrap onchange=\"validateTextarea(this,1000);\">");
 			out.println("</textarea></td></tr>");
 			jj++;
@@ -307,8 +308,8 @@ public class EvaluationServ extends TopServlet{
 	else if(objectives != null && objectives.size() > 0){
 	    int jj=1;
 	    for(Objective obj:objectives){
-		out.println("<tr><td align=\"right\" valign=\"top\">"+jj+" - "+obj.getObjective()+"</td><td>");
-		out.println("<textarea name=\"outcome_"+obj.getId()+"\" rows=\"5\" cols=\"50\" "+ 
+		out.println("<tr><td align=\"right\" valign=\"top\"><label for=\"out"+jj+"\">"+jj+" - "+obj.getObjective()+"</label></td><td>1000 characters max <br />");
+		out.println("<textarea name=\"outcome_"+obj.getId()+"\" rows=\"5\" cols=\"50\" id=\"out"+jj+"\" "+ 
 			    "wrap onchange=\"validateTextarea(this,1000);\">");
 		out.println("</textarea></td></tr>");
 		jj++;
@@ -317,8 +318,8 @@ public class EvaluationServ extends TopServlet{
 	//
 	// Profit Objective 
 	out.println("<tr><td align=\"right\" valign=\"top\"><b>Profit "+
-		    "Objective: ");
-	out.println("</b></td><td valign=\"top\">");
+		    "Objective:</b> ");
+	out.println("</td><td valign=\"top\">");
 	out.println(plan.getProfit_obj());
 	out.println("</td></tr>");
 	//
@@ -341,10 +342,10 @@ public class EvaluationServ extends TopServlet{
 	//
 	out.println("<tr><td align=\"right\"><label for=\"life_cycle_id\">Life Cycle:</label></td><td>");
 	out.println("<select name=\"life_cycle\" id=\"life_cycle_id\">");
-	out.println("<option value=\"\"></option>");
+	out.println("<option value=\"\">Pcik one</option>");
 	for(String one:Evaluation.life_cycle_options){
 	    String selected = one.equals(eval.getLife_cycle())?"selected=\"selected\"":"";
-	    out.println("<option "+selected+">"+one+"</option>");
+	    out.println("<option "+selected+" value=\""+one+"\">"+one+"</option>");
 	}
 	out.println("</select>");
 	out.println("</td></tr>");
@@ -365,24 +366,26 @@ public class EvaluationServ extends TopServlet{
 	    if(estaffs != null && estaffs.size() >  0){
 		for(EvalStaff one:estaffs){
 		    Staff staff = one.getStaff();
-		    out.println("<tr><td align=\"right\"><label for=\"q"+one.getId()+"\">"+(jj++)+" - "+staff.getStaff_type().getName()+" - "+staff.getQuantity()+"</label></td>");
+		    out.println("<tr><td align=\"right\"><label for=\"q"+one.getId()+"\">"+jj+" - "+staff.getStaff_type().getName()+" - "+staff.getQuantity()+" </label></td>");
 		    out.println("<td align=\"left\"><input type=\"text\" name=\"update-quantity_"+one.getId()+"\" value=\""+one.getQuantity()+"\" size=\"4\" id=\"q"+one.getId()+"\"/></td></tr>");
+		    jj++;
 		}
 	    }
 	}
 	else if(staffs != null && staffs.size() > 0){
 	    int jj=1;
 	    for(Staff one:staffs){
-		out.println("<tr><td><label for=\"qq"+one.getId()+"\">"+(jj++)+" - "+one.getStaff_type().getName());
+		out.println("<tr><td align=\"right\"><label for=\"qq"+one.getId()+"\">"+jj+" - "+one.getStaff_type().getName());
 		out.println(" - "+one.getQuantity()+"</td>");
 		out.println("<td><input type=\"text\" name=\"quantity_"+one.getId()+"\" value=\"\" size=\"4\" id=\"qq"+one.getId()+"\"/></td></tr>");
+		jj++;
 	    }
 	}
 	//
 	// staff assignments
-	out.println("<tr><td align=\"right\" valign=\"middle\"><label for=\"assign_i\">*Staff Assignments:");
+	out.println("<tr><td align=\"right\" valign=\"middle\"><label for=\"assign_id\">Staff Assignments:");
 	out.println("</label></td><td align=\"left\">");
-	out.println("1000 characters maximum<br></font>");
+	out.println("1000 characters maximum<br />");
 	out.print("<textarea name=\"assignment\" rows=\"8\" cols=\"60\" "+
 		  "wrap onchange=\"validateTextarea(this,1000);\" id=\"assign_id\">");
 	out.print(eval.getAssignment());
@@ -422,7 +425,7 @@ public class EvaluationServ extends TopServlet{
 	out.println("</td></tr>");
 	out.println("<tr><td align=\"right\" valign=\"middle\">*<label for=\"flyer_id\">Flyer "+
 		    "Distribution Points: ");
-	out.println("</b></td><td align=\"left\">");
+	out.println("</td><td align=\"left\">");
 	out.println("180 characters maximum. Please specify location for poster distribution list<br />");
 	out.print("<textarea name=\"flier_points\" rows=\"3\" cols=\"60\" "+
 		  "wrap onchange=\"validateTextarea(this,180);\" id=\"flyer_id\">");
@@ -458,7 +461,6 @@ public class EvaluationServ extends TopServlet{
 			    "&nbsp;&nbsp;<input type=\"reset\" value=\"Clear\">"+
 			    "</td></tr>");
 	    }
-	    out.println("</form>");
 	}
 	else{ // add zoom update
 	    out.println("<tr><td colspan=\"2\">");
@@ -487,25 +489,20 @@ public class EvaluationServ extends TopServlet{
 			"PromtFile.do?type=Evaluation&related_id="+id+
 			"';\" />");	    
 	    //
-	    out.println("</form>");
 	    out.println("</td></tr>");
 	    //
 	    if(user.canDelete()){
 		out.println("<tr><td valign=\"top\" colspan=\"2\">");
-		out.println("<form name=\"myForm2\" method=\"post\" "+
-			    "onsubmit=\"return validateDeleteForm()\">");
-		out.println("<input type=\"hidden\" name=\"id\" value=\"" + id + "\">");
 		out.println("<td align=\"right\" valign=\"top\">");
 		out.println("<input type=\"submit\" name=\"action\" "+
-			    "value=\"Delete\">");
-		out.println("</form>");
+			    "value=\"Delete\" onclick=\"validateDalete();\">");
 		out.println("</td></tr>");
 	    }
-	    out.println("</table>");
 	    out.println("</td></tr>");
 	}
-	
 	out.println("</table>");
+	out.println("</form>");
+
 	if(!id.isEmpty() && eval.hasFiles()){
 	    Helper.printFiles(out, url, eval.getFiles());
 	}
