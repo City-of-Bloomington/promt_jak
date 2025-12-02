@@ -308,7 +308,7 @@ public class Inclusive extends TopServlet{
 	out.println("<li>");
 	out.println("<input type=\"checkbox\" name=\"train_trip\" value=\"y\" "+
 		    train_trip+" id=\"trip\" />");
-	out.println("<label for=\trip\">Accessibility considerations when planning field trips</label></li>");
+	out.println("<label for=\"trip\">Accessibility considerations when planning field trips</label></li>");
 	out.println("<li><label for=\"other\">Other Specify below:</label><br />");
 
 	out.println("<textarea name=\"train_other\" rows=\"5\" cols=\"70\" wrap=\"wrap\" id=\"other\">");
@@ -334,7 +334,7 @@ public class Inclusive extends TopServlet{
 	out.println("<li>");
 	out.println("<input type=\"checkbox\" name=\"prov_sign\" value=\"y\" "+
 		    prov_sign+" id=\"psign\"/>");
-	out.println("<label for=\"psign\" I need to know if I should provide a sign language interpreter</label></li>");
+	out.println("<label for=\"psign\"> I need to know if I should provide a sign language interpreter</label></li>");
 	out.println("</ul></td></tr>");
 	out.println("<tr><td>");
 	out.println("<label for=\"comm\">Comments</label>");

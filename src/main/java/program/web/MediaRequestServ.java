@@ -284,9 +284,6 @@ public class MediaRequestServ extends TopServlet{
 	out.println("<input type=\"hidden\" name=\"facility_id\" value=\""+request.getFacility_id()+"\" />");	    
 	out.println("<table width=\"90%\" border=\"1\">");
 	out.println("<caption>Media Request</caption>");
-	out.println("<tr><td align=\"left\" width=\"30%\"><label for=\"requestDate\">Request Date: </label></td><td align=\"left\">");
-	out.println("<input type=\"text\" name=\"requestDate\" value=\""+request.getRequestDate()+"\" size=\"10\" maxlength=\"10\' class=\"date\" id=\"requestDate\" />");
-	out.println("</td></tr>");
 	if(request.hasProgram()){
 	    out.println("<tr><td align=\"left\"><b>Program: </b></td><td align=\"left\">");
 	    
@@ -315,6 +312,9 @@ public class MediaRequestServ extends TopServlet{
 	    }
 	    out.println("</select></td></tr>");	    
 	}	
+	out.println("<tr><td align=\"left\" width=\"30%\"><label for=\"requestDate\">Request Date: </label></td><td align=\"left\">");
+	out.println("<input type=\"text\" name=\"requestDate\" value=\""+request.getRequestDate()+"\" size=\"10\" maxlength=\"10\' class=\"date\" id=\"requestDate\" />");
+	out.println("</td></tr>");
 	out.println("<tr><td align=\"left\"><label for=\"lead_id\">Lead: </label></td><td align=\"left\">");
 	out.println("<select name=\"lead_id\" id=\"lead_id\">");
 	out.println("<option value=\"\">Pick a Lead*</option>");	
@@ -344,7 +344,7 @@ public class MediaRequestServ extends TopServlet{
 	}
 	out.println("</select>");
 	out.println("</td></tr>");
-	out.println("<tr><td align=\"left\" colspan=\"2\"><label for=\"loc_sp\">Location Specifics </label><br> (such as 'near the playground')</td></tr>");
+	out.println("<tr><td align=\"left\" colspan=\"2\"><label for=\"loc_sp\">Location Specifics </label><br /> (such as 'near the playground')</td></tr>");
 	out.println("<tr><td align=\"left\" colspan=\"2\">");
 	out.println("<textarea name=\"locationDescription\" row=\"5\" cols=\"60\" wrap=\"wrap\" id=\"loc_sp\">");
 	out.println(request.getLocationDescription());
@@ -353,7 +353,7 @@ public class MediaRequestServ extends TopServlet{
 	out.println("<tr><td align=\"left\" colspan=\"2\">");
 	out.println("<textarea name=\"contentSepecific\" row=\"5\" cols=\"60\" wrap=\"wrap\" id=\"cont\">");
 	out.println(request.getContentSpecific());
-	out.println("</textarea></td></tr>");
+	out.println("</textarea>");
 	out.println("</td></tr>");	
 	out.println("<tr><td align=\"left\"><b>Media Requested </b>(Check all that apply) </td><td align=\"left\">");	
 	String request_types[] = {"Photography","Videography","Other"};
@@ -377,16 +377,16 @@ public class MediaRequestServ extends TopServlet{
 	    if(str.equals(request.getOrientation())){
 		checked = "checked=\"checked\"";
 	    }
-	    out.println("<input type=\"radio\" name=\"orientation\" value=\""+str+"\" id=\""+str+"\" "+checked+" />Label for=\""+str+"\">"+str+"</label>");
+	    out.println("<input type=\"radio\" name=\"orientation\" value=\""+str+"\" id=\""+str+"\" "+checked+" /><label for=\""+str+"\">"+str+"</label>");
 	}
 	out.println("</td></tr>");
 	out.println("<tr><td align=\"left\" colspan=\"2\"><label for=\"other\">Other Media Type </label></td></tr>");
 	out.println("<tr><td align=\"left\" colspan=\"2\">");
 	out.println("<textarea name=\"otherType\" row=\"5\" cols=\"60\" wrap=\"wrap\" id=\"other\">");
 	out.println(request.getOtherType());
-	out.println("</textarea></td></tr>");
+	out.println("</textarea>");
 	out.println("</td></tr>");
-	out.println("<tr><td align=\"left\" colspan=\"2\"><label for=\"note\">Notes <br /> We will be contacting you if there are any questions or clarifications. Please include any helpful details here:</label></td></tr>");
+	out.println("<tr><td align=\"left\" colspan=\"2\"><label for=\"notes\">Notes: We will be contacting you if there are any questions or clarifications. Please include any helpful details here:</label></td></tr>");
 	out.println("<tr><td align=\"left\" colspan=\"2\">");
 	out.println("<textarea name=\"notes\" row=\"5\" cols=\"60\" wrap=\"wrap\" id=\"notes\">");
 	out.println(request.getNotes());

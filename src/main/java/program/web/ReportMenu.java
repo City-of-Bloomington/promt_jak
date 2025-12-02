@@ -215,10 +215,12 @@ public class ReportMenu extends TopServlet{
 	out.println("<option value=\"\">All</option>");
 	if(areas != null){
 	    for(Type one:areas){
-		String selected = "";
-		if(one.getId().equals(area_id))
-		    selected = "selected=\"selected\"";
-		out.println("<option "+selected+" value=\""+one.getId()+"\">"+one+"</option>");
+		if(!one.getName().isEmpty()){
+		    String selected = "";
+		    if(one.getId().equals(area_id))
+			selected = "selected=\"selected\"";
+		    out.println("<option "+selected+" value=\""+one.getId()+"\">"+one+"</option>");
+		}
 	    }
 	}				
 	out.println("</select>");
@@ -268,7 +270,6 @@ public class ReportMenu extends TopServlet{
 	out.println("<tr><td align=\"right\"><label for=\"sort_by\">Sort by:</label></td>");
 	out.print("<td align=\"left\">");		
 	out.println("<select name=\"sortby\" id=\"sort_by\">");
-	out.println("<option value=\"\"></option>");
 	out.println("<option value=\"p.id\">ID</option>");
 	out.println("<option value=\"p.startDate\">Date</option>");
 	out.println("<option value=\"p.title\">Program Title</option>");
@@ -331,7 +332,7 @@ public class ReportMenu extends TopServlet{
 	out.println("<input type=\"hidden\" name=\"sortby\" value=\"" + sortby + 
 		    "\" />");
 	out.println("<li> ");
-	out.println("<input type=\"checkbox\" name=\"csvOutput\" value=\"y\" />CSV Output");
+	out.println("<input type=\"checkbox\" name=\"csvOutput\" value=\"y\" id=\"mcsv\"/><label for=\"mcsv\">CSV Output</label>");
 	out.println("<input type=\"submit\" value=\"Marketing\" />");
 	out.println("</li>");
 	out.println("</form>");
@@ -356,7 +357,7 @@ public class ReportMenu extends TopServlet{
 		    "\" />");
 	out.println("<input type=\"hidden\" name=\"sortby\" value=\"" + sortby + 
 		    "\" />");
-	out.println("<li><input type=\"checkbox\" name=\"csvOutput\" value=\"y\" />CSV Output");
+	out.println("<li><input type=\"checkbox\" name=\"csvOutput\" value=\"y\"  id=\"ecsv\" /><label for=\"ecsv\">CSV Output</label>");
 	out.println("<input type=\"submit\" value=\"Media Report\" />");
 	out.println("</li>");
 	out.println("</form>");

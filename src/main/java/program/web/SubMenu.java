@@ -45,7 +45,9 @@ public class SubMenu extends TopServlet{
 	String name, value, year="", choice="";
 	String allMonths = "", category_id="";
 	for(int i=0; i<Months.length;++i){
-	    allMonths += "<option value="+i+">"+Months[i]+"\n";
+	    if(!Months[i].isEmpty()){
+		allMonths += "<option value=\""+i+"\">"+Months[i]+"</option>\n";
+	    }
 	}
 	int month=0;
 	while (values.hasMoreElements()){
@@ -301,7 +303,12 @@ public class SubMenu extends TopServlet{
 	    out.println("</select>");
 	    out.println("&nbsp;&nbsp;&nbsp;<label for=\"season\">Season: </label>");
 	    out.println("<select name=\"season\"  id=\"season\">");
-	    out.println("<option selected=\"selected\">"+season+"\n");
+	    if(!season.isEmpty()){
+		out.println("<option selected=\"selected\">"+season+"\n");
+	    }
+	    else {
+		out.println("<option value=\"\">Pick Season</option>\n");
+	    }
 	    out.println(Helper.allSeasons);
 	    out.println("</select></td></tr>");
 	    out.println("<tr><td align=\"right\">");
@@ -335,17 +342,19 @@ public class SubMenu extends TopServlet{
 	    out.println("<label for=\"month\">Month: </label>");
 	    out.println("<select name=\"month\" id=\"month\">");
 	    if(month == 0) month = month2;
-	    out.println("<option selected value="+month+">"+
+	    out.println("<option selected value=\""+month+"\">"+
 			Months[month]+"\n");
 	    out.println(allMonths);
 	    out.println("</select></td></tr>");
 	    // Area
 	    out.println("<tr><td align=\"right\"><label for=\"area\">Area: </label></td><td>");
-	    out.println("<select name=\"area_id\" id=\"area\'>");
-	    out.println("<option value=\"\"></option>");
+	    out.println("<select name=\"area_id\" id=\"area\">");
+	    out.println("<option value=\"\">All</option>");
 	    if(areas != null){
 		for(Type one:areas){
-		    out.println("<option value=\""+one.getId()+"\">"+one+"</option>");
+		    if(!one.getName().isEmpty()){
+			out.println("<option value=\""+one.getId()+"\">"+one+"</option>");
+		    }
 		}
 	    }		
 	    out.println("</select></td></tr>");
@@ -353,7 +362,7 @@ public class SubMenu extends TopServlet{
 	    // Lead
 	    out.println("<tr><td align=\"right\"><label for=\"lead_id\">Lead: </label></td><td>");
 	    out.println("<select name=\"lead_id\" id=\"lead_id\">");
-	    out.println("<option value=\"\"></option>");
+	    out.println("<option value=\"\">All</option>");
 	    if(leads != null){
 		for(Type one:leads){
 		    if(one.isActive())
@@ -365,7 +374,7 @@ public class SubMenu extends TopServlet{
 	    // category
 	    out.println("<tr><td align=\"right\"><label for=\"cat_id\">Heading: </label></td><td>");
 	    out.println("<select name=\"category_id\" id=\"cat_id\">");
-	    out.println("<option value=\"\"></option>");
+	    out.println("<option value=\"\">All</option>");
 	    if(categories != null){
 		for(Type one:categories){
 		    String selected = "";
@@ -378,7 +387,7 @@ public class SubMenu extends TopServlet{
 	    // Location
 	    out.println("<tr><td align=\"right\"><label for=\"loc_id\">Location: </label></td><td>");
 	    out.println("<select name=\"location_id\" id=\"loc_id\">");
-	    out.println("<option value=\"\"></option>");			
+	    out.println("<option value=\"\">All</option>");			
 	    if(locations != null){
 		for(Type one:locations){
 		    String selected = "";

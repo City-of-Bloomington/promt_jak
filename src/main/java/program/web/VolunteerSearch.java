@@ -149,7 +149,7 @@ public class VolunteerSearch extends TopServlet{
 	out.println("<tr><td align=\"right\"><label for=\"cat_id\">Category:</label></td>");
 	out.println("<td align=\"left\">");
 	out.println("<select name=\"category_id\" id=\"cat_id\">");
-	out.println("<option value=\"\"></option>");
+	out.println("<option value=\"\">All</option>");
 	if(categories != null){
 	    for(Type one:categories){
 		String selected = shifts.getCategory_id().equals(one.getId()) ? "selected=\"selected\"":"";
@@ -160,7 +160,7 @@ public class VolunteerSearch extends TopServlet{
 	out.println("<tr><td align=\"right\"><label for=\"lead_id\">Lead:</label></td>");
 	out.println("<td align=\"left\">");
 	out.println("<select name=\"lead_id\" id=\"lead_id\">");
-	out.println("<option value=\"\"></option>");
+	out.println("<option value=\"\">All</option>");
 	if(leads != null){
 	    for(Lead one:leads){
 		String selected = shifts.getLead_id().equals(one.getId()) ? "selected=\"selected\"":"";
@@ -195,17 +195,15 @@ public class VolunteerSearch extends TopServlet{
 	out.println("<input type=\"text\" name=\"dateTo\" maxlength=\"10\" value=\""+shifts.getDateTo()+"\" size=\"10\" id=\"dateTo\" />");
 	out.println("</td></tr>");
 	//
-	out.println("</table></td></tr>");
-	out.println("<tr><td align=\"right\">"+
-		    "<table width=\"90%\"><tr>");
-	out.println("<td align=\"right\"><input type=\"submit\" "+
+	out.println("<tr><td align=\"right\"><input type=\"submit\" "+
 		    "name=\"action\" value=\"Submit\"></td>");
 	out.println("<td align=\"right\">");
 	out.println("<input type=button value=\"New Volunteer Shift\""+
 		    " onclick=\"document.location='"+url+
 		    "VolShift.do?';\"></input></td>");		
-	out.println("</tr></table></td></tr>");
+	out.println("</tr>");
 	out.println("</table>");
+	out.println("</form>");
 	out.println("<br />");
 	if(!action.equals("")){
 	    if(shifts.size() > 0){

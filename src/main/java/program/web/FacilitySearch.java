@@ -106,7 +106,9 @@ public class FacilitySearch extends TopServlet{
 	out.println("<option value=\"\">All</option>");
 	if(facils != null && facils.size() > 0){
 	    for(Facility one:facils){
-		out.println("<option value=\""+one.getId()+"\">"+one+"</option>");
+		if(!one.getName().isEmpty()){
+		    out.println("<option value=\""+one.getId()+"\">"+one+"</option>");
+		}
 	    }
 	}
 	out.println("</select></td></tr>");

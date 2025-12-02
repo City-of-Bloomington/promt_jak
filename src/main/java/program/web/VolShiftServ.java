@@ -326,6 +326,7 @@ public class VolShiftServ extends TopServlet{
 	    out.println("<input type=\"hidden\" name=\"lead_id\" value=\""+shift.getLead_id()+"\" />");
 	}
 	out.println("<table border=\"1\">");
+	out.println("<caption> Volunteer Shift Info</caption>");
 	//
 	// fields of the train form
 	//
@@ -404,30 +405,30 @@ public class VolShiftServ extends TopServlet{
 	// Start, End time
 	out.println("<tr><td align=\"right\"><label for=\"pic_time\">Start Time:");
 	out.println("</label></td><td align=\"left\">");
-	out.println("<input type=\"button\" id=\"pic_time\" onClick=\""+
+	out.println("<input type=\"button\" onClick=\""+
 		    "window.open('"+url+"PickTime?id="+id+"&wtime=startTime&time="+java.net.URLEncoder.encode(shift.getStartTime())+"','Time',"+
 		    "'toolbar=0,location=0,"+
 		    "directories=0,status=0,menubar=0,"+
 		    "scrollbars=0,top=300,left=300,"+
 		    "resizable=1,width=300,height=250');\""+
 		    " value=\"Start Shift\">");				
-	out.println("<input type=\"text\" name=\"startTime\" maxlength=\"20\" value=\""+shift.getStartTime()+"\" size=\"20\" readonly=\"readonly\" /> ");
+	out.println("<input type=\"text\" name=\"startTime\" maxlength=\"20\" value=\""+shift.getStartTime()+"\" size=\"20\" id=\"pic_time\" readonly=\"readonly\" /> ");
 	out.println("</td></tr>");
 	out.println("<tr><td align=\"right\"><label for=\"pic_end\">End Time:");
 	out.println("</label></td><td align=\"left\">");
-	out.println("<input type=\"button\" id=\"pic_end\" onClick=\""+
+	out.println("<input type=\"button\" onClick=\""+
 		    "window.open('"+url+"PickTime?id="+id+"&wtime=endTime&time="+java.net.URLEncoder.encode(shift.getEndTime())+"','Time',"+
 		    "'toolbar=0,location=0,"+
 		    "directories=0,status=0,menubar=0,"+
 		    "scrollbars=0,top=300,left=300,"+
 		    "resizable=1,width=300,height=250');\""+
 		    " value=\"End Shift\">");				
-	out.println("<input type=\"text\" name=\"endTime\" maxlength=\"20\" value=\""+shift.getEndTime()+"\" size=\"20\" readonly=\"readonly\" /> ");
+	out.println("<input type=\"text\" name=\"endTime\" maxlength=\"20\" value=\""+shift.getEndTime()+"\" size=\"20\" id=\"pic_end\" readonly=\"readonly\" /> ");
 	out.println("</td></tr>");				
 	//
 	// Duties
 	out.println("<tr><td align=\"right\" valign=\"top\"><label for=\"duties\">Duties:</label></td><td align=\"Left\">");
-	out.println("<textarea name=\"duties\" cols=\"50\" rows=\"5\" id=\"dutiers\" >"+ shift.getDuties()+"</textarea>");
+	out.println("<textarea name=\"duties\" cols=\"50\" rows=\"5\" id=\"duties\" >"+ shift.getDuties()+"</textarea>");
 	out.println("</td></tr>");
 	out.println("<tr><td align=\"right\" valign=\"top\"><label for=\"notes\">Comments:</label>");
 	out.println("</td><td align=\"left\">");
@@ -474,6 +475,7 @@ public class VolShiftServ extends TopServlet{
 	    out.println("</td></tr>");
 	}
 	out.println("</table>");
+	out.println("</form>");
 	out.println("<br />");
 	if(shift.hasTraining()){
 	    List<VolTrain> trains = shift.getTrains();

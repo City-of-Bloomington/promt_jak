@@ -355,7 +355,6 @@ public class ProgPlan extends TopServlet{
 	else{
 	    out.println("<h2>Edit Plan "+id+"</h2>");
 	}
-	out.println("</center>");
 	if(!message.equals("")){
 	    out.println(message);
 	    out.println("<br />");
@@ -512,9 +511,14 @@ public class ProgPlan extends TopServlet{
 	if(pp.getFrequency().isEmpty()){
 	    out.println("<option value=\"\">Pick Frequency</option>");
 	}
-	out.println("<option selected value=\""+pp.getFrequency()+"\">"+pp.getFrequency()+"</option>\n");
 	for(int i=0;i<allFreqArr.length;i++){
-	    out.println("<option value=\""+allFreqArr[i]+"\">"+allFreqArr[i]+"</option>\n");
+	    if(!allFreqArr[i].isEmpty()){
+		String selected = "";
+		if(pp.getFrequency().equals(allFreqArr[i])){
+		    selected = "selected=\"selected\"";
+		}
+		out.println("<option value=\""+allFreqArr[i]+"\" "+selected+">"+allFreqArr[i]+"</option>\n");
+	    }
 	}
 	out.println("</select>&nbsp;&nbsp;");
 	out.println("</td></tr>");
@@ -573,12 +577,13 @@ public class ProgPlan extends TopServlet{
 	}
 	if(staffTypes.size() > 0){
 	    for(int i=0;i<3;i++){
-		out.println("<tr><td>"+(jj++)+" - <select name=\"staff-type_"+i+"\">");
+		out.println("<tr><td><label for=\"t"+i+"\">"+jj+" - </label> <select name=\"staff-type_"+i+"\" id=\"t"+i+"\">");
 		out.println("<option value=\"\">Pick One</option>");
 		for(Type one:staffTypes){
 		    out.println("<option value=\""+one.getId()+"\">"+one+"</option>");
 		}
-		out.println("</select></td><td><input type=\"text\" name=\"quantity_"+i+"\" value=\"\" size=\"4\" /></td></tr>");
+		out.println("</select></td><td><label for=\"q"+i+"\">Quantity </label><input type=\"text\" name=\"quantity_"+i+"\" value=\" \" size=\"4\" id=\"q"+i+"\" /></td></tr>");
+		jj++;
 	    }
 	}
 	//

@@ -258,19 +258,19 @@ public class SponsorServ extends TopServlet{
 	    out.println("<tr><td>");
 	    out.println("If this is a first time event/program, contact the Special Services Coordinator to discuss sponsorship prior to entering formal request.<br />");
 	    out.println("<ol>");
-	    out.println("<li><input type=checkbox onChange=\"checkNext()\" "+
-			"name=ch0>");
-	    out.println("The event/program has low risk of cancelling due to lack of registration.</li>");
-	    out.println("<li><input type=checkbox onChange=\"checkNext()\" "+
-			"name=ch1>");
-	    out.println("The event/program offers a minimum of three substantial marketing benefits.</li>");
-	    out.println("<li><input type=checkbox onChange=\"checkNext()\" "+
-			"name=ch2>");
-	    out.println("Participation exceeds the 100 participant threshold. </li>");
+	    out.println("<li><input type=\"checkbox\" onchange=\"checkNext()\" "+
+			"name=\"ch0\" id=\"ch0\"/>");
+	    out.println("<label for=\"ch0\">The event/program has low risk of cancelling due to lack of registration.</label></li>");
+	    out.println("<li><input type=\"checkbox\" onchange=\"checkNext()\" "+
+			"name=\"ch1\" id=\"ch1\"/>");
+	    out.println("<label for=\"ch1\">The event/program offers a minimum of three substantial marketing benefits.</label></li>");
+	    out.println("<li><input type=\"checkbox\" onchange=\"checkNext()\" "+
+			"name=\"ch2\" id=\"ch2\"/>");
+	    out.println("<label for=\"ch2\">Participation exceeds the 100 participant threshold. </label></li>");
 
-	    out.println("<li><input type=checkbox onChange=\"checkNext()\" "+
-			"name=ch3>");
-	    out.println("This event/program continues to be in the upward slope of the program life cycle.</li>");
+	    out.println("<li><input type=\"checkbox\" onchange=\"checkNext()\" "+
+			"name=\"ch3\" id=\"ch3\"/>");
+	    out.println("<label for=\"ch3\">This event/program continues to be in the upward slope of the program life cycle.</label></li>");
 	    out.println("</ol>");
 	    out.println("</td></tr>");
 	    out.println("<tr><td align=right>");

@@ -99,7 +99,7 @@ public class UpdateProgramServ extends TopServlet {
 	out.println("</head><body>");
 	out.println("<center>");
 	Helper.writeTopMenu(out, url);
-	out.println("<h3>Edit Marketing Ad</h3>");
+	out.println("<h3>Change Program Year/Seasons</h3>");
 	if(!message.equals("")){
 	    out.println("<h4>"+message+"</h4>");
 	}
@@ -118,7 +118,7 @@ public class UpdateProgramServ extends TopServlet {
 	    out.println("<option "+selected+" value=\""+yy+"\">"+yy+"</option>");
 	}
 	out.println("</select></td></tr>");
-	out.println("<tr><th><label for=\"searon\">Season:</label></th><td align=\"left\">");
+	out.println("<tr><th><label for=\"season\">Season:</label></th><td align=\"left\">");
 	out.println("<select name=\"season\" id=\"season\">");				
 	for(String str:Helper.seasonsArr){
 	    String selected = "";
@@ -129,7 +129,7 @@ public class UpdateProgramServ extends TopServlet {
 	out.println("</select></td></tr>");
 	out.println("<tr><th><label for=\"season2\">Season 2:</label></th><td align=\"left\">");
 	out.println("<select name=\"season2\" id=\"season2\">");
-	out.println("<option value=\"\">&nbsp;</option>");
+	out.println("<option value=\"\">Add another season (optional)</option>");
 	for(String str:Helper.seasonsArr){
 	    String selected = "";
 	    if(prog.getSeason2().equals(str))
@@ -137,7 +137,7 @@ public class UpdateProgramServ extends TopServlet {
 	    out.println("<option "+selected+" value=\""+str+"\">"+str+"</option>");
 	}
 	out.println("</select></td></tr>");				
-	out.println("<tr><th></th><td align=\"left\">");				
+	out.println("<tr><td colspan=\"2\" align=\"center\">");				
 	out.println("<input type=\"submit\" "+
 		    "name=\"action\" value=\"Change\" /></td></tr>");				
 	out.println("</table>");

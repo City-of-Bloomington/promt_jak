@@ -168,7 +168,7 @@ public class SessionReorderServ extends TopServlet {
 	    out.println("</tr>");
 	    for(Session one:sessions){
 		out.println("<tr>");
-		out.println("<td><b>` <input type=\"radio\" name=\"sid\" value=\""+one.getSid()+"\" /> "+one.getSid()+"</`td>");
+		out.println("<td><b>` <input type=\"radio\" name=\"sid\" value=\""+one.getSid()+"\" id=\""+one.getSid()+"\"/><label for=\""+one.getSid()+"\"> "+one.getSid()+"</label></td>");
 		if(sopt.show(1)){
 		    str = one.getCode();
 		    if(str.equals(""))
