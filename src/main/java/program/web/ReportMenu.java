@@ -273,7 +273,7 @@ public class ReportMenu extends TopServlet{
 	out.println("<option value=\"p.id\">ID</option>");
 	out.println("<option value=\"p.startDate\">Date</option>");
 	out.println("<option value=\"p.title\">Program Title</option>");
-	out.println("<option value=\"s.code,p.code\">Program Code</option>");		
+	out.println("<option value=\"p.code\">Program Code</option>");		
 	out.println("</select></td></tr>");
 	out.println("</table>");
 	out.println("</td></tr>");
@@ -303,7 +303,7 @@ public class ReportMenu extends TopServlet{
 		    "\" />");
 	out.println("<input type=\"hidden\" name=\"nraccount\" value=\"" + nraccount + 
 		    "\" />");
-	out.println("<input type=\"hidden\" name=\"sortby\" value=\"" + sortby + 
+	out.println("<input type=\"hidden\" name=\"sortby value=\"" + sortby + 
 		    "\" />");
 	out.println("<li>");
 	out.println("<input type=\"submit\" value=\"Brochure\" />");
