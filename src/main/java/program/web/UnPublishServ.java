@@ -152,7 +152,7 @@ public class UnPublishServ extends TopServlet {
 	out.println("</head><body>");
 	out.println("<center>");
 	Helper.writeTopMenu(out, url);
-	out.println("<h3>Programs Selection for Web Unpublishing</h3>");
+	out.println("<h1>Programs Selection for Web Unpublishing</h1>");
 	if(!message.equals("")){
 	    out.println("<h4>"+message+"</h4>");
 	}

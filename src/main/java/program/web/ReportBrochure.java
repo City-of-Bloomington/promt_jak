@@ -118,7 +118,8 @@ public class ReportBrochure extends TopServlet{
 		    "Recreation</title>");
 	Helper.writeWebCss(out, url);
 	out.println("</head><body>");
-	Helper.writeTopMenu(out, url);	
+	Helper.writeTopMenu(out, url);
+	out.println("<h1>Brochure Report</h1>");
 	if(!message.equals("")){
 	    out.println("<b>Error "+message+"</b>");
 	    out.println("<br /></body></html>");

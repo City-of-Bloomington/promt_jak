@@ -121,6 +121,7 @@ public class ReportManager extends TopServlet{
 	Helper.writeWebCss(out, url);
 	out.println("</head><body>");
 	Helper.writeTopMenu(out, url);
+	out.println("<h1>Manager Report</h1>");
 	int progCount = 0;
 	//
 	// first count the number of programs for this (season, year)

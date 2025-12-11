@@ -97,7 +97,7 @@ public class FacilityResult extends TopServlet{
 	Helper.writeWebCss(os, url);	
 	os.println("</head><body>");
 	Helper.writeTopMenu(os, url);	
-		
+	os.println("<h1>Facilities Report </h1>");
 	//
 	// check where clause, it is common for table and report
 	//
@@ -108,8 +108,6 @@ public class FacilityResult extends TopServlet{
 	    os.println("<h4>Error "+back+"</h4>");
 	}
 
-	os.println("<Font size=+1>Facilities Report </Font><br />"+
-		   "<br /><br />");
 	if(fl.size() > 0){
 	    os.println("Total records :"+ fl.size() + "<br />");
 	    Helper.writeFacilities(os, fl, url);			

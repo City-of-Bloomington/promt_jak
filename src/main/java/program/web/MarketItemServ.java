@@ -121,9 +121,9 @@ public class MarketItemServ extends TopServlet {
 	}
 	out.println("<center>");
 	// Helper.writeTopMenu(out, url);
-	out.println("<h3>Edit Marketing Piece</h3>");
+	out.println("<h1>Edit Marketing Piece</h1>");
 	if(!message.equals("")){
-	    out.println("<h4>"+message+"</h4>");
+	    out.println("<p>"+message+"</p>");
 	}
 	out.println("<form name=\"myForm\" method=\"post\" id=\"form_id\">");
 	out.println("<input type=\"hidden\" name=\"id\" value=\""+id+"\" />");

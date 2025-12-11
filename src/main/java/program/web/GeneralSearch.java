@@ -135,7 +135,7 @@ public class GeneralSearch extends TopServlet{
 	out.println("</head><body>");
 	out.println("<center>");
 	Helper.writeTopMenu(out, url);	
-	out.println("<h2>General Listings Search</h2>");
+	out.println("<h1>General Listings Search</h1>");
 	if(!message.equals("")){
 	    out.println(message+"<br />");
 	}		

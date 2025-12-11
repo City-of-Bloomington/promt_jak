@@ -350,12 +350,13 @@ public class ProgramResult extends TopServlet{
 	Helper.writeWebCss(os, url);
 	os.println("</head><body>");
 	Helper.writeTopMenu(os, url);
-	if(!message.equals("")){
-	    os.println("<h4>Error: "+message+"</h4>");
-	}
 	os.println("<center>");
+	os.println("<h1>Programs </h1>");	
+	if(!message.equals("")){
+	    os.println("<p>Error: "+message+"</p>");
+	}
 	os.println("<form name=\"anyform\">");
-	os.println("<h2>Programs </h2>");
+
 	//
 	os.println("Matching total records :"+total+"<br>");
 	if(total < maxRecords && minRecords == 0){ 

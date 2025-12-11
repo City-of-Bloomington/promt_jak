@@ -99,7 +99,7 @@ public class UpdateProgramServ extends TopServlet {
 	out.println("</head><body>");
 	out.println("<center>");
 	Helper.writeTopMenu(out, url);
-	out.println("<h3>Change Program Year/Seasons</h3>");
+	out.println("<h1>Change Program Year/Seasons</h1>");
 	if(!message.equals("")){
 	    out.println("<h4>"+message+"</h4>");
 	}

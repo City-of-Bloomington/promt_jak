@@ -113,7 +113,8 @@ public class ReportCodeNeed extends TopServlet{
 		    "Recs</title>");
 	Helper.writeWebCss(out, url);
 	out.println("</head><body><center>");
-	Helper.writeTopMenu(out, url);	
+	Helper.writeTopMenu(out, url);
+	out.println("<h1>Code Needed Programs</h1>");
 	//
 	// first count the number of programs for this (season, year)
 	//

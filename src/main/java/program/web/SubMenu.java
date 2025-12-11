@@ -166,7 +166,7 @@ public class SubMenu extends TopServlet{
 	out.println(" </script>                            ");
 	out.println("</head><body><center>");
 	Helper.writeTopMenu(out, url);
-	out.println("<h3> "+title+" </h3>");
+	out.println("<h1> "+title+" </h1>");
 	if(choice.equals("report")){
 	    out.println("<form name=\"myForm\" action=\""+url+"ReportMenu\" "+
 			"onSubmit=\"return validateForm();\">");

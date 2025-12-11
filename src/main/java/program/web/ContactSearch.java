@@ -127,7 +127,7 @@ public class ContactSearch extends TopServlet{
 	//
 	Helper.writeTopMenu(out, url);	
 	out.println("<center>");
-	out.println("<h2>Instructors Search</h2>");
+	out.println("<h1>Instructors Search</h1>");
 	if(!message.equals("")){
 	    out.println(message+"<br />");
 	}

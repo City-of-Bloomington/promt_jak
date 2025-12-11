@@ -105,7 +105,8 @@ public class ReportInclusive extends TopServlet{
 		    "Recreation</title>");
 	Helper.writeWebCss(out, url);
 	out.println("</head><body><center>");	
-	Helper.writeTopMenu(out, url);	
+	Helper.writeTopMenu(out, url);
+	out.println("<h1>Inclusive Report</h1>");
 	message = ilist.find();
 
 	//

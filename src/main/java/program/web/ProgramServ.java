@@ -1110,10 +1110,10 @@ public class ProgramServ extends TopServlet{
 	Helper.writeTopMenu(out, url);
 	String tdWidth = "width=\"20%\"";
 	if(id.equals("")){
-	    out.println("<h2>New Program</h2>");
+	    out.println("<h1>New Program</h1>");
 	}
 	else{
-	    out.println("<h2>Edit Program </h2>");
+	    out.println("<h1>Edit Program </h1>");
 	}
 	if(!message.equals("")){
 		out.println(message);

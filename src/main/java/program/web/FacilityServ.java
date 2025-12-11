@@ -231,10 +231,10 @@ public class FacilityServ extends TopServlet{
 	Helper.writeTopMenu(out, url);		
 	//
 	if(id.equals("")){
-	    out.println("<h2>New Facility</h2>");
+	    out.println("<h1>New Facility</h1>");
 	}
 	else{
-	    out.println("<h2>Edit Facility "+id+"</h2>");
+	    out.println("<h1>Edit Facility "+id+"</h1>");
 	}
 	if(!message.equals("")){
 	    out.println(message+"<br />");

@@ -236,7 +236,7 @@ public class SessionResult extends TopServlet{
 		"<a href="+url+"SessionsBrowse?"+
 		"Back to Query Session</a>";
 
-	    os.println("<h2>Sessions Records </h2>");
+	    os.println("<h1>Sessions Records </h1>");
 	    //
 	    // check where clause 
 	    //

@@ -110,7 +110,7 @@ public class MarketSearch extends TopServlet{
 	out.println("</head><body><center>");
 	Helper.writeTopMenu(out, url);
 	//
-	out.println("<h2>Marketing Search</h2>");
+	out.println("<h1>Marketing Search</h1>");
 	if(!message.equals("")){
 	    out.println(message+"<br />");
 	}

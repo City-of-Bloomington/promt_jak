@@ -197,10 +197,10 @@ public class ProgramNoteServ extends TopServlet{
 	out.println("<center>");
 	Helper.writeTopMenu(out, url);		
 	if(id.isEmpty()){
-	    out.println("<h2>New Program Notes</h2>");
+	    out.println("<h1>New Program Notes</h1>");
 	}
 	else{
-	    out.println("<h2>Notes Id: "+id+"</h2>");
+	    out.println("<h1>Notes Id: "+id+"</h1>");
 	}
 	if(!message.equals("")){
 	    out.println(message);

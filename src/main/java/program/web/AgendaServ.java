@@ -174,8 +174,8 @@ public class AgendaServ extends TopServlet {
 	cal.set(Calendar.MONTH, month - 1);
 	cal.set(Calendar.DATE, day);
 	out.println("<center>");
-	out.println("<br /><font size=\"+2\" color=\"blue\"> Activities & Events "+
-		    "Calendar </font><br>");
+	out.println("<h1> Activities & Events "+
+		    "Calendar </h1>");
 
 	out.println("<table border=\"4\" cellspacing=\"0\" cols=\"7\" width=\"90%\">");
 	out.println("<caption> "+Months[month-1]+ " "+year+

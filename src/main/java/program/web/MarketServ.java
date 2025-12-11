@@ -373,10 +373,10 @@ public class MarketServ extends TopServlet{
 	out.println("<center>");
 	Helper.writeTopMenu(out, url);
 	if(id.equals("")){
-	    out.println("<h2>Add Marketing </h2>");
+	    out.println("<h1>Add Marketing </h1>");
 	}
 	else {
-	    out.println("<h2>Edit Marketing "+id+"</h2>");
+	    out.println("<h1>Edit Marketing "+id+"</h1>");
 	}
 	out.println("<br />");
 	if(!message.equals("")){

@@ -343,11 +343,11 @@ public class GeneralServ extends TopServlet{
 	out.println("<center>");
 	Helper.writeTopMenu(out, url);		
 	if(id.equals("")){
-	    out.println("<h2>General Listing</h2>");
+	    out.println("<h1>General Listing</h1>");
 	    out.println("* Required field <br />");
 	}
 	else{
-	    out.println("<h2>Edit General Listing "+id+"</h2>");
+	    out.println("<h1>Edit General Listing "+id+"</h1>");
 	}
 	if(!message.equals("")){
 	    out.println(message);

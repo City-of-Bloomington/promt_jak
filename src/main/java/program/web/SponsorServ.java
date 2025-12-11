@@ -204,12 +204,13 @@ public class SponsorServ extends TopServlet{
 	//
 	out.println("<center>");
 	Helper.writeTopMenu(out, url);
+	out.println("<h1>Requesting Sponsorship</h1>");
 	out.println("<form name=\"myForm\" method=\"post\" id=\"form_id\">");
 	out.println("<input type=\"hidden\" name=\"pid\" value=\"" + pid + "\" />");
 	if(firstTime){
 			
-	    out.println("<h2>Definition, Examples and Guidelines for "+
-			"<br />Requesting Sponsorship</h2>");
+	    out.println("<p>Definition, Examples and Guidelines for "+
+			"<br />Requesting Sponsorship</p>");
 	    if(!message.equals("")){
 		    out.println(message+"<br />");
 	    }

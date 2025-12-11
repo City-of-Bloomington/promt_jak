@@ -218,10 +218,10 @@ public class EvalBudgetServ extends TopServlet{
 	Helper.writeTopMenu(out, url);	
 	//
 	if(!budget.hasRecord()){
-	    out.println("<h3>New Evaluation Budget </h3>");
+	    out.println("<h1>New Evaluation Budget </h1>");
 	}
 	else // add update
-	    out.println("<h3>Edit Evaluation Budget </h3>");
+	    out.println("<h1>Edit Evaluation Budget </h1>");
 	if(!message.equals("")){
 	    out.println(message+"<br />");
 	}

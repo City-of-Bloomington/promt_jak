@@ -235,7 +235,7 @@ public class Inclusive extends TopServlet{
 	out.println(" </script>                         ");   
 	out.println("</head><body><center>");
 	Helper.writeTopMenu(out, url);		
-	out.println("<h2>Accessibility Services in PROMT</h2>");
+	out.println("<h1>Accessibility Services in PROMT</h1>");
 
 	if(!inc.hasRecord()){
 	    out.println("<h2>New Inclusive Recreation Request</h2>");

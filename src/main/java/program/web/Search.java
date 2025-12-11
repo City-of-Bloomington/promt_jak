@@ -381,7 +381,7 @@ public class Search extends TopServlet{
 	out.println(" </script>                          ");
 	out.println("</head><body>");
 	Helper.writeTopMenu(out, url);
-	out.println("<center><h2>Programs Search</h2>");
+	out.println("<center><h1>Programs Search</h1>");
 
 	if(!message.equals("")){
 	    out.println("<p>"+message+"</p>");

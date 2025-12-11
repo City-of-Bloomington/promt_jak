@@ -205,10 +205,10 @@ public class ContactServ extends TopServlet{
 	out.println("<center>");
 	Helper.writeTopMenu(out, url);		
 	if(id.equals("")){
-	    out.println("<h2>New Instructor</h2>");
+	    out.println("<h1>New Instructor</h1>");
 	}
 	else{
-	    out.println("<h2>Edit Instructor "+id+"</h2>");
+	    out.println("<h1>Edit Instructor "+id+"</h1>");
 	}
 	if(!message.equals("")){
 		out.println(message);

@@ -125,6 +125,7 @@ public class DeadLineReport extends TopServlet{
 	os.println("</head><body><center>");
 	Helper.writeTopMenu(os, url);		
 	message = pl.find();
+	os.println("<h1>Registration Deadline  Report </h1>"+
 	if(!message.equals("")){
 	    os.println(message+"<br />");
 	}
@@ -132,10 +133,8 @@ public class DeadLineReport extends TopServlet{
 	    os.println("<h3> No record found </h3>");
 	}
 	else if(pl.size() > 0){
-	    os.println("<font size=\"+1\">Park and Recreation <br />");
-	    os.println("Registration Deadline  Report "+
-		       "("+season+"/"+year+")</font>"+
-		       "<br />");
+	    os.println("<h3>Registration Deadline  Report "+
+		       "("+season+"/"+year+")</h3>"+
 	    os.println("Total records :"+ pl.size() + "<br />");
 	    os.println("<hr width=\"75%\" /><br />");
 				

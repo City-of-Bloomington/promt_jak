@@ -107,7 +107,7 @@ public class MarketResult extends TopServlet{
 	out.println("<font size=\"+2\">Parks and Recreation"+
 		    "</font><br />");	
 	Helper.writeTopMenu(out, url);
-	out.println("<h2>Marketing Search Results</h2>");
+	out.println("<h1>Marketing Search Results</h1>");
 	if(!success){		
 	    if(!message.equals("")){
 		out.println("<font color=red>"+message+"</font><br />");

@@ -258,10 +258,10 @@ public class MediaRequestServ extends TopServlet{
 	out.println("<center>");
 	Helper.writeTopMenu(out, url);		
 	if(id.equals("")){
-	    out.println("<h2>New Media Request</h2>");
+	    out.println("<h1>New Media Request</h1>");
 	}
 	else{
-	    out.println("<h2>Edit Media Request "+id+"</h2>");
+	    out.println("<h1>Edit Media Request "+id+"</h1>");
 	}
 	if(!message.equals("")){
 	    out.println(message);

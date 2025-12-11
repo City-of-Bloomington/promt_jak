@@ -204,12 +204,13 @@ public class Duplicate extends TopServlet{
 	out.println("  }	                                     ");
 	out.println(" </script>                                ");   
 	out.println("</head><body><center>    ");
+	out.println("<h1>Duplicate Program</h1>");
 	Helper.writeTopMenu(out, url);		
 	if(!message.isEmpty()){
 	    out.println(message+"<br />");
 	}
 	if(action.equals("")){
-	    out.println("<h2>Duplicate Program</h2>");
+	    
 	    out.println("To make a similar copy of this "+
 			"program and all its related session, volunteer,"+
 			" sponsor, budget, .. records <br />"+

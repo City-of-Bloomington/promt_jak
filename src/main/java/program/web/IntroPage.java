@@ -42,7 +42,7 @@ public class IntroPage extends TopServlet{
 	Helper.writeWebCss(out, url);
 	out.println("</head><body>");
 	Helper.writeTopMenu(out, url);
-	out.println("<h3>Welcome to Promt </h3>");	
+	out.println("<h1>Welcome to Promt </h1>");	
 	out.println(" Select one of the options in the top menu. ");
 	out.println("<ul>");
     	out.println("<li> To enter a new planning, select 'New Plan'</li>");

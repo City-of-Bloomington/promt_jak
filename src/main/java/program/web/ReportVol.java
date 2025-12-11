@@ -112,6 +112,7 @@ public class ReportVol extends TopServlet{
 	Helper.writeWebCss(out, url);
 	out.println("</head><body>");	
 	Helper.writeTopMenu(out, url);
+	out.println("<h1>Volunteering Report</h1>");
 	//
 	// first count the number of programs for this (season, year)
 	//

@@ -146,7 +146,7 @@ public class PickTime extends TopServlet {
 	else{
 	    out.println("</head><body>");
 	}
-	out.println("<center>");
+	out.println("<center><h1>Pick Time</h1>");
 	out.println("<form name=\"myForm\" method=\"post\" onsubmit=\"composeTime();\">");
 	if(!whichForm.equals(""))
 	    out.println("<input type=hidden name=\"whichForm\" value=\""+whichForm+"\" />");

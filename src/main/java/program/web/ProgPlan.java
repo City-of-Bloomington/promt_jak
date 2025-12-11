@@ -350,10 +350,10 @@ public class ProgPlan extends TopServlet{
 	out.println("<center>");
 	String tdWidth=" width=\"20%\" ";
 	if(pp.isNew()){
-	    out.println("<h2>Add New Plan</h2>");
+	    out.println("<h1>Add New Plan</h1>");
 	}
 	else{
-	    out.println("<h2>Edit Plan "+id+"</h2>");
+	    out.println("<h1>Edit Plan "+id+"</h1>");
 	}
 	if(!message.equals("")){
 	    out.println(message);

@@ -122,7 +122,7 @@ public class PlanSearch extends TopServlet{
 	Helper.writeWebCss(out, url);
 	out.println("</head><body><center>");
 	Helper.writeTopMenu(out, url);
-	out.println("<h2>Plan/Pre Plan Search</h2>");
+	out.println("<h1>Plan/Pre Plan Search</h1>");
 	out.println("<form name=\"myForm\" method=\"post\">");
 	out.println("<input type=\"hidden\" name=\"minRecords\" value=\"0\" />");
 	out.println("<table align=\"center\" border=\"1\" width=\"90%\">");

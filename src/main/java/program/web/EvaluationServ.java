@@ -236,10 +236,10 @@ public class EvaluationServ extends TopServlet{
 	out.println("<center>");	
 	Helper.writeTopMenu(out, url);	
 	if(!eval.hasRecord()){
-	    out.println("<h3>Add Evaluation</h3>");
+	    out.println("<h1>Add Evaluation</h1>");
 	}
 	else{ // add update
-	    out.println("<h3>Edit Evaluation</h3>");
+	    out.println("<h1>Edit Evaluation</h1>");
 	}
 	if(prog != null){
 	    out.println("<h2>Program: "+prog.getTitle()+"</h2>");

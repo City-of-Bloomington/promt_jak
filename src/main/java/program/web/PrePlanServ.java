@@ -235,10 +235,10 @@ public class PrePlanServ extends TopServlet{
 	out.println("<center>");
 	Helper.writeTopMenu(out, url);
 	if(id.equals("")){
-	    out.println("<h2>Add New Pre Plan</h2>");
+	    out.println("<h1>Add New Pre Plan</h1>");
 	}
 	else{
-	    out.println("<h2>Edit Pre Plan "+id+"</h2>");
+	    out.println("<h1>Edit Pre Plan "+id+"</h1>");
 	}
 	if(!message.equals("")){
 	    out.println(message);

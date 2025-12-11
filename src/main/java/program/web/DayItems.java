@@ -348,7 +348,7 @@ public class DayItems extends TopServlet{
 	out.println(" </script>                         ");   
 	out.println("</head><body  onLoad=\"showStatus();\">");
 	Helper.writeTopMenu(out, url);		
-	out.println("<h2><center>Add/Edit Day Event</center></h2>");
+	out.println("<h1>Add/Edit Day Event</h1>");
 
 	out.println("<br />");
 	if(!message.equals(""))

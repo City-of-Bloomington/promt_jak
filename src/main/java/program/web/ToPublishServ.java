@@ -124,7 +124,7 @@ public class ToPublishServ extends TopServlet {
 	out.println("</head><body>");
 	out.println("<center>");
 	Helper.writeTopMenu(out, url);
-	out.println("<h3>Programs Selection for Web Publishing</h3>");
+	out.println("<h1>Programs Selection for Web Publishing</h1>");
 	if(!message.equals("")){
 	    out.println("<h4>"+message+"</h4>");
 	}

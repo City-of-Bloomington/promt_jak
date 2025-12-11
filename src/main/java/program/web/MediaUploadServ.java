@@ -303,7 +303,7 @@ public class MediaUploadServ extends TopServlet{
 	out.println("	}						 ");
 	out.println(" </script>		                     ");
 	out.println(" </head><body>                          ");
-	out.println(" <center><h3>Media Attachments</h3>");
+	out.println(" <center><h1>Media Attachments</h1>");
 	//
 	if(success){
 	    if(!message.equals(""))

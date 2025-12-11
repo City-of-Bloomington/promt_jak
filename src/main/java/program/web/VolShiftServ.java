@@ -307,10 +307,10 @@ public class VolShiftServ extends TopServlet{
 	out.println("<center>");
 	Helper.writeTopMenu(out, url);
 	if(id.equals("")){
-	    out.println("<h2>New Volunteer Shift</h2>");
+	    out.println("<h1>New Volunteer Shift</h1>");
 	}
 	else 
-	    out.println("<h2>Edit Volunteer Shift "+id+"</h2>");
+	    out.println("<h1>Edit Volunteer Shift "+id+"</h1>");
 	if(!message.equals("")){
 		out.println(message);
 	}		

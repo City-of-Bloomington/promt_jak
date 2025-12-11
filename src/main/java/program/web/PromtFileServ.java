@@ -320,7 +320,7 @@ public class PromtFileServ extends TopServlet{
 	out.println(" </script>		                         ");
 	out.println(" </head><body><center>                          ");
 	Helper.writeTopMenu(out, url);
-	out.println(" <h3>File Attachments</h3>");
+	out.println(" <h1>File Attachments</h1>");
 	if(!message.equals(""))
 	    out.println("<h3>"+message+"</h3>");
 	out.println("<form name=\"myForm\" method=\"post\" "+

@@ -124,8 +124,9 @@ public class MediaRequestReport extends TopServlet{
 	    Helper.writeWebCss(out, url);
 	    out.println("</head>");
 	    out.println("<body>");
-	    Helper.writeTopMenu(out, url);	    
-	    out.println("<h3> "+ message +"</b3>");
+	    Helper.writeTopMenu(out, url);
+	    out.println("<h1>Media Requests' Report</h1>");
+	    out.println("<p> "+ message +"</p>");
 	    out.println("</body></html>");
 	    out.close();
 	    return;
@@ -140,6 +141,7 @@ public class MediaRequestReport extends TopServlet{
 	    out.println("</head>");
 	    out.println("<body>");
 	    Helper.writeTopMenu(out, url);
+	    out.println("<h1>Media Requests' Report</h1>");
 	    //
 	    // check where clause 
 	    //

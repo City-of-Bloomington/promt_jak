@@ -106,6 +106,7 @@ public class ReportSpon extends TopServlet{
 	Helper.writeWebCss(out, url);
 	out.println("</head><body><center>");	
 	Helper.writeTopMenu(out, url);
+	out.println("<h1>Sponsorships Report</h1>");
 	String back = plist.find();
 	if(!back.equals("")){
 	    message += back;

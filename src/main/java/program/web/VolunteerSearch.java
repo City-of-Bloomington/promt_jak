@@ -129,7 +129,7 @@ public class VolunteerSearch extends TopServlet{
 	out.println("</head><body>");
 	out.println("<center>");
 	Helper.writeTopMenu(out, url);
-	out.println("<h2>Volunteer Search  </h2>");
+	out.println("<h1>Volunteer Search  </h1>");
 	if(!message.equals("")){
 	    out.println(message);
 	}		

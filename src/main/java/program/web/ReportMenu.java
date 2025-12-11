@@ -205,11 +205,12 @@ public class ReportMenu extends TopServlet{
 	out.println("</head><body>");
 	out.println("<center>");
 	Helper.writeTopMenu(out, url);
+	out.println("<h1>Report Menu</h1>");
 	out.println("<form name=\"cForm\" method=\"get\">");
 	out.println("<b>Reports for "+season+" - "+year);
 	out.println("<br /><br />");
 	out.println("<table border=\"1\" width=\"90%\">");
-	out.println("<caption>Report Menu</caption>");
+	out.println("<caption>Report Options</caption>");
 	out.println("<tr><td align=\"right\"><label for=\"area_id\">Area/Division</label></td><td align=\"left\">");
 	out.println("<select name=\"area_id\" id=\"area_id\">");
 	out.println("<option value=\"\">All</option>");

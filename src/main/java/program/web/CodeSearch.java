@@ -112,7 +112,7 @@ public class CodeSearch extends TopServlet{
 	Helper.writeWebCss(out, url);
 	out.println("</head><body><center>");
 	Helper.writeTopMenu(out, url);	
-	out.println("<h2>Code Search</h2>");
+	out.println("<h1>Code Search</h1>");
 	if(!message.equals(""))
 	    out.println(message+"<br />");
 	out.println("<form method=\"post\" action=\""+url+"CodeResult\" >");

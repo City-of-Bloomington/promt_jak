@@ -139,7 +139,7 @@ public class SessionReorderServ extends TopServlet {
 	out.println("</script> ");
 	out.println("</head><body>");
 	Helper.writeTopMenu(out, url);
-	out.println("<h3>Sessions Reorder</h3>");
+	out.println("<h1>Sessions Order Adjustment</h1>");
 	if(!message.equals("")){
 	    out.println("<h4>"+message+"</h4>");
 	}

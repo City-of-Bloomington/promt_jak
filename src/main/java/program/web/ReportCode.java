@@ -116,7 +116,8 @@ public class ReportCode extends TopServlet{
 		    "Recs</title>");
 	Helper.writeWebCss(out, url);
 	out.println("</head><body><center>");
-	Helper.writeTopMenu(out, url);	
+	Helper.writeTopMenu(out, url);
+	out.println("<h1>Code Report</h1>");
 	message = pcList.find();
 	if(!message.isEmpty()){
 	    out.println("<h3>Error "+message+"</h3>");

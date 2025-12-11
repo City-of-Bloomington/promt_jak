@@ -71,7 +71,7 @@ public class FacilitySearch extends TopServlet{
 	//
 	// get the options for the select widgets
 	//
-	out.println("<center><h2>Facilities Search</h2>");
+	out.println("<center><h1>Facilities Search</h1>");
 	out.println("<form method=\"post\" action=\""+url+"FacilityTable\">");
 	out.println("<table border=\"1\" width=\"80%\">");
 	out.println("<caption>Search Options</caption>");

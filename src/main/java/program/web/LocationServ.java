@@ -171,10 +171,10 @@ public class LocationServ extends TopServlet{
 	out.println("<center>");
 	Helper.writeTopMenu(out, url);		
 	if(id.equals("")){
-	    out.println("<h2>New Location</h2>");
+	    out.println("<h1>New Location</h1>");
 	}
 	else{
-	    out.println("<h2>Edit Location "+id+"</h2>");
+	    out.println("<h1>Edit Location "+id+"</h1>");
 	}
 	if(!message.equals("")){
 	    out.println(message);

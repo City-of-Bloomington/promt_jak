@@ -112,13 +112,15 @@ public class MarketReport extends TopServlet{
 	    Helper.writeWebCss(out, url);
 	    out.println("</head>");
 	    out.println("<body>");
-	    Helper.writeTopMenu(out, url);	    
-	    out.println("<h3> Error "+back+"</b3>");
+	    Helper.writeTopMenu(out, url);
+	    out.println("<h1>Market Report</h1>");
+	    out.println("<p> Error "+back+"</p>");
 	    out.println("</body></html>");
 	    out.close();
 	    return;
 	}
 	if(csvOutput.isEmpty()){
+	    
 	    res.setStatus(HttpServletResponse.SC_OK);
 	    res.setContentType("text/html");
 	    out = res.getWriter();
@@ -128,6 +130,7 @@ public class MarketReport extends TopServlet{
 	    out.println("</head>");
 	    out.println("<body>");
 	    Helper.writeTopMenu(out, url);
+	    out.println("<h1>Market Report</h1>");	    
 	    //
 	    // check where clause 
 	    //

@@ -212,7 +212,7 @@ public class CodeResult extends TopServlet{
 	    out.println("<input type=\"hidden\"  name=\"nraccount\" value=\"" + 
 			nraccount + "\" />");
 	}
-	out.println("<br>");
+	out.println("<br />");
 	//
 	if(action.startsWith("Update")){
 	    String back = pl.doUpdate(id, sid, code);
@@ -253,7 +253,7 @@ public class CodeResult extends TopServlet{
 	// Search for programs and sessions that need codes
 	//
 	out.println("<center>");
-	out.println("<Font size=\"+3\">Code Entry Page</Font><br><br>");
+	out.println("<h1>Code Entry Page</h1>");
 	if(!success){
 	    if(!message.equals(""))
 		out.println("<font color=\"red\">"+message+"</font><br />");
