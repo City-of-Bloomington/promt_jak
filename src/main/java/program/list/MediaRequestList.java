@@ -186,20 +186,22 @@ public class MediaRequestList{
 	    if(!date_from.isEmpty()){
 		pstmt.setDate(j++,new java.sql.Date(dateFormat.parse(date_from).getTime()));
 	    }
-	    if(!date_to.equals("")){
+	    if(!date_to.isEmpty()){
 		pstmt.setDate(j++,new java.sql.Date(dateFormat.parse(date_to).getTime()));					
 	    }	    
 	    	    	    	    
 	    rs = pstmt.executeQuery();
 	    while(rs.next()){
-		String str  = rs.getString(10);
 		String [] arr = null;
-		if(str.indexOf(",") > -1){
-		    arr = str.split(",");
-		}
-		else{
-		    arr = new String[1];
-		    arr[0] = str;
+		String str  = rs.getString(10);
+		if(str != null){
+		    if(str.indexOf(",") > -1){
+			arr = str.split(",");
+		    }
+		    else{
+			arr = new String[1];
+			arr[0] = str;
+		    }
 		}
 		MediaRequest one =
 		    new MediaRequest(debug,

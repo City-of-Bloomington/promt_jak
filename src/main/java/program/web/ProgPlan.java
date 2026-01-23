@@ -443,6 +443,7 @@ public class ProgPlan extends TopServlet{
 	out.println("<tr><td colspan=\"2\" align=\"center\"><b>Add New Instructor</b></td></tr>");
 	out.println("<tr><td "+tdWidth+" align=\"right\"><label for=\"cont_id\">Name: </label></td><td>");
 	out.println("<select name=\"cont_id\" id=\"cont_id\">");
+	out.println("<option value=\"\">Pick instructor</option>");
 	if(instructors != null){
 	    for(Contact one:instructors){
 		out.println("<option value=\""+one.getId()+"\">"+one.getInfo()+"</option>");

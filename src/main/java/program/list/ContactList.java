@@ -81,7 +81,7 @@ public class ContactList {
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 	Connection con = Helper.getConnection();
-	String qq = "select c.id,c.name,c.address,c.email,c.phone_c,c.phone_w,c.phone_h from contacts c ";
+	String qq = "select distinct c.id,c.name,c.address,c.email,c.phone_c,c.phone_w,c.phone_h from contacts c ";
 	String qw = "", qf="";
 			
 	if(!plan_id.equals("")){
