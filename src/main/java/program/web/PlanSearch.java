@@ -113,16 +113,18 @@ public class PlanSearch extends TopServlet{
 	//
 	// Browsing the records
 	//
-	out.println("<html>");
-	out.println("<head><title>Search Plans</title>");
-
+	out.println("<!DOCTYPE html>");
+	out.println("<html lang=\"en\">");
+	out.println("<head>");
+	out.println("<meta charset=\"UTF-8\">");
+	out.println("<title>Promt</title>");	
 	//
 	// This script validate 
 	//
 	Helper.writeWebCss(out, url);
 	out.println("</head><body><center>");
 	Helper.writeTopMenu(out, url);
-	out.println("<h1>Plan/Pre Plan Search</h1>");
+	out.println("<h1>Plans Search</h1>");
 	out.println("<form name=\"myForm\" method=\"post\">");
 	out.println("<input type=\"hidden\" name=\"minRecords\" value=\"0\" />");
 	out.println("<table align=\"center\" border=\"1\" width=\"90%\">");

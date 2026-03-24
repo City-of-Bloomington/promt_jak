@@ -113,13 +113,15 @@ public class ReportBrochure extends TopServlet{
 	plist.forPublishOnly();
 	message = plist.find();
 	message += gens.find();
-	out.println("<html>");
-	out.println("<head><title>City of Bloomington Parks and "+
-		    "Recreation</title>");
+	out.println("<!DOCTYPE html>");
+	out.println("<html lang=\"en\">");
+	out.println("<head>");
+	out.println("<meta charset=\"UTF-8\">");
+	out.println("<title>Promt</title>"); 
 	Helper.writeWebCss(out, url);
 	out.println("</head><body>");
 	Helper.writeTopMenu(out, url);
-	out.println("<h1>Brochure Report</h1>");
+	out.println("<center><h1>Brochure Report</h1></center>");
 	if(!message.equals("")){
 	    out.println("<b>Error "+message+"</b>");
 	    out.println("<br /></body></html>");

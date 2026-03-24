@@ -100,7 +100,11 @@ public class MarketAdServ extends TopServlet {
 		}
 	    }
 	}
-	out.println("<html><head><title>Marketing Ads</title>");
+	out.println("<!DOCTYPE html>");
+	out.println("<html lang=\"en\">");
+	out.println("<head>");
+	out.println("<meta charset=\"UTF-8\">");
+	out.println("<title>Promt</title>"); 	
 	Helper.writeWebCss(out, url);
 	out.println("<script type='text/javascript'>");
 	out.println("/*<![CDATA[*/");					

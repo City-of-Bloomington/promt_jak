@@ -100,13 +100,15 @@ public class ReportInclusive extends TopServlet{
 	    res.sendRedirect(str);
 	    return;
 	}
-	out.println("<html>");
-	out.println("<head><title>City of Bloomington Parks and "+
-		    "Recreation</title>");
+	out.println("<!DOCTYPE html>");
+	out.println("<html lang=\"en\">");
+	out.println("<head>");
+	out.println("<meta charset=\"UTF-8\">");
+	out.println("<title>Promt</title>"); 		
 	Helper.writeWebCss(out, url);
 	out.println("</head><body><center>");	
 	Helper.writeTopMenu(out, url);
-	out.println("<h1>Inclusive Report</h1>");
+	out.println("<center><h1>Inclusive Report</h1></center>");
 	message = ilist.find();
 
 	//

@@ -2269,15 +2269,6 @@ public class Helper{
 					    String url
 					    ){
 	if(out != null && !url.isEmpty()){
-	    /**
-	    out.println("<link rel=\"stylesheet\" href=\""+url+"css/jquery-ui.min-1.13.2.css\" type=\"text/css\" media=\"all\" />\n");
-	    out.println("<link rel=\"stylesheet\" href=\""+url+"css/jquery.ui.theme.min-1.13.2.css\" type=\"text/css\" media=\"all\" />\n");
-
-
-	    out.println(".ui-datepicker-prev .ui-icon, .ui-datepicker-next .ui-icon { ");
-	    out.println(" background-image: url(\"js/images/ui-icons_228ef1_256x240.png\");");
-	    out.println("} ");
-	    */
 	    out.println("<style>");	    
 	    out.println("<link rel=\"stylesheet\" href=\""+url+"css/menu_style.css\" />");	    
 	    out.println("</style>");

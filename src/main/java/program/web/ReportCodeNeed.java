@@ -108,13 +108,15 @@ public class ReportCodeNeed extends TopServlet{
 	    res.sendRedirect(str);
 	    return;
 	}
-	out.println("<html>");
-	out.println("<head><title>City of Bloomington Parks and "+
-		    "Recs</title>");
+	out.println("<!DOCTYPE html>");
+	out.println("<html lang=\"en\">");
+	out.println("<head>");
+	out.println("<meta charset=\"UTF-8\">");
+	out.println("<title>Promt</title>"); 	
 	Helper.writeWebCss(out, url);
 	out.println("</head><body><center>");
 	Helper.writeTopMenu(out, url);
-	out.println("<h1>Code Needed Programs</h1>");
+	out.println("<center><h1>Code Needed Programs</h1></center>");
 	//
 	// first count the number of programs for this (season, year)
 	//

@@ -99,9 +99,11 @@ public class MarketResult extends TopServlet{
 	    message += back;
 	    success = false;
 	}
-
-	out.println("<head><title> Programs Marketing " + 
-		    "</title>");
+	out.println("<!DOCTYPE html>");
+	out.println("<html lang=\"en\">");
+	out.println("<head>");
+	out.println("<meta charset=\"UTF-8\">");
+	out.println("<title>Promt</title>"); 
 	Helper.writeWebCss(out, url);
 	out.println("</head><body><center>");
 	out.println("<font size=\"+2\">Parks and Recreation"+

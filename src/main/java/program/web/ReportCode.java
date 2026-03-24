@@ -111,13 +111,15 @@ public class ReportCode extends TopServlet{
 	    res.sendRedirect(str);
 	    return;
 	}
-	out.println("<html>");
-	out.println("<head><title>City of Bloomington Parks and "+
-		    "Recs</title>");
+	out.println("<!DOCTYPE html>");
+	out.println("<html lang=\"en\">");
+	out.println("<head>");
+	out.println("<meta charset=\"UTF-8\">");
+	out.println("<title>Promt</title>"); 
 	Helper.writeWebCss(out, url);
 	out.println("</head><body><center>");
 	Helper.writeTopMenu(out, url);
-	out.println("<h1>Code Report</h1>");
+	out.println("<center><h1>Code Report</h1></center>");
 	message = pcList.find();
 	if(!message.isEmpty()){
 	    out.println("<h3>Error "+message+"</h3>");

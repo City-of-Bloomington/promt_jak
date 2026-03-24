@@ -55,9 +55,11 @@ public class LocationServ extends TopServlet{
 	// reinitialize to blank
 	//
 	String message = "", finalMessage="";
-
-	out.println("<html><head><title>City of Bloomington Parks and "+
-		    "Recs</title>"); 
+	out.println("<!DOCTYPE html>");
+	out.println("<html lang=\"en\">");
+	out.println("<head>");
+	out.println("<meta charset=\"UTF-8\">");
+	out.println("<title>Promt</title>"); 	
 	boolean actionSet = false, success=true;
 
 	User user = null;

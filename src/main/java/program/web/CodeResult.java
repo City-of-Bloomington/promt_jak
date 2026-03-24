@@ -66,7 +66,11 @@ public class CodeResult extends TopServlet{
 	PrintWriter out = res.getWriter();
 	String name, value;
 	boolean rangeFlag = true;
-	out.println("<html>");
+	out.println("<!DOCTYPE html>");
+	out.println("<html lang=\"en\">");
+	out.println("<head>");
+	out.println("<meta charset=\"UTF-8\">");
+	out.println("<title>Promt</title>"); 		
 	ProgCodeList pl = new ProgCodeList(debug);
 	GeneralCodeList gl = new GeneralCodeList(debug);
 	while (values.hasMoreElements()){

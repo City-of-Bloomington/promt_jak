@@ -240,8 +240,14 @@ public class Sessions extends TopServlet{
 	    if(regDeadLine.length() < 10) regDeadLine += "/"+pyear;
 	}
 	if(!success){
-	    out.println("Database not available<br>");
-	    out.println("Contact ITS to report the problem<br>");
+	    out.println("<!DOCTYPE html>");
+	    out.println("<html lang=\"en\">");
+	    out.println("<head>");
+	    out.println("<meta charset=\"UTF-8\">");
+	    out.println("<title>Promt</title></head><body>"); 
+	    out.println("Database not available<br />");
+	    out.println("Contact ITS to report the problem<br />");
+	    out.println("</body></html>");
 	    return;
 	}
 	if(!d_all.equals("")){
@@ -458,8 +464,12 @@ public class Sessions extends TopServlet{
 	if(!d_thu.equals("")) d_thu = "checked=\"checked\"";
 	if(!d_fri.equals("")) d_fri = "checked=\"checked\"";
 	if(!d_sat.equals("")) d_sat = "checked=\"checked\"";
-	//        
-	out.println("<html><head><title>Sessions</title>");
+	//
+	out.println("<!DOCTYPE html>");
+	out.println("<html lang=\"en\">");
+	out.println("<head>");
+	out.println("<meta charset=\"UTF-8\">");
+	out.println("<title>Promt</title>"); 	
 	Helper.writeWebCss(out, url);
 	out.println("<script type=\"text/javascript\">");
 	out.println("/*<![CDATA[*/");					
@@ -532,20 +542,19 @@ public class Sessions extends TopServlet{
 	out.println("/*]]>*/\n");			
 	out.println(" </script>                         ");   
     
-	out.println("</head><body  onLoad=\"showStatus();\">");
+	out.println("</head><body  onLoad=\"showStatus();\"><center>");
 	Helper.writeTopMenu(out, url);
 	if(action.equals("") || action.startsWith("Start") || 
 	   action.equals("Delete"))
 	    out.println("<h1>New Session</h1>");
 	else
 	    out.println("<h1>Edit Session </h1>");
-	out.println("<br>");
+	out.println("<br />");
 	if(!message.equals("")){
-	    out.println("<center>");
 		out.println(message);
-	    out.println("<br /></center>");
+	    out.println("<br />");
 	}
-
+	out.println("</center>");
 	//box it in
 	out.println("<form name=\"myForm\" method=\"post\" id=\"myForm\" "+
 		    "onsubmit=\"return validateForm()\">");

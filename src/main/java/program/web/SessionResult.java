@@ -226,17 +226,20 @@ public class SessionResult extends TopServlet{
 		minRecords = maxRecords;
 		maxRecords = temp;
 	    }
-	    os.println("<head><title>Browsing Sessions" + 
-		       "</title>");
+	    os.println("<!DOCTYPE html>");
+	    os.println("<html lang=\"en\">");
+	    os.println("<head>");
+	    os.println("<meta charset=\"UTF-8\">");
+	    os.println("<title>Promt</title>"); 		    
 	    Helper.writeWebCss(os, url);
 	    os.println("</head><body>");
 	    Helper.writeTopMenu(os, url);
-	    os.println("<form name=anyform>");
+	    os.println("<form name=\"anyform\">");
 	    String back_to_browse = 
 		"<a href="+url+"SessionsBrowse?"+
 		"Back to Query Session</a>";
 
-	    os.println("<h1>Sessions Records </h1>");
+	    os.println("<center><h1>Sessions Records </h1></center>");
 	    //
 	    // check where clause 
 	    //

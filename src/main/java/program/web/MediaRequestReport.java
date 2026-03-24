@@ -118,9 +118,11 @@ public class MediaRequestReport extends TopServlet{
 	    res.setStatus(HttpServletResponse.SC_OK);
 	    res.setContentType("text/html");
 	    out = res.getWriter();
-	    out.println("<html>");
-	    out.println("<head><title>Media Requests' Report" + 
-			"</title>");
+	    out.println("<!DOCTYPE html>");
+	    out.println("<html lang=\"en\">");
+	    out.println("<head>");
+	    out.println("<meta charset=\"UTF-8\">");
+	    out.println("<title>Promt</title>"); 
 	    Helper.writeWebCss(out, url);
 	    out.println("</head>");
 	    out.println("<body>");
@@ -135,11 +137,14 @@ public class MediaRequestReport extends TopServlet{
 	    res.setStatus(HttpServletResponse.SC_OK);
 	    res.setContentType("text/html");
 	    out = res.getWriter();
-	    out.println("<head><title>Media Requests' Report" + 
-			"</title>");
+	    out.println("<!DOCTYPE html>");
+	    out.println("<html lang=\"en\">");
+	    out.println("<head>");
+	    out.println("<meta charset=\"UTF-8\">");
+	    out.println("<title>Promt</title>"); 	
 	    Helper.writeWebCss(out, url);
 	    out.println("</head>");
-	    out.println("<body>");
+	    out.println("<body><center>");
 	    Helper.writeTopMenu(out, url);
 	    out.println("<h1>Media Requests' Report</h1>");
 	    //

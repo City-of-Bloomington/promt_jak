@@ -59,8 +59,11 @@ public class FacilityServ extends TopServlet{
 	    other2="", other3="",other4="",other5="";
 	//
 	LeadList leads = null;
-	out.println("<html><head><title>City of Bloomington Parks and "+
-		    "Recs</title>"); 
+	out.println("<!DOCTYPE html>");
+	out.println("<html lang=\"en\">");
+	out.println("<head>");
+	out.println("<meta charset=\"UTF-8\">");
+	out.println("<title>Promt</title>"); 	
 	boolean success = true;
         String [] vals;
 	HttpSession session = null;

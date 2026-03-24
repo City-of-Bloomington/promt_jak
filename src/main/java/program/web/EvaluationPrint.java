@@ -63,10 +63,12 @@ public class EvaluationPrint extends TopServlet{
 	//
 	// else start empty form, startNew
 	//
-	out.println("<html>");
-	out.println("<head><title>City of Bloomington Parks and "+
-		    "Recreation</title>");
 	//
+	out.println("<!DOCTYPE html>");
+	out.println("<html lang=\"en\">");
+	out.println("<head>");
+	out.println("<meta charset=\"UTF-8\">");
+	out.println("<title>Promt</title>"); 		
 	out.println("</head><body>");
 	if(!message.equals("")){
 	    if(!success)

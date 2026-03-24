@@ -129,8 +129,12 @@ public class ReportMenu extends TopServlet{
 	if(!back.equals("")){
 	    message += back;
 	    success = false;
-	}	
-	out.println("<HTML><HEAD><TITLE>Programs Management Menu </TITLE>");
+	}
+	out.println("<!DOCTYPE html>");
+	out.println("<html lang=\"en\">");
+	out.println("<head>");
+	out.println("<meta charset=\"UTF-8\">");
+	out.println("<title>Promt</title>"); 		
 	out.println(" <script language=Javascript>");
 	out.println("  function validateForm1() {              ");    
 	out.println("  var x=\"\" ;                            ");

@@ -126,8 +126,11 @@ public class DuplicatePlan extends TopServlet{
 		success = false;
 	    }
 	}
-	out.println("<html>");
-	out.println("<head><title>Promt </title>");
+	out.println("<!DOCTYPE html>");
+	out.println("<html lang=\"en\">");
+	out.println("<head>");
+	out.println("<meta charset=\"UTF-8\">");
+	out.println("<title>Promt</title>"); 	
 	Helper.writeWebCss(out, url);	
 	//
 	// This script validate 

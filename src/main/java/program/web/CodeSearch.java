@@ -41,7 +41,11 @@ public class CodeSearch extends TopServlet{
 	String name, value;
 	String season="",year="",nraccount="",lead_id="",area_id="",category_id="";
 	String title="", message="";
-	out.println("<html>");
+	out.println("<!DOCTYPE html>");
+	out.println("<html lang=\"en\">");
+	out.println("<head>");
+	out.println("<meta charset=\"UTF-8\">");
+	out.println("<title>Promt</title>"); 	
 	ProgramList programs = new ProgramList(debug);
 	while (values.hasMoreElements()){
 	    name = ((String)values.nextElement()).trim();

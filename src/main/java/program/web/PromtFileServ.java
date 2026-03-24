@@ -311,7 +311,11 @@ public class PromtFileServ extends TopServlet{
 	    }
 	}
 	Helper.writeWebCss(out, url);
-	out.println("<html><head><title>Promt Files</title>");
+	out.println("<!DOCTYPE html>");
+	out.println("<html lang=\"en\">");
+	out.println("<head>");
+	out.println("<meta charset=\"UTF-8\">");
+	out.println("<title>Promt</title>"); 	
 	out.println("<div id=\"mainContent\">");
 	out.println("<script type=\"text/javascript\">");
 	out.println("  function validateForm(){		         ");

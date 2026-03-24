@@ -280,8 +280,12 @@ public class MediaUploadServ extends TopServlet{
 	    media.setObj_type(obj_type);
 	    id="";
 	}
-	//
-	out.println("<html><head><title>Promt Media</title>");
+	out.println("<!DOCTYPE html>");
+	out.println("<html lang=\"en\">");
+	out.println("<head>");
+	out.println("<meta charset=\"UTF-8\">");
+	out.println("<title>Promt</title>");
+
 	out.println("<script type=\"text/javascript\">");
 	out.println("  function validateForm(){		                 ");
 	out.println(" if (document.myForm.notes){                        ");

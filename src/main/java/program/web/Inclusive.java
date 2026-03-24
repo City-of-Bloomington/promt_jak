@@ -181,9 +181,11 @@ public class Inclusive extends TopServlet{
 	if(!inc.getSign().equals("")) sign = "checked=\"checked\"";
 	if(!inc.getProv_sign().equals("")) prov_sign = "checked=\"checked\"";
 	//
-	out.println("<html>");
-	out.println("<head><title>City of Bloomington Parks and "+
-		    "Recreation</title>");
+	out.println("<!DOCTYPE html>");
+	out.println("<html lang=\"en\">");
+	out.println("<head>");
+	out.println("<meta charset=\"UTF-8\">");
+	out.println("<title>Promt</title>"); 	
 	Helper.writeWebCss(out, url);
 	//
 	// This script validate 
@@ -292,7 +294,7 @@ public class Inclusive extends TopServlet{
 	out.println("<ul><li>");
 	out.println("<input type=\"checkbox\" name=\"train_aware\" value=\"y\" "+
 		    train_aware+" id=\"aware\" />");
-	out.println("<label for=\"aware\">Disability Awareness and customer service<label></li>");
+	out.println("<label for=\"aware\">Disability Awareness and customer service</label></li>");
 	out.println("<li>");
 	out.println("<input type=\"checkbox\" name=\"train_basics\" value=\"y\" "+
 		    train_basics+" id=\"basic\"/>");

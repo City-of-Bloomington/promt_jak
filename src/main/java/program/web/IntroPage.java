@@ -38,12 +38,16 @@ public class IntroPage extends TopServlet{
 	    res.sendRedirect(str);
 	    return;
 	}
-	out.println("<html><head><title>Promt</title>");
+	out.println("<!DOCTYPE html>");
+	out.println("<html lang=\"en\">");
+	out.println("<head>");
+	out.println("<meta charset=\"UTF-8\">");
+	out.println("<title>Promt</title>"); 	
 	Helper.writeWebCss(out, url);
-	out.println("</head><body>");
+	out.println("</head><body><center>");
 	Helper.writeTopMenu(out, url);
 	out.println("<h1>Welcome to Promt </h1>");	
-	out.println(" Select one of the options in the top menu. ");
+	out.println(" Select one of the options in the top menu.</center> ");
 	out.println("<ul>");
     	out.println("<li> To enter a new planning, select 'New Plan'</li>");
 	out.println("<li> To search for existing plans, select 'Plans'</li>");
@@ -59,7 +63,7 @@ public class IntroPage extends TopServlet{
 	out.println("<li> The Calendar option will present a calendar options to show programs and events in certain month.</li> ");
 	out.println("<li> When done, logout from the system.</li>");
 	out.println("</ul>");
-	out.println("<img src=\""+url+"/images/promt_intro_image.jpg\" alt=\"You can do this\" />");
+	out.println("<center><img src=\""+url+"/images/promt_intro_image.jpg\" alt=\"You can do this\" />");
 	out.println("</center>");
 	out.println("</body>");
 	out.println("</html>");

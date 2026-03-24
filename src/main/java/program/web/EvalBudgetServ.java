@@ -172,9 +172,11 @@ public class EvalBudgetServ extends TopServlet{
 	String fourCells = "<td>&nbsp;</td>"+threeCells;
 	String row = "<tr><td colspan=\"4\">&nbsp;</td>"+threeCells;
 	//
-	out.println("<html>");
-	out.println("<head><title>City of Bloomington Parks and "+
-		    "Recreation</title>");
+	out.println("<!DOCTYPE html>");
+	out.println("<html lang=\"en\">");
+	out.println("<head>");
+	out.println("<meta charset=\"UTF-8\">");
+	out.println("<title>Promt</title>"); 	
 	//
 	Helper.writeWebCss(out, url);
        	out.println(" <script type=\"text/javascript\">");

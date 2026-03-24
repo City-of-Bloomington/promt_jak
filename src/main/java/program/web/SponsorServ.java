@@ -181,10 +181,11 @@ public class SponsorServ extends TopServlet{
 	if(!spon.getExhibitSpace().equals("")) exhibitSpace = "checked=\"checked\"";
 	if(!spon.getTshirt().equals("")) tshirt = "checked=\"checked\"";
 
-				
-	out.println("<html>");
-	out.println("<head><title>City of Bloomington Parks and "+
-		    "Recreation</title>");
+	out.println("<!DOCTYPE html>");
+	out.println("<html lang=\"en\">");
+	out.println("<head>");
+	out.println("<meta charset=\"UTF-8\">");
+	out.println("<title>Promt</title>"); 					
 	Helper.writeWebCss(out, url);
        	out.println(" <script>");
 	out.println("  function validateDeleteForm(){   ");            

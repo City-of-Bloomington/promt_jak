@@ -40,7 +40,11 @@ public class FacilitySearch extends TopServlet{
 	out = res.getWriter();
 	Enumeration values = req.getParameterNames();
 	String name, value, message="", lead_id="";
-	out.println("<html><head><title>Facility Search</title>");
+	out.println("<!DOCTYPE html>");
+	out.println("<html lang=\"en\">");
+	out.println("<head>");
+	out.println("<meta charset=\"UTF-8\">");
+	out.println("<title>Promt</title>"); 	
 	Helper.writeWebCss(out, url);
 	out.println("</head><body>");
 	Helper.writeTopMenu(out, url);		

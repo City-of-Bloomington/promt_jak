@@ -53,7 +53,11 @@ public class PrePlanServ extends TopServlet{
 	//
 	// reinitialize to blank
 	//
-	out.println("<html><head><title>Promt</title>"); 
+	out.println("<!DOCTYPE html>");
+	out.println("<html lang=\"en\">");
+	out.println("<head>");
+	out.println("<meta charset=\"UTF-8\">");
+	out.println("<title>Promt</title>"); 
 	boolean actionSet = false, success = true;
 	User user = null;
 	HttpSession	session = req.getSession(false);

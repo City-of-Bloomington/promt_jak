@@ -77,7 +77,11 @@ public class DeadLineReport extends TopServlet{
 	String that="", id="", message=""; 
 	String season="", year=""; 
 	boolean showNext=false;
-	os.println("<html>");
+	os.println("<!DOCTYPE html>");
+	os.println("<html lang=\"en\">");
+	os.println("<head>");
+	os.println("<meta charset=\"UTF-8\">");
+	os.println("<title>Promt</title>"); 	
 	ProgramList pl = new ProgramList(debug);
 	while (values.hasMoreElements()){
 	    name = ((String)values.nextElement()).trim();

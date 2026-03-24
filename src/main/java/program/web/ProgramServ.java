@@ -922,7 +922,11 @@ public class ProgramServ extends TopServlet{
 	if(!sopt.getMemberFee_c().equals("")) memberFee_c="checked";
 	if(!sopt.getNonMemberFee_c().equals("")) nonMemberFee_c="checked";		
 	sessionSort = sopt.getSessionSort();
-	out.println("<html><head><title>Promt</title>");
+	out.println("<!DOCTYPE html>");
+	out.println("<html lang=\"en\">");
+	out.println("<head>");
+	out.println("<meta charset=\"UTF-8\">");
+	out.println("<title>Promt</title>"); 	
 	Helper.writeWebCss(out, url);
 	out.println("<script type='text/javascript'>");
 	out.println("/*<![CDATA[*/");				

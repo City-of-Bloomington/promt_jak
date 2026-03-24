@@ -167,7 +167,11 @@ public class EvaluationServ extends TopServlet{
 	//
 	// else start empty form, startNew
 	//
-	out.println("<html><head><title>Program Evaluation</title>");
+	out.println("<!DOCTYPE html>");
+	out.println("<html lang=\"en\">");
+	out.println("<head>");
+	out.println("<meta charset=\"UTF-8\">");
+	out.println("<title>Promt</title>"); 	
 	Helper.writeWebCss(out, url);
 	out.println("<script type='text/javascript'>");
 	out.println("/*<![CDATA[*/");						
@@ -236,10 +240,10 @@ public class EvaluationServ extends TopServlet{
 	out.println("<center>");	
 	Helper.writeTopMenu(out, url);	
 	if(!eval.hasRecord()){
-	    out.println("<h1>Add Evaluation</h1>");
+	    out.println("<h1>Add Program Evaluation</h1>");
 	}
 	else{ // add update
-	    out.println("<h1>Edit Evaluation</h1>");
+	    out.println("<h1>Edit Program Evaluation</h1>");
 	}
 	if(prog != null){
 	    out.println("<h2>Program: "+prog.getTitle()+"</h2>");
@@ -332,11 +336,11 @@ public class EvaluationServ extends TopServlet{
 	out.println("<table border=\"1\" width=\"40%\">");
 	out.println("<caption>Attendance</caption>");
 	out.println("<tr><td>"+
-		    "Planned Min/Max</td><td>Actual #</td></tr>");
+		    "Planned Min/Max</td><td><label for=\"attend\">Actual #</label></td></tr>");
 	out.println("<tr><td>");
 	out.println(plan.getMin_max());
 	out.println("</td><td>");
-	out.println("<input name=\"attendance\" size=\"6\" maxlength=\"6\" value=\""+eval.getAttendance()+"\" />");
+	out.println("<input name=\"attendance\" size=\"6\" maxlength=\"6\" value=\""+eval.getAttendance()+"\" id=\"attend\" />");
 	out.println("</td></tr>");
 	out.println("</table></td></tr>");
 	//

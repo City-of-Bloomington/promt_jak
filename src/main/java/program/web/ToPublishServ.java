@@ -109,7 +109,12 @@ public class ToPublishServ extends TopServlet {
 		publishes = wpl.getPublishes();
 	    }
 	}
-	out.println("<html><head><title>Program Selection for Publishing</title>");
+	
+	out.println("<!DOCTYPE html>");
+	out.println("<html lang=\"en\">");
+	out.println("<head>");
+	out.println("<meta charset=\"UTF-8\">");
+	out.println("<title>Promt</title>"); 
 	Helper.writeWebCss(out, url);
 	out.println("<script type='text/javascript'>");
 	out.println("/*<![CDATA[*/");

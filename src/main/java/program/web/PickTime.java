@@ -112,8 +112,11 @@ public class PickTime extends TopServlet {
 		String back = se.updateTime(wtime, time);
 	    }
 	}
-
-	out.println("<html><head><title>Pick Time</title>");
+	out.println("<!DOCTYPE html>");
+	out.println("<html lang=\"en\">");
+	out.println("<head>");
+	out.println("<meta charset=\"UTF-8\">");
+	out.println("<title>Promt</title>");
 	out.println("<script type=\"text/javaScript\"> ");
 	out.println(" function composeTime(){   ");
 	out.println(" var all = \"\";           ");

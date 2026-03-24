@@ -156,8 +156,11 @@ public class AgendaServ extends TopServlet {
 	int days_in_month = Helper.get_days_in_month(month, year);
 
 	int first_day_of_month = Helper.get_first_day_of_month(month, year);
-
-	out.println("<html><head><title>Agenda</title>");
+	out.println("<!DOCTYPE html>");
+	out.println("<html lang=\"en\">");
+	out.println("<head>");
+	out.println("<meta charset=\"UTF-8\">");
+	out.println("<title>Promt</title>"); 	
 	out.println("<link rel=\"stylesheet\" href=\""+url+"css/menu_style.css\" />");	
 	out.println("<style type=\"text/css\"><!--");
 	out.println("a:link     {text-decoration: none; color:"+calColor+";}");
@@ -174,7 +177,7 @@ public class AgendaServ extends TopServlet {
 	cal.set(Calendar.MONTH, month - 1);
 	cal.set(Calendar.DATE, day);
 	out.println("<center>");
-	out.println("<h1> Activities & Events "+
+	out.println("<h1>Agenda: Activities & Events "+
 		    "Calendar </h1>");
 
 	out.println("<table border=\"4\" cellspacing=\"0\" cols=\"7\" width=\"90%\">");

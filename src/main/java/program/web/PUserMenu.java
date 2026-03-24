@@ -142,7 +142,11 @@ public class PUserMenu extends TopServlet{
 	//
 	// check for the user
 	//
-	out.println("<HTML><HEAD><TITLE>Programs Management Menu </TITLE>");
+	out.println("<!DOCTYPE html>");
+	out.println("<html lang=\"en\">");
+	out.println("<head>");
+	out.println("<meta charset=\"UTF-8\">");
+	out.println("<title>Promt</title>"); 	
 	Helper.writeWebCss(out,url);
 	out.println(" <script language=\"javascript\">");
 	out.println("  function validateForm(){            ");    

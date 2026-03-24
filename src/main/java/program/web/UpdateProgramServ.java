@@ -94,7 +94,11 @@ public class UpdateProgramServ extends TopServlet {
 		success = false;
 	    }
 	}
-	out.println("<html><head><title>Change Program Season & Year</title>");
+	out.println("<!DOCTYPE html>");
+	out.println("<html lang=\"en\">");
+	out.println("<head>");
+	out.println("<meta charset=\"UTF-8\">");
+	out.println("<title>Promt</title>"); 	
 	Helper.writeWebCss(out, url);
 	out.println("</head><body>");
 	out.println("<center>");

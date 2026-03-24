@@ -59,8 +59,11 @@ public class ProgPlan extends TopServlet{
 	//
 	String message = "", finalMessage="";
 	out.println("<!DOCTYPE html>");
-	out.println("<html><head><title>City of Bloomington Parks and "+
-		    "Recreation</title>"); 
+	out.println("<html lang=\"en\">");
+	out.println("<head>");
+	out.println("<meta charset=\"UTF-8\">");
+	out.println("<title>Promt</title>"); 
+	
 	boolean actionSet = false, success=true;
 
 	User user = null;

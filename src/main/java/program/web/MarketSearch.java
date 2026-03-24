@@ -39,8 +39,11 @@ public class MarketSearch extends TopServlet{
 	TypeList categories = null;
 	boolean success = true;
 	String name, value;
-	out.println("<html>");
-
+	out.println("<!DOCTYPE html>");
+	out.println("<html lang=\"en\">");
+	out.println("<head>");
+	out.println("<meta charset=\"UTF-8\">");
+	out.println("<title>Promt</title>"); 	
 	while (values.hasMoreElements()){
 	    name = ((String)values.nextElement()).trim();
 	    value = (req.getParameter(name)).trim();
@@ -102,7 +105,6 @@ public class MarketSearch extends TopServlet{
 	//
 	// Browsing the records
 	//
-	out.println("<head><title>Search Marketing</title>");
 	//
 	// This script validate 
 	//

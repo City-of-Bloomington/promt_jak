@@ -54,7 +54,11 @@ public class FacilityResult extends TopServlet{
 
 	String name, value;
 	boolean rangeFlag = true, success = true;
-	os.println("<html>");
+	os.println("<!DOCTYPE html>");
+	os.println("<html lang=\"en\">");
+	os.println("<head>");
+	os.println("<meta charset=\"UTF-8\">");
+	os.println("<title>Promt</title>"); 	
 	FacilityList fl = new FacilityList(debug);
 
 	while (values.hasMoreElements()){
@@ -91,17 +95,14 @@ public class FacilityResult extends TopServlet{
 		// System.err.println("Unknown choice "+name+" "+value);
 	    }
 	}
-		
-	os.println("<head><title>Facilities" + 
-		   "</title>");
 	Helper.writeWebCss(os, url);	
-	os.println("</head><body>");
+	os.println("</head><body><center>");
 	Helper.writeTopMenu(os, url);	
 	os.println("<h1>Facilities Report </h1>");
 	//
 	// check where clause, it is common for table and report
 	//
-	os.println("<br /><center>");
+	os.println("<br />");
 	String back = fl.lookFor();
 	String that = "";
 	if(!back.equals("")){

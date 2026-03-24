@@ -310,7 +310,11 @@ public class MarketServ extends TopServlet{
 	    year = market.getYear();						
 	}
 	//
-	out.println("<html><head><title>Marketing</title>");
+	out.println("<!DOCTYPE html>");
+	out.println("<html lang=\"en\">");
+	out.println("<head>");
+	out.println("<meta charset=\"UTF-8\">");
+	out.println("<title>Promt</title>"); 		
 	Helper.writeWebCss(out, url);
 	out.println("<script type='text/javascript'>");
 	out.println("/*<![CDATA[*/");				

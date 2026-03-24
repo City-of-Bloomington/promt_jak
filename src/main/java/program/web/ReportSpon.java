@@ -100,9 +100,11 @@ public class ReportSpon extends TopServlet{
 	    res.sendRedirect(str);
 	    return;
 	}
-	out.println("<html>");
-	out.println("<head><title>City of Bloomington Parks and "+
-		    "Recreation</title>");
+	out.println("<!DOCTYPE html>");
+	out.println("<html lang=\"en\">");
+	out.println("<head>");
+	out.println("<meta charset=\"UTF-8\">");
+	out.println("<title>Promt</title>"); 		
 	Helper.writeWebCss(out, url);
 	out.println("</head><body><center>");	
 	Helper.writeTopMenu(out, url);

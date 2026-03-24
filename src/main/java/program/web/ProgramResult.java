@@ -123,8 +123,6 @@ public class ProgramResult extends TopServlet{
 	//
 	String needDuplication = "", plan_id="";
 	boolean showNext=false, success=true;
-	os.println("<html>");
-
 	ProgramList pl = new ProgramList(debug);
 	while (values.hasMoreElements()){
 	    name = ((String)values.nextElement()).trim();
@@ -344,9 +342,11 @@ public class ProgramResult extends TopServlet{
 	if(!back.equals("")){
 	    message += back;
 	}
-
-	os.println("<head><title>Programs " + 
-		   "</title>");
+	os.println("<!DOCTYPE html>");
+	os.println("<html lang=\"en\">");
+	os.println("<head>");
+	os.println("<meta charset=\"UTF-8\">");
+	os.println("<title>Promt</title>");	
 	Helper.writeWebCss(os, url);
 	os.println("</head><body>");
 	Helper.writeTopMenu(os, url);

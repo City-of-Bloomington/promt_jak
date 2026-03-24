@@ -56,7 +56,11 @@ public class GeneralServ extends TopServlet{
 	//
 	// reinitialize to blank
 	//
-	out.println("<html><head><title>General Listing</title>"); 
+	out.println("<!DOCTYPE html>");
+	out.println("<html lang=\"en\">");
+	out.println("<head>");
+	out.println("<meta charset=\"UTF-8\">");
+	out.println("<title>Promt</title>"); 	
 	boolean actionSet = false, success = true;
 	User user = null;
 	HttpSession	session = req.getSession(false);
