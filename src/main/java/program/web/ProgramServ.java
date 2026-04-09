@@ -1309,6 +1309,7 @@ public class ProgramServ extends TopServlet{
 	    out.println("<tr><td align=\"right\"><label for=\"subcat\">Guide Sub Heading:</label>");
 	    out.println("</td><td>");
 	    out.println("<select name=\"subcat\" id=\"subcat\">");
+
 	    if(!pr.getSubcat().isEmpty()){
 		out.println("<option selected=\"selected\">"+pr.getSubcat()+"</option>\n");
 	    }
@@ -1333,8 +1334,8 @@ public class ProgramServ extends TopServlet{
 	    out.println("</td><td>");
 	    
 	    out.println("<select name=\"subcat\" id=\"subcat\">");
-	    if(!subcat.isEmpty()){
-		out.println("<option selected=\"selected\">"+subcat+"</option>\n");
+	    if(!pr.getSubcat().isEmpty()){
+		out.println("<option selected=\"selected\">"+pr.getSubcat()+"</option>\n");
 	    }
 	    for(int i=0;i<Helper.preschoolSub.length; i++){
 		if(!Helper.preschoolSub[i].isEmpty()){

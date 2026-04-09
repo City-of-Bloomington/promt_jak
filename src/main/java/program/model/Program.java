@@ -1849,17 +1849,17 @@ public class Program implements Comparable <Program>{
 	    " p.allAge,p.partGrade,p.minMaxEnroll,"+   //17
 	    " date_format(p.regDeadLine,'%m/%d/%Y'),"+ // 18
 	    " p.location_id,lc.name, p.instructor,p.description, "+ // 22
-	    " p.days,p.startTime,p.endTime,p.classCount, "+// 25
-	    " p.code,p.area_id,a.name,p.codeNeed,"+ // 29
-	    " date_format(p.startDate,'%m/%d/%Y'),"+//30 
-	    " date_format(p.endDate,'%m/%d/%Y'),p.codeTask,"+ // 32
-	    " p.marketTask,p.volTask,p.sponTask,p.ageFrom,p.ageTo, "+ // 33
-	    " p.budgetTask,p.evalTask, "+ // 35
-	    " p.wParent,p.waitList,p.plan_id,p.oplocation,p.category2_id,"+//40
-	    " p.version, "+ // 41
-	    " p.otherAge, "+ // 42
-	    " p.subcat, "+  // 43
-	    " date_format(p.received,'%m/%d/%Y'), "+ // 44
+	    " p.days,p.startTime,p.endTime,p.classCount, "+// 26
+	    " p.code,p.area_id,a.name,p.codeNeed,"+ // 30
+	    " date_format(p.startDate,'%m/%d/%Y'),"+//31 
+	    " date_format(p.endDate,'%m/%d/%Y'),p.codeTask,"+ // 33
+	    " p.marketTask,p.volTask,p.sponTask,p.ageFrom,p.ageTo, "+ // 38
+	    " p.budgetTask,p.evalTask, "+ // 40
+	    " p.wParent,p.waitList,p.plan_id,p.oplocation,p.category2_id,"+//45
+	    " p.version, "+ // 46
+	    " p.otherAge, "+ // 47
+	    " p.subcat, "+  // 48
+	    " date_format(p.received,'%m/%d/%Y'), "+ // 49
 	    " p.memberFee,p.nonMemberFee,p.season2, "+
 	    " p.summary,p.taxonomy_ids,p.location_details,p.noPublish "+
 	    " from programs p "+
@@ -2008,7 +2008,7 @@ public class Program implements Comparable <Program>{
 	}
 	finally{
 	    Helper.databaseDisconnect(con, pstmt, rs);
-	}		
+	}
 	return message;
     }
     /**
