@@ -2287,6 +2287,7 @@ public class Helper{
 
 	    out.println("<li style=\"float:left;list-style-type:none;padding:4px;\"><a href=\""+url+"PlanSearch\">Plans</a></li>");
 	    out.println("<li style=\"float:left;list-style-type:none;padding:4px;\"><a href=\""+url+"Search\">Programs</a></li>");
+	    out.println("<li style=\"float:left;list-style-type:none;padding:4px;\"><a href=\""+url+"Program.do\">New Program</a></li>");	    
 	    out.println("<li style=\"float:left;list-style-type:none;padding:4px;\"><a href=\""+url+"MarketSearch\">Marketings</a></li>");
 	    out.println("<li style=\"float:left;list-style-type:none;padding:4px;\"><a href=\""+url+"VolunteerSearch\">Volunteers</a></li>");
 	    out.println("<li style=\"float:left;list-style-type:none;padding:4px;\"><a href=\""+url+"GeneralSearch\">Gen. Listings</a></li>");
