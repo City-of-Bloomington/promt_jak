@@ -183,7 +183,13 @@ public class MarketSearch extends TopServlet{
 	for(Type one:marketTypes){
 	    out.println("<option value=\""+one.getId()+"\">"+one+"</option>");
 	}
-	out.println("</select></td></tr>");		
+	out.println("</select></td></tr>");
+	out.println("<tr><td align=\"right\"><label for=\"status\">Decision</label></td><td>");
+	out.println("<select name=\"status\" id=\"status\">");
+	out.println("<option value=\"\">All</option>");
+	out.println("<option value=\"Accepted\">Accepted</option>");
+	out.println("<option value=\"Denied\">Denied</option>");
+	out.println("</select></td></tr>");
 	out.println("</td></tr>");
 	//
 	// Start Dates

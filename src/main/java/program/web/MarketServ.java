@@ -115,6 +115,12 @@ public class MarketServ extends TopServlet{
 	    else if(name.equals("other_ad")){
 		market.setOther_ad(value);
 	    }
+	    else if(name.equals("status")){
+		market.setStatus(value);
+	    }
+	    else if(name.equals("status_notes")){
+		market.setStatusNotes(value);
+	    }	    
 	    else if(name.equals("other_market")){
 		market.setOther_market(value);
 	    }
@@ -687,6 +693,7 @@ public class MarketServ extends TopServlet{
 	out.println("<input type=\"checkbox\" name=\"signBoard\" value=\"y\" "+checked+" id=\"signb\" /><label for=\"signb\">Reserve the digital signboard.</label></td><td align=\"left\"><label for=\"board_date\"> Date digital sign needed </label>");
 	out.println("<input type=\"text\" name=\"signBoardDate\" value=\""+market.getSignBoardDate()+"\" size=\"10\" id=\"board_date\" />(mm/dd/yyyy)");
 	out.println("</td></tr>");
+	
 	//
 	// check action type
 	//
@@ -699,6 +706,13 @@ public class MarketServ extends TopServlet{
 	}
 	else{ // add zoom update
 	    //
+	    out.println("<tr><td align=\"right\">Decision</td><td>");
+	    checked = market.getStatus().equals("Accepted")?"checked=\"checked\"":"\"\"";
+	    out.println("<input type=\"radio\" name=\"status\" value=\"Accepted\" "+checked+ "/>Accepted");
+	    checked = market.getStatus().equals("Denied")?"checked=\"checked\"":"\"\"";
+	    out.println("<input type=\"radio\" name=\"status\" value=\"Denied\" "+checked+ "/>Denied</td></tr>");
+	    out.println("<tr><td align=\"right\">Decision Notes</td><td>");
+	    out.println("<textarea name=\"status_notes\" cols=\"50\" rows=\"5\" >"+market.getStatusNotes()+"</textarea></td></td>");
 	    out.println("<tr>");
 	    if(user.canEdit()){
 		out.println("<td align=\"right\" valign=\"top\"><input type=submit "+

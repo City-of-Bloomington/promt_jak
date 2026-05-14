@@ -17,7 +17,7 @@ public class MarketList extends ArrayList<Market>{
     static Logger logger = LogManager.getLogger(MarketList.class);
     //
     SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");		
-    String id = "", date_from="", date_to="",
+    String id = "", date_from="", date_to="", status="",
 	year="", category_id="", prog_id="", facility_id="", general_id="",
 	season="", market_ad="", market_announce="",
 	market_type="", sortBy="m.id ";
@@ -56,6 +56,10 @@ public class MarketList extends ArrayList<Market>{
 	if(val != null)
 	    id = val;
     }
+    public void setStatus(String val){
+	if(val != null && !val.isEmpty())
+	    status = val;
+    }    
     public void setProg_id(String val){
 	if(val != null){
 	    prog_id = val;
@@ -143,6 +147,7 @@ public class MarketList extends ArrayList<Market>{
 	    " m.other_ad,m.class_list,m.other_market,m.spInstructions,"+
 	    " m.sign_board, "+
 	    " date_format(m.sign_board_date,'%m/%d/%Y'), "+ // 44
+	    " m.status,m.status_notes,"+
 	    " null,mf.facility_id,null,mf.year,mf.season ";
 	String qw = "", qf = "from marketing m ";		
 	qf += " join marketing_facilities mf on m.id=mf.market_id ";
@@ -178,7 +183,9 @@ public class MarketList extends ArrayList<Market>{
 			       rs.getString(9),
 			       rs.getString(10),
 			       rs.getString(11),
-			       rs.getString(12)
+			       rs.getString(12),
+			       rs.getString(13),
+			       rs.getString(14)
 			       );
 		if(!this.contains(one)){
 		    this.add(one);
@@ -211,6 +218,7 @@ public class MarketList extends ArrayList<Market>{
 	    " m.other_ad,m.class_list,m.other_market,m.spInstructions,"+
 	    " m.sign_board,"+
 	    " date_format(m.sign_board_date,'%m/%d/%Y'), "+
+	    " m.status,m.status_notes,"+
 	    " mp.prog_id,null,null,null,null ";
 	String qw = "", qf = "from marketing m ";		
 	qf += " join marketing_programs mp on m.id=mp.market_id ";
@@ -256,6 +264,10 @@ public class MarketList extends ArrayList<Market>{
 		if(!qw.equals("")) qw += " and ";
 		qw += " t.type_id=? ";
 	    }
+	    if(!status.isEmpty()){
+		if(!qw.equals("")) qw += " and ";
+		qw += " m.status=? ";
+	    }	    
 	    if(!prog_id.equals("")){
 		qw += " p.id=?";
 	    }
@@ -303,6 +315,9 @@ public class MarketList extends ArrayList<Market>{
 		if(!market_type.equals("")){
 		    pstmt.setString(jj++, market_type);
 		}
+		if(!status.isEmpty()){
+		    pstmt.setString(jj++, status);
+		}		
 		if(!prog_id.equals("")){
 		    pstmt.setString(jj++, prog_id);
 		}
@@ -322,7 +337,9 @@ public class MarketList extends ArrayList<Market>{
 			       rs.getString(9),
 			       rs.getString(10),
 			       rs.getString(11),
-			       rs.getString(12)
+			       rs.getString(12),
+			       rs.getString(13),
+			       rs.getString(14)
 			       );
 		if(!this.contains(one)){
 		    this.add(one);
@@ -354,6 +371,7 @@ public class MarketList extends ArrayList<Market>{
 	    " m.other_ad,m.class_list,m.other_market,m.spInstructions,"+
 	    " m.sign_board, "+
 	    " date_format(m.sign_board_date,'%m/%d/%Y'), "+ // 44
+	    " m.status,m.status_notes,"+
 	    " null,null,mp.general_id,gl.year,gl.season ";
 	String qw = "", qf = "from marketing m ";		
 	qf += " join marketing_generals mp on m.id=mp.market_id ";
@@ -396,7 +414,12 @@ public class MarketList extends ArrayList<Market>{
 		qw += " t.type_id=? ";
 	    }
 	    if(!general_id.equals("")){
+		if(!qw.equals("")) qw += " and ";
 		qw += " gl.id=?";
+	    }
+	    if(!status.isEmpty()){
+		if(!qw.equals("")) qw += " and ";
+		qw += " m.status=?";
 	    }
 	}
 	if(!qw.equals("")){
@@ -445,6 +468,9 @@ public class MarketList extends ArrayList<Market>{
 		if(!general_id.equals("")){
 		    pstmt.setString(jj++, general_id);
 		}
+		if(!status.equals("")){
+		    pstmt.setString(jj++, status);
+		}		
 	    }
 	    rs = pstmt.executeQuery();
 	    while(rs.next()){
@@ -461,7 +487,9 @@ public class MarketList extends ArrayList<Market>{
 			       rs.getString(9),
 			       rs.getString(10),
 			       rs.getString(11),
-			       rs.getString(12)
+			       rs.getString(12),
+			       rs.getString(13),
+			       rs.getString(14)
 			       );
 		if(!this.contains(one)){
 		    this.add(one);
@@ -504,6 +532,7 @@ public class MarketList extends ArrayList<Market>{
 	    " m.other_ad,m.class_list,m.other_market,m.spInstructions,"+
 	    " m.sign_board, "+
 	    " date_format(m.sign_board_date,'%m/%d/%Y'), "+ // 44
+	    " m.status,m.status_notes,"+
 	    " null,mf.facility_id,null,mf.year,mf.season ";
 	String qw = "", qf = "from marketing m ";		
 	qf += " join marketing_facilities mf on m.id=mf.market_id ";
@@ -548,6 +577,10 @@ public class MarketList extends ArrayList<Market>{
 		qw += " mf.facility_id=?";
 		sortBy = " m.id DESC "; // last first
 	    }
+	    if(!status.equals("")){
+		if(!qw.equals("")) qw += " and ";
+		qw += " m.status=? ";
+	    }	    
 	}
 	if(!qw.equals("")){
 	    qw = " where "+qw;
@@ -591,7 +624,10 @@ public class MarketList extends ArrayList<Market>{
 		}
 		if(!facility_id.equals("")){
 		    pstmt.setString(jj++, facility_id);
-		}				
+		}
+		if(!status.isEmpty()){
+		    pstmt.setString(jj++, status);
+		}
 	    }
 	    rs = pstmt.executeQuery();
 	    while(rs.next()){
@@ -608,7 +644,9 @@ public class MarketList extends ArrayList<Market>{
 			       rs.getString(9),
 			       rs.getString(10),
 			       rs.getString(11),
-			       rs.getString(12)
+			       rs.getString(12),
+			       rs.getString(13),
+			       rs.getString(14)
 			       );
 		if(!this.contains(one)){
 		    this.add(one);

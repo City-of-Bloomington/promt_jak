@@ -1781,6 +1781,12 @@ public class Helper{
 	    out.println("<b>Digital Sign Board is Needed: Yes, </b>");
 	    out.println("<b>Needed Date </b>"+market.getSignBoardDate()+"<br />");	    
 	}
+	if(!market.getStatus().isEmpty()){
+	    out.println("<b>Decision: </b>"+market.getStatus()+"<br />");
+	}
+	if(!market.getStatusNotes().isEmpty()){
+	    out.println("<b>Decision Notes: </b>"+market.getStatusNotes()+"<br />");
+	}	
 	out.println("<br />");
 
     }

@@ -69,6 +69,9 @@ public class MarketResult extends TopServlet{
 	    else if (name.equals("id")){
 		markets.setId(value);
 	    }
+	    else if (name.equals("status")){
+		markets.setStatus(value);
+	    }	    
 	    else if (name.equals("prog_id")){
 		markets.setProg_id(value);
 	    }			
@@ -131,18 +134,18 @@ public class MarketResult extends TopServlet{
 		Facility facility = market.getFacility();
 		General general = market.getGeneral();
 		if(prog != null){
-		    out.println("<tr>");
-		    out.println("<td align=\"left\">");
-		    out.println("<a href=\""+url+"Program.do?id="+prog.getId()+"&action=zoom\">Program: "+prog.getTitle()+" ("+prog.getSeason()+"/"+prog.getYear()+")</a></td></tr>");
+		    out.println("<tr>program");
+		    out.println("<td align=\"right\">Porgram</td><td>");
+		    out.println("<a href=\""+url+"Program.do?id="+prog.getId()+"&action=zoom\">"+prog.getTitle()+" ("+prog.getSeason()+"/"+prog.getYear()+")</a></td></tr>");
 		}
 		else if(facility != null){
 		    out.println("<tr>");
-		    out.println("<td align=\"left\">");
+		    out.println("<td align=\"right\">Facility</td><td>");
 		    out.println("<a href=\""+url+"Facility?id="+facility.getId()+"&action=zoom\"> Facility: "+facility.getName()+"</a></td></tr>");
 		}
 		else if(general != null){
 		    out.println("<tr>");
-		    out.println("<td align=\"left\">");
+		    out.println("<td align=\"right\">General</td></td>");
 		    out.println("<a href=\""+url+"General.do?id="+general.getId()+"&action=zoom\">General Listing: "+general.getTitle()+"</a></td></tr>");
 
 		}

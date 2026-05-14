@@ -20,7 +20,7 @@ public class Market extends CommonInc{
 	year = "", season="", // for facility
 	other_ad="",class_list="",other_market="",
 	sign_board="", sign_board_date="",
-	spInstructions="";
+	spInstructions="", status="", status_notes="";
     SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");	
     List<MarketAd> ads = null;
     List<Type> announces = null;
@@ -60,7 +60,9 @@ public class Market extends CommonInc{
 		  String val4,
 		  String val5,
 		  String val6,
-		  String val7
+		  String val7,
+		  String val8,
+		  String val9
 		  ){
 	//
 	// initialize
@@ -73,6 +75,8 @@ public class Market extends CommonInc{
 	setSpInstructions(val5);
 	setSignBoard(val6);
 	setSignBoardDate(val7);
+	setStatus(val8);
+	setStatusNotes(val9);
     }
     public Market(boolean deb,
 		  String val,
@@ -86,7 +90,9 @@ public class Market extends CommonInc{
 		  String val9,
 		  String val10,
 		  String val11,
-		  String val12
+		  String val12,
+		  String val13,
+		  String val14
 		  ){
 	//
 	// initialize
@@ -98,13 +104,16 @@ public class Market extends CommonInc{
 	setOther_market(val4);
 	setSpInstructions(val5);
 	setSignBoard(val6);
-	setSignBoardDate(val7);	
-	setProg_id(val8);
-	setFacility_id(val9);
-	setGeneral_id(val10);
-	setYear(val11);
-	setSeason(val12);
+	setSignBoardDate(val7);
+	setStatus(val8);
+	setStatusNotes(val9);	
+	setProg_id(val10);
+	setFacility_id(val11);
+	setGeneral_id(val12);
+	setYear(val13);
+	setSeason(val14);
 	selectionDone = true;
+
     }	
     //
     public boolean equals(Object  gg){
@@ -150,6 +159,12 @@ public class Market extends CommonInc{
     }
     public String getSignBoardDate(){
 	return sign_board_date;
+    }
+    public String getStatus(){
+	return status;
+    }
+    public String getStatusNotes(){
+	return status_notes;
     }    
     //
     // setters
@@ -210,6 +225,16 @@ public class Market extends CommonInc{
     public void setSignBoardDate(String val){
 	if(val != null && !val.equals("")){
 	    sign_board_date = val;
+	}
+    }
+    public void setStatus(String val){
+	if(val != null && !val.equals("")){
+	    status = val;
+	}
+    }
+    public void setStatusNotes(String val){
+	if(val != null && !val.equals("")){
+	    status_notes = val;
 	}
     }    
     public void addAds(MarketAd[] vals){
@@ -400,7 +425,7 @@ public class Market extends CommonInc{
 	    }
 	}
 	String qq = "insert into marketing "+
-	    "values(0,?,?,?,?,?,?)";						
+	    "values(0,?,?,?,?,?,?,null,null)";						
 	try{
 	    pstmt = con.prepareStatement(qq);			
 	    setParams(pstmt);
@@ -507,8 +532,8 @@ public class Market extends CommonInc{
 	}
 	String qq = "update marketing set "+
 	    "other_ad=?,class_list=?,other_market=?,"+
-	    "spInstructions=?,sign_board=?,sign_board_date=? "+
-	    "where id = ? ";
+	    "spInstructions=?,sign_board=?,sign_board_date=?,status=?, "+
+	    "status_notes=? where id = ? ";
 	if(debug)
 	    logger.debug(qq);
 		
@@ -540,6 +565,14 @@ public class Market extends CommonInc{
 		pstmt.setNull(jj++,Types.DATE);
 	    else
 		pstmt.setDate(jj++,new java.sql.Date(dateFormat.parse(sign_board_date).getTime()));
+	    if(status.equals(""))
+		pstmt.setNull(jj++,Types.VARCHAR);
+	    else
+		pstmt.setString(jj++,status);
+	    if(status_notes.equals(""))
+		pstmt.setNull(jj++,Types.VARCHAR);
+	    else
+		pstmt.setString(jj++,status_notes);	    
 	    pstmt.setString(jj++, id);
 	    pstmt.executeUpdate();
 	    message="Updated Successfully";
@@ -663,6 +696,7 @@ public class Market extends CommonInc{
 	    " m.other_ad,m.class_list,m.other_market,m.spInstructions, "+
 	    " m.sign_board, "+
 	    " date_format(m.sign_board_date,'%m/%d/%Y'), "+ // 44
+	    " m.status,m.status_notes,"+
 	    " mp.prog_id,mf.facility_id,mf.year,mf.season,"+
 	    " g.general_id,g.year,g.season "+
 	    " from marketing m "+
@@ -696,13 +730,17 @@ public class Market extends CommonInc{
 		if(str != null) sign_board = str;
 		str = rs.getString(6);
 		if(str != null) sign_board_date = str;
-		setProg_id(rs.getString(7));
-		setFacility_id(rs.getString(8));
-		setYear(rs.getString(9));
-		setSeason(rs.getString(10));
-		setGeneral_id(rs.getString(11));
-		setYear(rs.getString(12));
-		setSeason(rs.getString(13));
+		str = rs.getString(7);
+		if(str != null) status = str;
+		str = rs.getString(8);
+		if(str != null) status_notes = str;		
+		setProg_id(rs.getString(9));
+		setFacility_id(rs.getString(10));
+		setYear(rs.getString(11));
+		setSeason(rs.getString(12));
+		setGeneral_id(rs.getString(13));
+		setYear(rs.getString(14));
+		setSeason(rs.getString(15));
 		message = "";
 		selectionDone = true;
 	    }
@@ -865,3 +903,9 @@ public class Market extends CommonInc{
     }	
 
 }
+/**
+alter table marketing add status enum('Accepted','Denied');
+alter table marketing add status_notes varchar(1024);
+
+
+ */
