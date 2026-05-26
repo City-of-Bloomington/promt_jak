@@ -1883,19 +1883,29 @@ public class ProgramServ extends TopServlet{
 		out.println("<input type=\"button\" value=\"Sponsorship\" "+
 			    " onclick=\"window.alert('You need to finish marketing first')\"></input></td>");
 	    }
-	    
-	    if(user.isAdmin()){
-		jj++;
-		if(jj > 4){
-		    jj=1;
-		    out.println("</tr>");
-		    out.println("<tr>");
-		}										 
-		out.println("<td align=\"center\" valign=\"top\">");
-		out.println("<input type=\"button\" value=\"Add Attachments\""+
-			    " onclick=\"document.location='"+url+
-			    "PromtFile.do?type=Program&related_id="+pr.getId()+
-			    "';\" /></td>");
+	    jj++;
+	    if(jj > 4){
+		jj=1;
+		out.println("</tr>");
+		out.println("<tr>");
+	    }										 
+	    out.println("<td align=\"center\" valign=\"top\">");
+	    out.println("<input type=\"button\" value=\"Add Attachments\""+
+			" onclick=\"document.location='"+url+
+			"PromtFile.do?type=Program&related_id="+pr.getId()+
+			"';\" /></td>");
+	    jj++;
+	    if(jj > 4){
+		jj=1;
+		out.println("</tr>");
+		out.println("<tr>");
+	    }
+	    out.println("<td align=\"center\" valign=\"top\">");
+	    out.println("<input type=\"button\" value=\"Duplicate This Program\""+
+			" onclick=\"document.location='"+url+
+			"Duplicate.do?id="+pr.getId()+
+			"';\" /></td>");	    
+	    if(user.isAdmin()){		
 		if(pr.canChangeYear()){
 		    jj++;
 		    if(jj > 4){

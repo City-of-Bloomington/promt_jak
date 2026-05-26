@@ -412,15 +412,9 @@ public class Search extends TopServlet{
 	out.println("<tr>");
 	out.println("<td align=\"right\"><label for=\"prog_id\">ID: "+
 		    "</label></td><td align=\"left\">");
-	out.println("<input type=\"text\" name=\"id\" value=\""+id+"\" size=\"6\" id=\"prog_id\"/> ");
-	out.println("<label for=\"season\">Season: </label>");
-	out.println("<select name=\"season\" id=\"season\"> ");
-	out.println("<option value=\"\">All</option>");
-	if(!season.equals(""))
-	    out.println("<option value=\""+season+"\" selected=\"selected\">"+season+"</option>\n");
-	out.println(Helper.allSeasons);
-	out.println("</select>");
-	out.println("<label for=\"year\">Year: </label>");
+	out.println("<input type=\"text\" name=\"id\" value=\""+id+"\" size=\"6\" id=\"prog_id\"/></td></tr> ");
+	out.println("<tr><td align=\"right\">");
+	out.println("<label for=\"year\">Year: </label></td><td>");
 	out.println("<select name=\"year\" id=\"year\"> ");
 	int years[] = Helper.getPrevYears();
 	out.println("<option value=\"\">All\n");		
@@ -428,19 +422,14 @@ public class Search extends TopServlet{
 	    out.println("<option>"+yy+"</option>");
 	}
 	out.println("</select>");
+	out.println("<label for=\"season\">Season: </label>");
+	out.println("<select name=\"season\" id=\"season\"> ");
+	out.println("<option value=\"\">All</option>");
+	if(!season.equals(""))
+	    out.println("<option value=\""+season+"\" selected=\"selected\">"+season+"</option>\n");
+	out.println(Helper.allSeasons);
+	out.println("</select>");
 	out.println("</td></tr>");
-        out.println("<tr><td align=\"right\">");
-	out.println("<label for=\"sort_by\">Sort by: </label></td><td align=\"left\">");
-	out.println("<select name=\"sortby\" id=\"sort_by\">");
-	out.println("<option value=\"p.id\" selected=\"selected\" >ID</option>");
-	out.println("<option value=\"l.name\">Lead</option>");
-	out.println("<option value=\"p.title\">Title</option>");
-	out.println("<option value=\"a.name\">Area</option>");
-	out.println("<option value=\"c.name\">Guide Heading</option>");
-	out.println("<option value=\"p.season\">Season</option>");
-	out.println("<option value=\"p.year\">Year</option>");
-	out.println("<option value=\"p.nraccount\">Non-revert Account</option>");
-	out.println("</select></td</tr>");
 	out.println("<tr><td align=\"right\"><label for=\"max_rec\">Show: "+
 		    "</label></td><td align=\"left\">");
 
@@ -501,6 +490,18 @@ public class Search extends TopServlet{
 	}				
 	out.println("</select>");
 	out.println("</td></tr>");
+        out.println("<tr><td align=\"right\">");
+	out.println("<label for=\"sort_by\">Sort by: </label></td><td align=\"left\">");
+	out.println("<select name=\"sortby\" id=\"sort_by\">");
+	out.println("<option value=\"p.id\" selected=\"selected\" >ID</option>");
+	out.println("<option value=\"l.name\">Lead</option>");
+	out.println("<option value=\"p.title\">Title</option>");
+	out.println("<option value=\"a.name\">Area</option>");
+	out.println("<option value=\"c.name\">Guide Heading</option>");
+	out.println("<option value=\"p.season\">Season</option>");
+	out.println("<option value=\"p.year\">Year</option>");
+	out.println("<option value=\"p.nraccount\">Non-revert Account</option>");
+	out.println("</select></td</tr>");
 	//
 	// area, category
 	if(needDuplication.equals("") && !advanceSearch.equals("")){
