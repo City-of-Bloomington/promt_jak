@@ -96,9 +96,6 @@ public class PickTime extends TopServlet {
 		}
 	    }
 	}
-	System.err.println("time "+time);		
-	System.err.println("in_hh "+in_hh+" in_mm "+in_mm);
-	System.err.println("in_ampm "+in_ampm);		
 	if(!action.equals("")){
 	    if(type.equals("") && !id.equals("")){
 		Program pp  = new Program(debug, id);

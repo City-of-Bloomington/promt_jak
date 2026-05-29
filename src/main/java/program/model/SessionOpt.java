@@ -20,9 +20,10 @@ public class SessionOpt{
     // fields common in program and session
     // if used in program, should not be used in session
     //
-    boolean show[] = { true, true, false, false, false,
+    boolean show[] = { true, true, false, true, true,
+	true, false, false, false, false,
 	false, false, false, false, false,
-	false, false, false, false, false,
+	
 	false, false, false, false, false};
     String titles[] = {
 	"ID",
@@ -40,8 +41,9 @@ public class SessionOpt{
 	"Non Member Fee",		
 	"Location",         // 12
 	"Participant Age",  // 13
-	"Participant Grade",
-	"Min-Max Enroll",
+	"Participant Grade", // 14
+	"Min-Max Enroll", //15
+	
 	"# of Classes",
 	"Description",
 	"Instructor"
@@ -601,48 +603,70 @@ public class SessionOpt{
 	    if(rs.next()){
 		str = rs.getString(4); // skip the first 3
 		if(str != null) days_c = str;
+		else days_c = "";
 		str = rs.getString(5) ;
 		if(str != null) startTime_c = str;
+		else startTime_c = "";
 		str = rs.getString(6) ;
-		if(str != null) endTime_c = str;								
+		if(str != null) endTime_c = str;
+		else endTime_c = "";
 		str  = rs.getString(7) ;
 		if(str != null) regDeadLine_c = str;
+		else regDeadLine_c = "";
 		str   = rs.getString(8);
 		if(str != null) inCityFee_c = str;
+		else inCityFee_c = "";
 		str  = rs.getString(9) ;
 		if(str != null) nonCityFee_c = str;
+		else nonCityFee_c = "";
 		str    = rs.getString(10) ;
 		if(str != null) otherFee_c = str;
+		else otherFee_c = "";
 		str     = rs.getString(11) ;
 		if(str != null) location_c = str;
+		else location_c = "";
 		str      = rs.getString(12);
 		if(str != null) allAge_c = str;
+		else allAge_c = "";
 		str    = rs.getString(13);
 		if(str != null) partGrade_c = str;
+		else partGrade_c = "";
 		str = rs.getString(14);
 		if(str != null) minMaxEnroll_c = str;
+		else minMaxEnroll_c = "";
 		str = rs.getString(15);
 		if(str != null) classCount_c = str;
+		else classCount_c = "";
 		str = rs.getString(16);
 		if(str != null) description_c = str;
+		else description_c = "";
 		str   = rs.getString(17);
 		if(str != null) instructor_c = str;
+		else instructor_c = "";
 		str   = rs.getString(18);
 		if(str != null) ageFrom_c = str;
+		else ageFrom_c = "";
 		str   = rs.getString(19);
 		if(str != null) ageTo_c = str;
+		else ageTo_c = "";
 		str   = rs.getString(20);
 		if(str != null) startDate_c = str;
+		else startDate_c = "";
 		str   = rs.getString(21);
 		if(str != null) endDate_c = str;
+		else endDate_c = "";
 		str   = rs.getString(22);
 		if(str != null) wParent_c = str;
+		else wParent_c = "";
 		str   = rs.getString(23);
 		if(str != null) otherAge_c = str;
+		else otherAge_c = "";
 		str   = rs.getString(24);
 		if(str != null) memberFee_c = str;
+		else memberFee_c = "";
 		str   = rs.getString(25);
-		if(str != null) nonMemberFee_c = str;				
+		if(str != null) nonMemberFee_c = str;
+		else nonMemberFee_c = "";
 		str   = rs.getString(26);
 		if(str != null) sessionSort = str;
 		selectionDone = true;

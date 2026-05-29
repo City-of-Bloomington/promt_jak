@@ -837,6 +837,21 @@ public class Sessions extends TopServlet{
 			" value=\""+se.getInstructor()+"\" id=\"instructor\"/>");
 	    out.println("</td></tr>");
 	}
+	out.println("<tr><td align=\"right\"><label for=\"sortBy\">Sort Sessions by:</label></td><td colspan=\"2\">");
+	out.println("<select name=\"sessionSort\" id=\"sortBy\">");
+	for(int i=0;i<Helper.sessionSortOpt.length;i++){
+	    if(sessionSort.equals(Helper.sessionSortOpt[i]))
+		out.println("<option selected=\"selected\" value=\""+
+			    Helper.sessionSortOpt[i]+"\">"+
+			    Helper.sessionSortArr[i]);
+	    else
+		out.println("<option value=\""+
+			    Helper.sessionSortOpt[i]+"\">"+
+			    Helper.sessionSortArr[i]);
+	}
+	out.println("</select></td></tr>");
+	
+	
 	//
 	if(action.equals("") || action.startsWith("Start") || 
 	   action.equals("Delete")){
@@ -862,20 +877,6 @@ public class Sessions extends TopServlet{
 	    }
 	    out.println("</td></tr>");
 	}
-	out.println("<tr><td align=\"right\"><label for=\"sortBy\">Sort Sessions by:</label></td><td colspan=\"2\">");
-	out.println("<select name=\"sessionSort\" id=\"sortBy\">");
-	for(int i=0;i<Helper.sessionSortOpt.length;i++){
-	    if(sessionSort.equals(Helper.sessionSortOpt[i]))
-		out.println("<option selected=\"selected\" value=\""+
-			    Helper.sessionSortOpt[i]+"\">"+
-			    Helper.sessionSortArr[i]);
-	    else
-		out.println("<option value=\""+
-			    Helper.sessionSortOpt[i]+"\">"+
-			    Helper.sessionSortArr[i]);
-	}
-	out.println("</select></td></tr>");
-	
 	out.println("</table></center>");
 	out.println("</form>");
 	//
