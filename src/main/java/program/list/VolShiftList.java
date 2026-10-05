@@ -280,8 +280,10 @@ public class VolShiftList extends ArrayList<VolShift>{
 		    qw += " p.season = ? ";
 		}
 		if(!year.equals("")){
-		    if(!qw.equals("")) qw += " and ";
-		    qw += " p.year = ? ";
+		    if(dateFrom.isEmpty() && dateTo.isEmpty()){
+			if(!qw.equals("")) qw += " and ";
+			qw += " p.year = ? ";
+		    }
 		}
 		if(!qw.equals("")){
 		    qq += " where "+qw;
@@ -291,7 +293,7 @@ public class VolShiftList extends ArrayList<VolShift>{
 		else {
 		    if(sortby.indexOf("title") > -1)
 			qq += " order by p.title ";
-		    else if(sortby.indexOf("Date") > -1)
+		    else if(sortby.indexOf("date") > -1)
 			qq += " order by v.date ";
 		    else
 			qq += " order by "+sortby;
@@ -320,8 +322,10 @@ public class VolShiftList extends ArrayList<VolShift>{
 		if(!season.equals("")){			
 		    pstmt.setString(jj++, season);
 		}
-		if(!year.equals("")){			
-		    pstmt.setString(jj++, year);
+		if(!year.equals("")){
+		    if(dateFrom.isEmpty() && dateTo.isEmpty()){
+			pstmt.setString(jj++, year);
+		    }
 		}
 		rs = pstmt.executeQuery();
 		while(rs.next()){

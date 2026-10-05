@@ -75,6 +75,7 @@ public class ReportManager extends TopServlet{
 	    else if(name.equals("year")){
 		plist.setYear(value);
 		gens.setYear(value);
+		shifts.setYear(value);
 		year = value;
 	    }
 	    else if(name.equals("sortby")){
@@ -135,7 +136,7 @@ public class ReportManager extends TopServlet{
 	    back += lead.doSelect();
 	}
 	else{
-	    back += facils.lookFor();
+	    // back += facils.lookFor();
 	}
 	back += shifts.find();		
 	if(!back.equals("")){
@@ -159,12 +160,14 @@ public class ReportManager extends TopServlet{
 		}
 		if(id.equals("")){
 		    //
+		    /**
 		    if(facils.size() > 0){
 			Helper.writeFacilities(out,
 					       facils,  
 					       url);
 
 		    }
+		    */
 		    if(gens.size() > 0){
 			Helper.writeGenerals(out,
 					     gens,

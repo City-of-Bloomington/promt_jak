@@ -131,9 +131,12 @@ public class GeneralList extends ArrayList<General>{
 		    if(!qw.equals("")) qw += " and ";
 		    qw += " g.season = ? ";
 		}
+		
 		if(!year.equals("")){
-		    if(!qw.equals("")) qw += " and ";
-		    qw += " g.year = ? ";
+		    if(date_from.isEmpty() && date_to.isEmpty()){
+			if(!qw.equals("")) qw += " and ";
+			qw += " g.year = ? ";
+		    }
 		}
 		if(!date_from.equals("")){
 		    if(!qw.equals("")) qw += " and ";
@@ -143,6 +146,7 @@ public class GeneralList extends ArrayList<General>{
 		    if(!qw.equals("")) qw += " and ";
 		    qw += " g.date <= ? ";
 		}
+		
 		if(!lead_id.equals("")){
 		    if(!qw.equals("")) qw += " and ";
 		    qw += " g.lead_id = ? ";
@@ -159,7 +163,12 @@ public class GeneralList extends ArrayList<General>{
 	    if(!qw.equals("")){
 		qq += " where "+qw;
 	    }
-	    qq += " order by 2 ";
+	    if(sortby.isEmpty()){
+		qq += " order by 2 ";
+	    }
+	    else{
+		qq += "g."+sortby;
+	    }
 	    if(debug){
 		logger.debug(qq);
 	    }
@@ -173,7 +182,9 @@ public class GeneralList extends ArrayList<General>{
 		    pstmt.setString(j++, season);
 		}
 		if(!year.equals("")){
-		    pstmt.setString(j++, year);
+		    if(date_from.isEmpty() && date_to.isEmpty()){
+			pstmt.setString(j++, year);
+		    }
 		}
 		if(!date_from.equals("")){
 		    pstmt.setDate(j++,new java.sql.Date(dateFormat.parse(date_from).getTime()));					

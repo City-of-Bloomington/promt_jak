@@ -154,6 +154,9 @@ public class GeneralCodeList{
 	if(!qw.equals("")){
 	    qq += " where "+qw;
 	}
+	if(!sortBy.isEmpty()){
+	    qq += "order by g."+sortBy;
+	}
 	if(!limit.equals("")){
 	    qq += limit;
 	}

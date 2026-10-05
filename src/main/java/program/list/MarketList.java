@@ -20,7 +20,7 @@ public class MarketList extends ArrayList<Market>{
     String id = "", date_from="", date_to="", status="",
 	year="", category_id="", prog_id="", facility_id="", general_id="",
 	season="", market_ad="", market_announce="",
-	market_type="", sortBy="m.id ";
+	market_type="", sortBy="id ";
     boolean excludeProgram = false, excludeFacility = false, excludeGeneral = false;
     String which_date="";
 		
@@ -160,7 +160,12 @@ public class MarketList extends ArrayList<Market>{
 	}
 	qq += qf+qw;
 	if(!sortBy.equals("")){
-	    qq += " order by "+sortBy;
+	    if(sortBy.indexOf(".") > -1){
+		qq += " order by "+sortBy;
+	    }
+	    else{
+		qq += " order by m."+sortBy;
+	    }
 	}
 	if(debug){
 	    logger.debug(qq);
@@ -244,8 +249,10 @@ public class MarketList extends ArrayList<Market>{
 		qw += " p.season = ? ";
 	    }
 	    if(!year.equals("")){
-		if(!qw.equals("")) qw += " and ";
-		qw += " p.year = ? ";
+		if(date_from.isEmpty() && date_to.isEmpty()){
+		    if(!qw.equals("")) qw += " and ";
+		    qw += " p.year = ? ";
+		}
 	    }
 	    if(!category_id.equals("")){
 		if(!qw.equals("")) qw += " and ";
@@ -277,7 +284,12 @@ public class MarketList extends ArrayList<Market>{
 	}
 	qq += qf+qw;
 	if(!sortBy.equals("")){
-	    qq += " order by "+sortBy;
+	    if(sortBy.indexOf(".") > -1){
+		qq += " order by "+sortBy;
+	    }
+	    else{
+		qq += " order by m."+sortBy;
+	    }
 	}
 	try{
 	    if(debug){
@@ -301,7 +313,9 @@ public class MarketList extends ArrayList<Market>{
 		    pstmt.setString(jj++, season);
 		}
 		if(!year.equals("")){
-		    pstmt.setString(jj++, year);
+		    if(date_from.isEmpty() && date_to.isEmpty()){
+			pstmt.setString(jj++, year);
+		    }
 		}
 		if(!category_id.equals("")){
 		    pstmt.setString(jj++, category_id);
@@ -397,8 +411,10 @@ public class MarketList extends ArrayList<Market>{
 		qw += "( gl.season = ? or mp.season=?) ";
 	    }
 	    if(!year.equals("")){
-		if(!qw.equals("")) qw += " and ";
-		qw += "(gl.year = ? or mp.year=?)";
+		if(date_from.isEmpty() && date_to.isEmpty()){
+		    if(!qw.equals("")) qw += " and ";
+		    qw += "(gl.year = ? or mp.year=?)";
+		}
 	    }
 	    if(!market_ad.equals("")){
 		if(!qw.equals("")) qw += " and ";
@@ -427,7 +443,12 @@ public class MarketList extends ArrayList<Market>{
 	}
 	qq += qf+qw;
 	if(!sortBy.equals("")){
-	    qq += " order by "+sortBy;
+	    if(sortBy.indexOf(".") > -1){
+		qq += " order by "+sortBy;
+	    }
+	    else{
+		qq += " order by m."+sortBy;
+	    }
 	}
 	try{
 	    if(debug){
@@ -452,8 +473,10 @@ public class MarketList extends ArrayList<Market>{
 		    pstmt.setString(jj++, season);
 		}
 		if(!year.equals("")){
-		    pstmt.setString(jj++, year);
-		    pstmt.setString(jj++, year);
+		    if(date_from.isEmpty() && date_to.isEmpty()){
+			pstmt.setString(jj++, year);
+			pstmt.setString(jj++, year);
+		    }
 
 		}
 		if(!market_ad.equals("")){
@@ -587,7 +610,12 @@ public class MarketList extends ArrayList<Market>{
 	}
 	qq += qf+qw;
 	if(!sortBy.equals("")){
-	    qq += " order by "+sortBy;
+	    if(sortBy.indexOf(".") > -1){
+		qq += " order by "+sortBy;
+	    }
+	    else{
+		qq += " order by m."+sortBy;
+	    }
 	}
 	if(debug){
 	    logger.debug(qq);

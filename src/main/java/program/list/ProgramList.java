@@ -657,9 +657,16 @@ public class ProgramList extends ArrayList<Program>{
 	}
 	String added = "a.name,c.name"; // area, category
 	if(sortby.indexOf("cat") > -1) sortby = added+",p.title";
-
-	if(!sortby.equals("")){
-	    qq += " order by "+sortby;
+	if(sortby.indexOf("date") > -1){
+	    // reg dealine and start_date not present in all programs, wo we skip
+	}
+	else if(!sortby.equals("")){
+	    if(sortby.indexOf(".") > -1){
+		qq += " order by "+sortby;
+	    }
+	    else{
+		qq += " order by p."+sortby;
+	    }
 	}
 	qq += limit;
 	// System.err.println("qq: "+qq);

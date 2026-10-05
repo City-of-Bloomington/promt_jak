@@ -89,25 +89,7 @@ public class MediaRequestList{
     public List<MediaRequest> getRequests(){
 	return requests;
     }
-    /**
-    void setDateRange(){
-	if(!year.isEmpty() && !season.isEmpty() && !season.equals("Ongoing")){
-	    if(season.startsWith("Summer")){
-		date_from = Helper.summerStartDate+year;
-		date_to = Helper.summerEndDate+year;
-	    }
-	    else if(season.startsWith("Winter")){
-		date_from = Helper.winterSpringStartDate+year;
-		date_to = Helper.winterSpringEndDate+year;
-	    }
-	    else {
-		date_from = Helper.fallWinterStartDate+year;
-		date_to = Helper.fallWinterEndDate+year;
-	    }
-	    year="";
-	}
-    }
-    */
+
     public String find(){
 		
 	String back = "";

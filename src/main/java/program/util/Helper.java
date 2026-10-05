@@ -1268,8 +1268,9 @@ public class Helper{
 	int i=0,l,v,jj=-1;
 	if(str == null) return str2;
 	str2="";
+	Character b = Character.valueOf('b');
 	l = str.length();
-	Character b = new Character('b'); // temporary
+	// char b = 'b'; 
 	if(l > 0){
 	    while(i < l){
 

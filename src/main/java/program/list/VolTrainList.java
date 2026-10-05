@@ -16,7 +16,7 @@ public class VolTrainList extends ArrayList<VolTrain>{
     String message = "";
     List<String> errors = null;
     String pid="", // program id
-	id="", shift_id="",
+	id="", shift_id="", sortBy = "",
 	dateFrom="", dateTo="";
 
 	
@@ -72,6 +72,11 @@ public class VolTrainList extends ArrayList<VolTrain>{
 	    pid = val;
 	}
     }
+    public void setSortBy(String val){
+	if(val != null){
+	    sortBy = val;
+	}
+    }    
     public void setShift_id(String val){
 	if(val != null){
 	    shift_id = val;
@@ -121,6 +126,9 @@ public class VolTrainList extends ArrayList<VolTrain>{
 	    }
 	    if(!qw.equals("")){
 		qq += " where "+qw;
+	    }
+	    if(!sortBy.isEmpty()){
+		qq += " order by v."+sortBy;
 	    }
 	    pstmt = con.prepareStatement(qq);
 	    int jj=1;

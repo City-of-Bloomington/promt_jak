@@ -275,10 +275,10 @@ public class ReportMenu extends TopServlet{
 	out.println("<tr><td align=\"right\"><label for=\"sort_by\">Sort by:</label></td>");
 	out.print("<td align=\"left\">");		
 	out.println("<select name=\"sortby\" id=\"sort_by\">");
-	out.println("<option value=\"p.id\">ID</option>");
-	out.println("<option value=\"p.startDate\">Date</option>");
-	out.println("<option value=\"p.title\">Program Title</option>");
-	out.println("<option value=\"p.code\">Program Code</option>");		
+	out.println("<option value=\"id\">ID</option>");
+	out.println("<option value=\"date\">Date</option>");
+	out.println("<option value=\"title\">Program Title</option>");
+	out.println("<option value=\"code\">Program Code</option>");		
 	out.println("</select></td></tr>");
 	out.println("</table>");
 	out.println("</td></tr>");
