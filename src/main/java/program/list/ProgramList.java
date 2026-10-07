@@ -660,7 +660,7 @@ public class ProgramList extends ArrayList<Program>{
 	if(sortby.indexOf("date") > -1){
 	    // reg dealine and start_date not present in all programs, wo we skip
 	}
-	else if(!sortby.equals("")){
+	else if(!sortby.isEmpty()){
 	    if(sortby.indexOf(".") > -1){
 		qq += " order by "+sortby;
 	    }
@@ -1094,9 +1094,13 @@ public class ProgramList extends ArrayList<Program>{
 	    }
 	    added = "a.name,c.name";
 	    if(sortby.indexOf("cat") > -1) sortby = added+",p.title";
-			
-	    if(!sortby.equals("")){
-		qq += " order by "+sortby;
+	    if(!sortby.isEmpty()){
+		if(sortby.indexOf("date") > -1){
+		    // ignore
+		}
+		else {
+		    qq += " order by "+sortby;
+		}
 	    }
 	    // System.err.println(qq);
 	    qq += limit;
@@ -1355,7 +1359,12 @@ public class ProgramList extends ArrayList<Program>{
 	    qq += " where "+qw;
 	}
 	if(!sortby.equals("")){
-	    qq += " order by "+sortby;
+	    if(sortby.indexOf(".") > -1){
+		qq += " order by "+sortby;
+	    }
+	    else{
+		qq += " order by p."+sortby;
+	    }
 	}
 	else{
 	    if(hasCode || !codeNeed.equals(""))
@@ -1601,11 +1610,16 @@ public class ProgramList extends ArrayList<Program>{
 	    if(!qw.equals("")){
 		qq += " where "+qw;
 	    }
-	    if(sortby.equals("")){
+	    if(sortby.isEmpty()){
 		qq += " order by p.title ";
 	    }
 	    else{
-		qq += " order by "+sortby;
+		if(sortby.indexOf(".") > -1){
+		    qq += " order by "+sortby;
+		}
+		else{
+		    qq += " order by p."+sortby;
+		}
 	    }
 						
 	    if(debug){
