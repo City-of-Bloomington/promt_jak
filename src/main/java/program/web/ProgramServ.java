@@ -88,7 +88,7 @@ public class ProgramServ extends TopServlet{
 	String location_id="", instructor="",regDeadLine="",otherLocation="";
 	String ageFrom="", ageTo="",partGrade="", description="";
 	String minMaxEnroll="",description2="",
-	    allAge="", 
+	    allAge="",  // for program without plan
 	    otherAge=""; // will be used for 18 month toddlers and so on
 	String days="",startTime="", endTime="";
 	String classCount="",code="",wParent="",waitList="0";
@@ -1138,7 +1138,9 @@ public class ProgramServ extends TopServlet{
 	    out.println("<input type=\"hidden\" name=\"id\" value=\"" + pr.getId()+"\" />");
 	}
 	// plan id
-	out.println("<input type=\"hidden\" name=\"plan_id\" value=\""+pr.getPlan_id()+"\" />");
+	if(pr.hasPlan()){
+	    out.println("<input type=\"hidden\" name=\"plan_id\" value=\""+pr.getPlan_id()+"\" />");
+	}
 	out.println("<input type=\"hidden\" id=\"taxonomy_ids\" name=\"taxonomy_ids\" value=\""+pr.getTaxonomy_ids()+"\" />");						
 	out.println("<center><table border=\"1\" width=\"90%\">");
 	out.println("<caption>Program Info</caption>");
@@ -1223,7 +1225,8 @@ public class ProgramServ extends TopServlet{
 	else{
 	    out.println("<tr><td align=\"right\" valign=\"top\"><b>Related Plan:</b>"+
 			"</td><td>");			
-	    out.println("No plan is available for this program");
+	    out.println("No plan is added, <label for=\"plan_id\"> Add plan id </lable>");
+	    out.println("<input type=\"text\" name=\"plan_id\" value=\"\" size=\"6\" id=\"plan_id\" maxlength=\"6\" />");
 	    out.println("</td></tr>");		
 	}
 	//

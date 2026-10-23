@@ -21,7 +21,7 @@ public class SessionOpt{
     // if used in program, should not be used in session
     //
     boolean show[] = { true, true, false, true, true,
-	true, false, false, false, false,
+	false, false, false, false, false,
 	false, false, false, false, false,
 	
 	false, false, false, false, false};
